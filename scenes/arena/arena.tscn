@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dhxrob07wfllc"]
+
+[ext_resource type="Script" uid="uid://bnh8xyy67xd83" path="res://script/arena/arena.gd" id="1_1qjuf"]
+
+[node name="Arena" type="Node2D"]
+script = ExtResource("1_1qjuf")
+
+[node name="walls" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]

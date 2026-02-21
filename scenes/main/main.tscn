@@ -1,0 +1,16 @@
+[gd_scene load_steps=5 format=3 uid="uid://c14weyjqdmmqi"]
+
+[ext_resource type="PackedScene" uid="uid://bc33e4giav80o" path="res://scenes/ui/hud.tscn" id="1_l3cfh"]
+[ext_resource type="PackedScene" uid="uid://bw1vhtrhep4ky" path="res://scenes/ball/ball.tscn" id="2_6q06x"]
+[ext_resource type="PackedScene" uid="uid://c3vj3s7xoi087" path="res://scenes/player/player.tscn" id="3_ow5a4"]
+[ext_resource type="PackedScene" uid="uid://dhxrob07wfllc" path="res://scenes/arena/arena.tscn" id="4_hujxm"]
+
+[node name="Main" type="Node2D"]
+
+[node name="Hud" parent="." instance=ExtResource("1_l3cfh")]
+
+[node name="Ball" parent="." instance=ExtResource("2_6q06x")]
+
+[node name="Player" parent="." instance=ExtResource("3_ow5a4")]
+
+[node name="Arena" parent="." instance=ExtResource("4_hujxm")]

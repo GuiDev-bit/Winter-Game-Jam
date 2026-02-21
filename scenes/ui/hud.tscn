@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://bc33e4giav80o"]
+
+[ext_resource type="Script" uid="uid://ydla5h6kvo07" path="res://script/ui/hud.gd" id="1_0mwgc"]
+
+[node name="Hud" type="CanvasLayer"]
+script = ExtResource("1_0mwgc")
+
+[node name="TimerLabel" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="ScoreLabel" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0

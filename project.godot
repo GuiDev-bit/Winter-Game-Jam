@@ -12,7 +12,11 @@ config_version=5
 
 config/name="Winter Game Jam"
 config/features=PackedStringArray("4.4", "GL Compatibility")
-config/icon="res://icon.svg"
+
+[autoload]
+
+GameManager="*res://script/manager/game_manager.gd"
+AudioManager="*res://script/manager/audio_manager.gd"
 
 [rendering]
 
