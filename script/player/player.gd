@@ -1,25 +1,20 @@
 extends CharacterBody2D
+@onready var  move_component : MovementComponement=$MovementComponent
+@onready var  input_component : Inputcomponent =$InputComponent
 
-@export var speed : float = 300.0
 
-func _physics_process(delta):
+func _physics_process(delta) -> void :
+	move_component.direction = input_component.x_input #assigner la directiomn au mouvement compp
+	move_component.slide(delta)
+	if not  is_on_floor() : 
+		move_component.apply_gravity(delta)
+
+	move_and_slide()
+#Je vais tout refaire en state machine
+
+func active_game():  #j'ai séparé ca du joueur
 	if GameManager.current_state != GameManager.GameState.PLAYING:
 		velocity = Vector2.ZERO
 		move_and_slide()
 		return
-
-	var direction = Vector2.ZERO
-
-	if Input.is_action_pressed("move_up"):
-		direction.y -= 1
-	if Input.is_action_pressed("move_down"):
-		direction.y += 1
-	if Input.is_action_pressed("move_left"):
-		direction.x -= 1
-	if Input.is_action_pressed("move_right"):
-		direction.x += 1
-
-	direction = direction.normalized()
-	velocity = direction * speed
-
-	move_and_slide()
+	
