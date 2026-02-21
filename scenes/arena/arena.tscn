@@ -1,10 +1,31 @@
-[gd_scene load_steps=2 format=3 uid="uid://dhxrob07wfllc"]
+[gd_scene format=3 uid="uid://dhxrob07wfllc"]
 
 [ext_resource type="Script" uid="uid://bnh8xyy67xd83" path="res://script/arena/arena.gd" id="1_1qjuf"]
 
-[node name="Arena" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1qjuf"]
+size = Vector2(132, 648)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8trdl"]
+size = Vector2(131, 648)
+
+[node name="Arena" type="Node2D" unique_id=2015291178]
 script = ExtResource("1_1qjuf")
 
-[node name="walls" type="StaticBody2D" parent="."]
+[node name="Walls" type="StaticBody2D" parent="." unique_id=106267902]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls" unique_id=1866878321]
+
+[node name="GoalLeft" type="Area2D" parent="." unique_id=1941841028]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GoalLeft" unique_id=664083923]
+position = Vector2(66, 324)
+shape = SubResource("RectangleShape2D_1qjuf")
+
+[node name="GoalRight" type="Area2D" parent="." unique_id=584776893]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GoalRight" unique_id=1213569507]
+position = Vector2(1086.5, 324)
+shape = SubResource("RectangleShape2D_8trdl")
+
+[connection signal="body_entered" from="GoalLeft" to="." method="_on_goal_left_body_entered"]
+[connection signal="body_entered" from="GoalRight" to="." method="_on_goal_right_body_entered"]
