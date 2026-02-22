@@ -1,0 +1,98 @@
+[gd_scene format=3 uid="uid://c2gvat1cekcfk"]
+
+[ext_resource type="Texture2D" uid="uid://vmug3ssx0wcb" path="res://assets/hud/UI_Credits.png" id="1_6jrcj"]
+[ext_resource type="Script" uid="uid://dmpeqfthg5ebw" path="res://script/ui/lose_menu.gd" id="1_ifqll"]
+
+[node name="LoseMenu" type="Control" unique_id=235626144]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ifqll")
+
+[node name="Panel" type="PanelContainer" parent="." unique_id=446790594]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -358.0
+offset_top = -53.5
+offset_right = 358.0
+offset_bottom = 53.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel" unique_id=1547921801]
+layout_mode = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 200
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 200
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer" unique_id=837775074]
+layout_mode = 2
+theme_override_constants/separation = 100
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer" unique_id=1912276509]
+layout_mode = 2
+theme_override_font_sizes/font_size = 75
+text = "Sorry but you lose..."
+
+[node name="HBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer" unique_id=50659088]
+layout_mode = 2
+alignment = 1
+
+[node name="Retry" type="TextureButton" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer" unique_id=704210807]
+layout_mode = 2
+texture_normal = ExtResource("1_6jrcj")
+stretch_mode = 3
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/Retry" unique_id=763104238]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -73.0
+offset_top = -33.5
+offset_right = 56.0
+offset_bottom = 35.5
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.016314477
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 50
+text = "Retry"
+horizontal_alignment = 1
+
+[node name="Main Menu" type="TextureButton" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1844460836]
+layout_mode = 2
+texture_normal = ExtResource("1_6jrcj")
+stretch_mode = 3
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/Main Menu" unique_id=1893458472]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -123.0
+offset_top = -21.499998
+offset_right = 95.0
+offset_bottom = 47.5
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.016314477
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 40
+text = "Main Menu"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/HBoxContainer/Retry" to="." method="_on_retry_pressed"]
+[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/HBoxContainer/Main Menu" to="." method="_on_main_menu_pressed"]
