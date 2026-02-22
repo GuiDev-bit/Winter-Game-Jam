@@ -1,10 +1,30 @@
-[gd_scene load_steps=2 format=3 uid="uid://c3vj3s7xoi087"]
+[gd_scene format=3 uid="uid://c3vj3s7xoi087"]
 
 [ext_resource type="Script" uid="uid://braehv8ney1rm" path="res://script/player/player.gd" id="1_8afob"]
+[ext_resource type="Script" uid="uid://clb1xdtf63b7o" path="res://script/component/input_component.gd" id="2_dovo2"]
+[ext_resource type="Script" uid="uid://da52mkxllo62" path="res://script/component/movement_component.gd" id="2_gmlin"]
 
-[node name="Player" type="CharacterBody2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gmlin"]
+size = Vector2(79, 73)
+
+[node name="Player" type="CharacterBody2D" unique_id=1828741544]
 script = ExtResource("1_8afob")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1074814713]
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 50.0
+offset_bottom = 44.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=824796923]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=34379545]
+position = Vector2(8.5, 6.5)
+shape = SubResource("RectangleShape2D_gmlin")
+
+[node name="MovementComponent" type="Node" parent="." unique_id=55276365 node_paths=PackedStringArray("body")]
+script = ExtResource("2_gmlin")
+body = NodePath("..")
+
+[node name="InputComponent" type="Node" parent="." unique_id=735257857]
+script = ExtResource("2_dovo2")
