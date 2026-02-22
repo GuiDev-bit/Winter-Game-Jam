@@ -6,15 +6,14 @@
 size = Vector2(39, 37)
 
 [node name="Ball" type="CharacterBody2D" unique_id=1617553996]
+position = Vector2(879, 568)
 script = ExtResource("1_oqv3d")
 
 [node name="Sprite2D" type="ColorRect" parent="." unique_id=620166522]
-offset_left = 536.0
-offset_top = 264.0
-offset_right = 541.68
-offset_bottom = 301.285
+offset_right = 5.6799927
+offset_bottom = 37.285004
 scale = Vector2(6.84, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1209595843]
-position = Vector2(555.5, 282.5)
+position = Vector2(20, 19)
 shape = SubResource("RectangleShape2D_oqv3d")

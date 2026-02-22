@@ -20,7 +20,6 @@ offset_top = 35.999996
 offset_right = 95.0
 offset_bottom = 58.999996
 scale = Vector2(2.3105013, 1.8800001)
-text = "999"
 
 [node name="ScoreLabel" type="Label" parent="Control" unique_id=1375036341]
 layout_mode = 1
@@ -33,5 +32,4 @@ offset_right = -17.0
 offset_bottom = 57.0
 grow_horizontal = 2
 scale = Vector2(2.99978, 1.9943122)
-text = "1 - 0"
 horizontal_alignment = 1
