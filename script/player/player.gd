@@ -3,6 +3,7 @@ class_name Player
 
 @onready var  move_component : MovementComponement=$MovementComponent
 @onready var  input_component : Inputcomponent =$InputComponent
+@onready var animated_sprite : AnimatedSprite2D = $AnimatedSprite2D
 
 #states
 enum STATE { FALL, FLOOR,JUMP, HURT, }
@@ -21,6 +22,7 @@ func _on_respawn(spawn_position: Vector2) -> void:
 func _physics_process(delta) -> void :
 	move_component.direction = input_component.x_input #assigner la directiomn au mouvement comp
 	process_state(delta)
+	update_animation()
 	move_and_slide()
 
 
@@ -66,3 +68,22 @@ func process_state(delta: float) ->void : #handle state-logique
 			move_component.slide(delta)
 			if velocity.y >=   0 : 
 				switch_state(STATE.FALL)
+
+func update_animation() -> void:
+	print("direction: ", move_component.direction)
+	print("state: ", active_state)
+	match active_state:
+		STATE.FLOOR:
+			if move_component.direction != 0:
+				animated_sprite.play("slide_a")
+			else:
+				animated_sprite.play("idle")
+		STATE.JUMP, STATE.FALL:
+			animated_sprite.play("idle")
+		STATE.HURT:
+			animated_sprite.play("idle")
+	if move_component.direction > 0:
+		animated_sprite.flip_h = false
+	elif move_component.direction < 0:
+		animated_sprite.flip_h = true
+				
