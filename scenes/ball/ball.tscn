@@ -1,19 +1,19 @@
 [gd_scene format=3 uid="uid://bw1vhtrhep4ky"]
 
 [ext_resource type="Script" uid="uid://bak06y5dpwy8e" path="res://script/ball/ball.gd" id="1_oqv3d"]
+[ext_resource type="Texture2D" uid="uid://bndkpiov0o75c" path="res://assets/sprites/Sans_titre_424_20260222132543.png" id="2_nv6q1"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_oqv3d"]
-size = Vector2(39, 37)
+[sub_resource type="CircleShape2D" id="CircleShape2D_nv6q1"]
+radius = 38.013157
 
 [node name="Ball" type="CharacterBody2D" unique_id=1617553996]
 position = Vector2(879, 568)
 script = ExtResource("1_oqv3d")
 
-[node name="Sprite2D" type="ColorRect" parent="." unique_id=620166522]
-offset_right = 5.6799927
-offset_bottom = 37.285004
-scale = Vector2(6.84, 1)
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=185056861]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_nv6q1")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1209595843]
-position = Vector2(20, 19)
-shape = SubResource("RectangleShape2D_oqv3d")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=180994026]
+position = Vector2(-6, -3)
+shape = SubResource("CircleShape2D_nv6q1")
