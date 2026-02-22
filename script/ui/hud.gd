@@ -1,7 +1,7 @@
 extends CanvasLayer
 
-@onready var timer_label = $TimerLabel
-@onready var score_label = $ScoreLabel
+@onready var timer_label = $Control/TimerLabel
+@onready var score_label = $Control/ScoreLabel
 
 func _ready():
 	GameManager.game_started.connect(_on_game_started)

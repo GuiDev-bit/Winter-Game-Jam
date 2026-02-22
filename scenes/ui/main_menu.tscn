@@ -1,0 +1,104 @@
+[gd_scene format=3 uid="uid://btq4j4pcfgihi"]
+
+[ext_resource type="Script" uid="uid://cijtiyy4m2b46" path="res://scenes/ui/main_menu.gd" id="1_m1kxf"]
+[ext_resource type="Texture2D" uid="uid://2o16b27830s2" path="res://assets/hud/UI_Play.png" id="1_sl1te"]
+[ext_resource type="Texture2D" uid="uid://vmug3ssx0wcb" path="res://assets/hud/UI_Credits.png" id="2_1g8jr"]
+[ext_resource type="Texture2D" uid="uid://cxhx25ojnwxge" path="res://assets/hud/UI_Quit.png" id="3_m1kxf"]
+
+[node name="MainMenu" type="Control" unique_id=1296318094]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_m1kxf")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=816686424]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -464.0
+offset_top = -293.5
+offset_right = -64.0
+offset_bottom = 293.5
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/separation = 50
+
+[node name="Start" type="TextureButton" parent="VBoxContainer" unique_id=1351880424]
+layout_mode = 2
+texture_normal = ExtResource("1_sl1te")
+stretch_mode = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/Start" unique_id=1369126701]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -110.0
+offset_top = -48.0
+offset_right = 125.0
+offset_bottom = 89.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.11377194
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 100
+text = "Start"
+
+[node name="Settings" type="TextureButton" parent="VBoxContainer" unique_id=290731087]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+texture_normal = ExtResource("2_1g8jr")
+stretch_mode = 5
+
+[node name="Label2" type="Label" parent="VBoxContainer/Settings" unique_id=1356527304]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -120.0
+offset_top = -42.5
+offset_right = 115.0
+offset_bottom = 94.5
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.01855011
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 60
+text = "Settings"
+
+[node name="Exit" type="TextureButton" parent="VBoxContainer" unique_id=441736836]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+texture_normal = ExtResource("3_m1kxf")
+stretch_mode = 5
+
+[node name="Label3" type="Label" parent="VBoxContainer/Exit" unique_id=939026372]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -59.0
+offset_top = -44.5
+offset_right = 176.0
+offset_bottom = 92.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 80
+text = "Exit"
+
+[connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="VBoxContainer/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="VBoxContainer/Exit" to="." method="_on_exit_pressed"]
