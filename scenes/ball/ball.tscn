@@ -6,7 +6,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_nv6q1"]
 radius = 38.013157
 
-[node name="Ball" type="CharacterBody2D" unique_id=1617553996]
+[node name="Ball" type="RigidBody2D" unique_id=1539097515]
 position = Vector2(879, 568)
 script = ExtResource("1_oqv3d")
 
@@ -17,3 +17,5 @@ texture = ExtResource("2_nv6q1")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=180994026]
 position = Vector2(-6, -3)
 shape = SubResource("CircleShape2D_nv6q1")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
