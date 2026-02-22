@@ -5,17 +5,15 @@ class_name Ball
 
 # Physique
 @export var bounce_force : float = 800.0
-@export var gravity_scale_value : float = 2.5  # lourdeur
+@export var gravity_scale_value : float = 2.5
 @export var squash_amount : float = 0.4
 @export var stretch_amount : float = 0.3
 
 var previous_velocity : Vector2 = Vector2.ZERO
+var base_scale : Vector2 = Vector2(0.25, 0.25)
 
 func _ready() -> void:
 	gravity_scale = gravity_scale_value
-	physics_material_override = PhysicsMaterial.new()
-	physics_material_override.bounce = 0.4  # rebond modéré
-	physics_material_override.friction = 0.8
 
 func _physics_process(_delta: float) -> void:
 	if GameManager.current_state != GameManager.GameState.PLAYING:
@@ -24,29 +22,22 @@ func _physics_process(_delta: float) -> void:
 	apply_squash_stretch()
 	previous_velocity = linear_velocity
 
-# Appliquer une force sur la balle
 func apply_force_to_ball(direction: Vector2, force: float) -> void:
 	apply_central_impulse(direction.normalized() * force)
 
-# Squash et stretch selon la vitesse
 func apply_squash_stretch() -> void:
 	var speed = linear_velocity.length()
-	
 	if speed < 10:
-		# Au repos, forme normale
-		sprite.scale = sprite.scale.lerp(Vector2.ONE, 0.2)
+		sprite.scale = sprite.scale.lerp(base_scale, 0.2)
 		return
-	
-	# Stretch dans la direction du mouvement
 	var stretch = 1.0 + (speed / bounce_force) * stretch_amount
-	var squash = 1.0 / stretch  # conservation du volume
-	
+	var squash = 1.0 / stretch
 	var angle = linear_velocity.angle()
 	sprite.rotation = angle
-	sprite.scale = sprite.scale.lerp(Vector2(squash, stretch), 0.3)
+	sprite.scale = sprite.scale.lerp(Vector2(base_scale.x * squash, base_scale.y * stretch), 0.3)
 
-# Squash à l'impact
 func _on_body_entered(_body: Node) -> void:
+	print("collision avec: ", _body.name)
 	var impact_strength = previous_velocity.length() / bounce_force
 	var squash = 1.0 + impact_strength * squash_amount
-	sprite.scale = Vector2(squash, 1.0 / squash)
+	sprite.scale = Vector2(base_scale.x * squash, base_scale.y / squash)
