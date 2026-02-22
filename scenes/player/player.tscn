@@ -30,12 +30,13 @@ radius = 22.0
 height = 115.0
 
 [node name="Player" type="CharacterBody2D" unique_id=1828741544]
+position = Vector2(344, 394)
 script = ExtResource("1_8afob")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=166587267]
 scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_p47bc")
-animation = &"slide_a"
+animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=34379545]
 position = Vector2(5, -3.5)

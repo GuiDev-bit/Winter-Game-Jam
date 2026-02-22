@@ -11,6 +11,12 @@ var active_state :STATE = STATE.FALL
 
 func _ready() -> void:
 	switch_state(active_state)
+	GameManager.player_respawn.connect(_on_respawn)
+
+func _on_respawn(spawn_position: Vector2) -> void:
+	global_position = spawn_position
+	velocity = Vector2.ZERO
+	switch_state(STATE.FALL)
 
 func _physics_process(delta) -> void :
 	move_component.direction = input_component.x_input #assigner la directiomn au mouvement comp

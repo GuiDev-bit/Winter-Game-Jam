@@ -19,4 +19,5 @@ func end_attack(): #désactiver la collision
 
 
 func _on_area_entered(area: HurtboxComponent) -> void:
-	pass # Replace with function body.
+	if attack_data:
+		area.take_hit(attack_data)

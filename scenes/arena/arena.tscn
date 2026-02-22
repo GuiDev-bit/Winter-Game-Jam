@@ -8,6 +8,9 @@ size = Vector2(132, 648)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8trdl"]
 size = Vector2(131, 648)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5tue2"]
+size = Vector2(1152, 142)
+
 [node name="Arena" type="Node2D" unique_id=2015291178]
 script = ExtResource("1_1qjuf")
 
@@ -26,6 +29,12 @@ shape = SubResource("RectangleShape2D_1qjuf")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GoalRight" unique_id=1213569507]
 position = Vector2(1086.5, 324)
 shape = SubResource("RectangleShape2D_8trdl")
+
+[node name="Ground" type="StaticBody2D" parent="." unique_id=712740544]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground" unique_id=1502811886]
+position = Vector2(576, 577)
+shape = SubResource("RectangleShape2D_5tue2")
 
 [connection signal="body_entered" from="GoalLeft" to="." method="_on_goal_left_body_entered"]
 [connection signal="body_entered" from="GoalRight" to="." method="_on_goal_right_body_entered"]

@@ -8,7 +8,7 @@ func _ready():
 	GameManager.goal_scored.connect(_on_goal_scored)
 	GameManager.game_ended.connect(_on_game_ended)
 
-func _process(delta):
+func _process(_delta: float) -> void:
 	if GameManager.current_state == GameManager.GameState.PLAYING:
 		var time_left = int(GameManager.match_duration - GameManager.match_time)
 		timer_label.text = str(time_left)
@@ -16,7 +16,7 @@ func _process(delta):
 func _on_game_started():
 	update_score()
 
-func _on_goal_scored(team):
+func _on_goal_scored(_team):
 	update_score()
 
 func _on_game_ended():

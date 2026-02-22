@@ -3,7 +3,7 @@ extends CharacterBody2D
 @export var speed : float = 400.0
 var direction : Vector2 = Vector2.RIGHT
 
-func _physics_process(delta):
+func _physics_process(_delta: float) -> void:
 	if GameManager.current_state != GameManager.GameState.PLAYING:
 		return
 

@@ -3,6 +3,7 @@ extends Node
 signal game_started
 signal game_ended
 signal goal_scored(team)
+signal player_respawn(position)
 
 enum GameState {
 	MENU,
@@ -35,10 +36,14 @@ func end_game():
 	current_state = GameState.GAME_OVER
 	emit_signal("game_ended")
 
-func add_goal(team : String):
+func add_goal(team: String) -> void:
 	if team == "left":
 		score_left += 1
 	elif team == "right":
 		score_right += 1
-
 	emit_signal("goal_scored", team)
+	await get_tree().create_timer(1.0).timeout
+	respawn_player()
+	
+func respawn_player():
+	emit_signal("player_respawn", Vector2(100, 0))
