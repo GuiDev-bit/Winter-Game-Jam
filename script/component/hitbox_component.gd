@@ -21,6 +21,6 @@ func end_attack(): #désactiver la collision
 		shape.set_deferred("disabled",true)
 		attack_data = null
 
-func _on_area_entered(area: HurtboxComponent) -> void:
-	if attack_data:
-		area.take_hit(attack_data)
+func _on_area_entered(area: Area2D) -> void:
+	if attack_data and area is HurtboxComponent:
+		area.damage(attack_data)

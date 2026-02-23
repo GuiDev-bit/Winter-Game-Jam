@@ -66,6 +66,7 @@ func switch_state(to_state : STATE) :
 		STATE.FLOOR :
 			pick_random_slide()
 		STATE.HIT :
+			bat_data.direction = get_direction_to_mouse()
 			hitbox.attack_data = bat_data
 			hitbox.lunch_attack()
 
@@ -127,11 +128,18 @@ func update_animation() -> void:
 			animated_sprite.play("idle")
 	if move_component.direction > 0:
 		animated_sprite.flip_h = false
+		hitbox.shape.position.x = 52
 	elif move_component.direction < 0:
 		animated_sprite.flip_h = true
+		hitbox.shape.position.x = -52
 
 #choisi une animation différente pour le slide
 func pick_random_slide():
 	var choices = slide_anim.duplicate()
 	choices.erase(current_slide)
 	current_slide = choices.pick_random()
+
+func get_direction_to_mouse() -> Vector2:
+	var mouse_pos = get_global_mouse_position() # position de la souris dans le monde
+	var direction = (mouse_pos - global_position).normalized()
+	return direction

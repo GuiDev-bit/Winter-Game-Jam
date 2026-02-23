@@ -3,6 +3,9 @@
 [ext_resource type="Script" uid="uid://bnh8xyy67xd83" path="res://script/arena/arena.gd" id="1_1qjuf"]
 [ext_resource type="PackedScene" uid="uid://d3nd7funcfhcg" path="res://scenes/terrain/terrain.tscn" id="2_8trdl"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5tue2"]
+size = Vector2(213.5, 1117)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1qjuf"]
 size = Vector2(132, 648)
 
@@ -13,9 +16,17 @@ size = Vector2(131, 648)
 script = ExtResource("1_1qjuf")
 
 [node name="Walls" type="StaticBody2D" parent="." unique_id=106267902]
+collision_layer = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls" unique_id=1866878321]
-position = Vector2(-4, -4)
+position = Vector2(-49.75, 519.5)
+shape = SubResource("RectangleShape2D_5tue2")
+debug_color = Color(0.5643613, 0.47827423, 0.7634374, 0.41960785)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Walls" unique_id=1940934627]
+position = Vector2(1952, 537)
+shape = SubResource("RectangleShape2D_5tue2")
+debug_color = Color(0.5643613, 0.47827423, 0.7634374, 0.41960785)
 
 [node name="GoalLeft" type="Area2D" parent="." unique_id=1941841028]
 

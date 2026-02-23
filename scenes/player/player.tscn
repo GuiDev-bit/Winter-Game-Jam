@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://braehv8ney1rm" path="res://script/player/player.gd" id="1_8afob"]
 [ext_resource type="Texture2D" uid="uid://4a330n4cqi7x" path="res://assets/player_assets/player_fall.png" id="2_0owmy"]
 [ext_resource type="Script" uid="uid://clb1xdtf63b7o" path="res://script/component/input_component.gd" id="2_dovo2"]
+[ext_resource type="Script" uid="uid://wcd5uqn0imo0" path="res://script/Ressources/attackressources/attack_data.gd" id="2_fm80t"]
 [ext_resource type="Script" uid="uid://da52mkxllo62" path="res://script/component/movement_component.gd" id="2_gmlin"]
 [ext_resource type="Texture2D" uid="uid://byancfgpk66f4" path="res://assets/player_assets/Sans titre 423_20260221210525.png" id="2_lvxji"]
 [ext_resource type="Texture2D" uid="uid://ea8t1g2wo4gx" path="res://assets/player_assets/Sans titre 423_20260221223302.png" id="3_je7p5"]
@@ -11,6 +12,13 @@
 [ext_resource type="Texture2D" uid="uid://gypkioppnu0l" path="res://assets/player_assets/Sans_titre_423_20260222143159.png" id="6_fm80t"]
 [ext_resource type="Texture2D" uid="uid://bcpxp1jwdrv7t" path="res://assets/player_assets/Sans_titre_423_20260222143920.png" id="9_ugbui"]
 [ext_resource type="Script" uid="uid://bxmkgxah4aht4" path="res://script/component/hitbox_component.gd" id="11_je7p5"]
+
+[sub_resource type="Resource" id="Resource_gx1jg"]
+script = ExtResource("2_fm80t")
+damage = 1.0
+force = 1000.0
+direction = Vector2(1, -1)
+metadata/_custom_type_script = "uid://wcd5uqn0imo0"
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_p47bc"]
 animations = [{
@@ -88,6 +96,7 @@ size = Vector2(36, 97)
 
 [node name="Player" type="CharacterBody2D" unique_id=1828741544]
 script = ExtResource("1_8afob")
+bat_data = SubResource("Resource_gx1jg")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=166587267]
 scale = Vector2(0.25, 0.25)
@@ -107,9 +116,8 @@ max_speed = 500
 script = ExtResource("2_dovo2")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=522177963]
-zoom = Vector2(1.2, 1.2)
+zoom = Vector2(1.5, 1.5)
 position_smoothing_enabled = true
-position_smoothing_speed = 10.0
 
 [node name="HitboxComponent" type="Area2D" parent="." unique_id=1138836252 node_paths=PackedStringArray("shape")]
 script = ExtResource("11_je7p5")
@@ -120,3 +128,5 @@ metadata/_custom_type_script = "uid://bxmkgxah4aht4"
 position = Vector2(52, 1)
 shape = SubResource("RectangleShape2D_fm80t")
 debug_color = Color(0.83145946, 0.38334653, 0.23211065, 0.41960785)
+
+[connection signal="area_entered" from="HitboxComponent" to="HitboxComponent" method="_on_area_entered"]
