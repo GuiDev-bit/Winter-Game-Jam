@@ -5,6 +5,8 @@ class_name Player
 @onready var  input_component : Inputcomponent =$InputComponent
 @onready var animated_sprite : AnimatedSprite2D = $AnimatedSprite2D
 @onready var hitbox : HitboxComponent = $HitboxComponent
+@onready var aim_line : Line2D = $AimLine
+@onready var crosshair : Sprite2D = $Crosshair
 
 
 
@@ -25,10 +27,14 @@ var prev_velocity_x := 0.0
 var slide_anim:= ["slide_a", "slide_b","slide_c"]
 var current_slide:= ""
 
+var ball_ref : Ball = null
+
 
 func _ready() -> void:
 	switch_state(active_state)
 	GameManager.player_respawn.connect(_on_respawn)
+	aim_line.visible = false
+	crosshair.visible = false
 
 func _on_respawn(spawn_position: Vector2) -> void:
 	global_position = spawn_position
@@ -39,10 +45,47 @@ func _physics_process(delta) -> void :
 	move_component.direction = input_component.x_input #assigner la directiomn au mouvement comp
 	process_state(delta)
 	update_animation()
+	update_aim()
 
 
 	prev_velocity_x = lerp(prev_velocity_x, velocity.x, 6.7 * delta)
 	move_and_slide()
+
+func update_aim() -> void:
+	if not aim_line or not crosshair:
+		return
+	if ball_ref and ball_ref.player_nearby and Input.is_action_pressed("attack_r"):
+		
+		var mouse_pos = get_global_mouse_position()
+		var aim_dir = (mouse_pos - global_position).normalized()
+		var angle = (mouse_pos - global_position).angle()
+		crosshair.global_position = global_position + aim_dir * 80
+		crosshair.rotation = angle
+		crosshair.visible = true
+		calculate_trajectory(aim_dir)
+		aim_line.visible = true
+	else:
+		aim_line.visible = false
+		crosshair.visible = false
+
+
+func calculate_trajectory(aim_dir: Vector2) -> void:
+	var points : Array = [Vector2.ZERO]
+	var sim_pos : Vector2 = global_position
+	var sim_dir : Vector2 = aim_dir
+	var space_state = get_world_2d().direct_space_state
+	for i in range(5):
+		var query = PhysicsRayQueryParameters2D.create(sim_pos, sim_pos + sim_dir * 500)
+		query.exclude = [self]
+		var result = space_state.intersect_ray(query)
+		if result and result.normal.length() > 0:
+			points.append(to_local(result.position))
+			sim_pos = result.position + result.normal * 2
+			sim_dir = sim_dir.bounce(result.normal)
+		else:
+			points.append(to_local(sim_pos + sim_dir * 500))
+			break
+	aim_line.points = points
 
 
 func active_game():  #check if game is active 

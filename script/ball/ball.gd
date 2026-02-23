@@ -4,6 +4,7 @@ class_name Ball
 @onready var sprite : Sprite2D = $Sprite2D
 @onready var hurtbox : HurtboxComponent = $HurtboxComponent 
 
+
 # Physique
 @export var bounce_force : float = 800.0
 @export var gravity_scale_value : float = 2.5
@@ -12,6 +13,11 @@ class_name Ball
 
 var previous_velocity : Vector2 = Vector2.ZERO
 var base_scale : Vector2 = Vector2(0.25, 0.25)
+var aim_direction : Vector2 = Vector2.ZERO
+var player_nearby : bool = false
+var is_aiming : bool = false
+var aiming_cooldown : float = 0.0
+
 
 
 
@@ -23,6 +29,24 @@ func _physics_process(_delta: float) -> void:
 	apply_squash_stretch()
 	previous_velocity = linear_velocity
 	
+	if is_aiming:
+		aiming_cooldown = 0.5  # reset le timer tant qu'on vise
+	else:
+		aiming_cooldown -= _delta
+	
+	if player_nearby or aiming_cooldown > 0:
+		if Input.is_action_pressed("attack_r"):
+			is_aiming = true
+			var mouse_pos = get_global_mouse_position()
+			aim_direction = (mouse_pos - global_position).normalized()
+		elif is_aiming and Input.is_action_just_released("attack_r"):
+			is_aiming = false
+			if aim_direction != Vector2.ZERO:
+				apply_force_to_ball(aim_direction, bounce_force)
+	else:
+		is_aiming = false
+
+
 
 func apply_force_to_ball(direction: Vector2, force: float) -> void:
 	apply_central_impulse(direction.normalized() * force)
@@ -44,11 +68,15 @@ func _on_body_entered(_body: Node) -> void:
 	var squash = 1.0 + impact_strength * squash_amount
 	sprite.scale = Vector2(base_scale.x * squash, base_scale.y / squash)
 
-#j'ai désactiver quelques effets dsl , mais tu peux facilement les retirer
 
-
+@warning_ignore("unused_parameter")
 func _on_ball_get_hit(data: AttackData) -> void:
-	apply_force_to_ball(data.direction, data.force)
+	pass
+
+
+func set_player_nearby(value: bool) -> void:
+	player_nearby = value
+
 
 func active_game():
 	if GameManager.current_state != GameManager.GameState.PLAYING:
