@@ -2,6 +2,7 @@ extends RigidBody2D
 class_name Ball
 
 @onready var sprite : Sprite2D = $Sprite2D
+@onready var hurtbox : HurtboxComponent = $HurtboxComponent 
 
 # Physique
 @export var bounce_force : float = 800.0
@@ -12,6 +13,8 @@ class_name Ball
 var previous_velocity : Vector2 = Vector2.ZERO
 var base_scale : Vector2 = Vector2(0.25, 0.25)
 
+
+
 func _ready() -> void:
 	gravity_scale = gravity_scale_value
 
@@ -19,8 +22,9 @@ func _physics_process(_delta: float) -> void:
 	if GameManager.current_state != GameManager.GameState.PLAYING:
 		linear_velocity = Vector2.ZERO
 		return
-	apply_squash_stretch()
+	#apply_squash_stretch()
 	previous_velocity = linear_velocity
+	
 
 func apply_force_to_ball(direction: Vector2, force: float) -> void:
 	apply_central_impulse(direction.normalized() * force)
@@ -37,7 +41,13 @@ func apply_squash_stretch() -> void:
 	sprite.scale = sprite.scale.lerp(Vector2(base_scale.x * squash, base_scale.y * stretch), 0.3)
 
 func _on_body_entered(_body: Node) -> void:
-	print("collision avec: ", _body.name)
+	#print("collision avec: ", _body.name)
 	var impact_strength = previous_velocity.length() / bounce_force
-	var squash = 1.0 + impact_strength * squash_amount
-	sprite.scale = Vector2(base_scale.x * squash, base_scale.y / squash)
+	var _squash = 1.0 + impact_strength * squash_amount
+	#sprite.scale = Vector2(base_scale.x * squash, base_scale.y / squash)
+
+#j'ai désactiver quelques effets dsl , mais tu peux facilement les retirer
+
+
+func _on_ball_get_hit(data: AttackData) -> void:
+	apply_force_to_ball(data.direction, data.force)

@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bak06y5dpwy8e" path="res://script/ball/ball.gd" id="1_oqv3d"]
 [ext_resource type="Texture2D" uid="uid://bndkpiov0o75c" path="res://assets/sprites/Sans_titre_424_20260222132543.png" id="2_nv6q1"]
+[ext_resource type="Script" uid="uid://dnqt4p122fui7" path="res://script/component/hurtbox_component.gd" id="3_stoaj"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_nv6q1"]
 bounce = 0.6
@@ -9,10 +10,13 @@ bounce = 0.6
 [sub_resource type="CircleShape2D" id="CircleShape2D_nv6q1"]
 radius = 38.013157
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_stoaj"]
+radius = 35.735138
+
 [node name="Ball" type="RigidBody2D" unique_id=1539097515]
-position = Vector2(879, 568)
 physics_material_override = SubResource("PhysicsMaterial_nv6q1")
 can_sleep = false
+freeze_mode = 1
 contact_monitor = true
 max_contacts_reported = 4
 script = ExtResource("1_oqv3d")
@@ -25,4 +29,14 @@ texture = ExtResource("2_nv6q1")
 position = Vector2(-3, -2)
 shape = SubResource("CircleShape2D_nv6q1")
 
+[node name="HurtboxComponent" type="Area2D" parent="." unique_id=541620898]
+script = ExtResource("3_stoaj")
+metadata/_custom_type_script = "uid://dnqt4p122fui7"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent" unique_id=166404881]
+position = Vector2(-4, -1)
+shape = SubResource("CircleShape2D_stoaj")
+debug_color = Color(0.22950652, 0.6122144, 0.51398337, 0.41960785)
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="get_hit" from="HurtboxComponent" to="." method="_on_ball_get_hit"]
