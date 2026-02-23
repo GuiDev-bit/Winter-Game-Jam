@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://bnh8xyy67xd83" path="res://script/arena/arena.gd" id="1_1qjuf"]
 [ext_resource type="PackedScene" uid="uid://d3nd7funcfhcg" path="res://scenes/terrain/terrain.tscn" id="2_8trdl"]
+[ext_resource type="Script" uid="uid://iic5sq83nkom" path="res://script/enemy/enemyspawner.gd" id="3_5tue2"]
+[ext_resource type="PackedScene" uid="uid://dvpn2w6yufbyy" path="res://scenes/enemy/enemy.tscn" id="4_aj7ud"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5tue2"]
 size = Vector2(213.5, 1117)
@@ -11,6 +13,8 @@ size = Vector2(132, 648)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8trdl"]
 size = Vector2(131, 648)
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_8trdl"]
 
 [node name="Arena" type="Node2D" unique_id=2015291178]
 script = ExtResource("1_1qjuf")
@@ -42,6 +46,14 @@ shape = SubResource("RectangleShape2D_8trdl")
 
 [node name="Terrain" parent="." unique_id=1663087106 instance=ExtResource("2_8trdl")]
 tile_map_data = PackedByteArray("AAALAAYAAAAEAAMAAAALAAUAAAAEAAEAAAALAAQAAAAEAAAAAAAKAAYAAAABAAMAAAAKAAUAAAADAAIAAAAKAAQAAAACAAAAAAAJAAYAAAACAAMAAAAJAAUAAAACAAIAAAAJAAQAAAABAAAAAAAIAAYAAAABAAMAAAAIAAUAAAADAAEAAAAIAAQAAAADAAAAAAAHAAYAAAABAAMAAAAHAAUAAAADAAIAAAAHAAQAAAABAAAAAAAGAAYAAAACAAMAAAAGAAUAAAADAAEAAAAGAAQAAAADAAAAAAAFAAYAAAABAAMAAAAFAAUAAAADAAEAAAAEAAYAAAACAAMAAAAEAAUAAAADAAIAAAAEAAQAAAACAAAAAAADAAYAAAABAAMAAAADAAUAAAACAAEAAAADAAQAAAACAAAAAAACAAYAAAACAAMAAAACAAUAAAACAAEAAAACAAQAAAABAAAAAAABAAYAAAADAAMAAAABAAUAAAACAAEAAAABAAQAAAABAAAAAAAAAAYAAAAAAAMAAAAAAAUAAAAAAAEAAAAAAAQAAAAAAAAAAAAFAAQAAAADAAAAAAA=")
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=908620959]
+navigation_polygon = SubResource("NavigationPolygon_8trdl")
+
+[node name="EnemySpawner" type="Node2D" parent="." unique_id=596005062]
+position = Vector2(1469, 534)
+script = ExtResource("3_5tue2")
+enemy_scene = ExtResource("4_aj7ud")
 
 [connection signal="body_entered" from="GoalLeft" to="." method="_on_goal_left_body_entered"]
 [connection signal="body_entered" from="GoalRight" to="." method="_on_goal_right_body_entered"]

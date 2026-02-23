@@ -22,6 +22,7 @@ func _ready() -> void:
 	hurtbox.get_hit.connect(_on_get_hit)
 	player_ref = get_tree().get_first_node_in_group("player")
 	switch_state(STATE.CHASE)
+	add_to_group("enemies")
 
 func _physics_process(delta: float) -> void:
 	process_state(delta)
