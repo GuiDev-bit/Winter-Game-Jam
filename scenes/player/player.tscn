@@ -16,8 +16,20 @@
 [sub_resource type="Resource" id="Resource_gx1jg"]
 script = ExtResource("2_fm80t")
 damage = 1.0
-force = 1000.0
+force = 2000.0
 direction = Vector2(1, -1)
+metadata/_custom_type_script = "uid://wcd5uqn0imo0"
+
+[sub_resource type="Resource" id="Resource_fm80t"]
+script = ExtResource("2_fm80t")
+damage = 20.0
+force = 100.0
+metadata/_custom_type_script = "uid://wcd5uqn0imo0"
+
+[sub_resource type="Resource" id="Resource_ugbui"]
+script = ExtResource("2_fm80t")
+damage = 15.0
+force = 100.0
 metadata/_custom_type_script = "uid://wcd5uqn0imo0"
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_p47bc"]
@@ -92,11 +104,14 @@ radius = 22.0
 height = 115.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fm80t"]
-size = Vector2(103, 125.5)
+size = Vector2(51, 86)
 
 [node name="Player" type="CharacterBody2D" unique_id=1828741544]
+collision_mask = 8
 script = ExtResource("1_8afob")
 bat_data = SubResource("Resource_gx1jg")
+gloves_data = SubResource("Resource_fm80t")
+snow_canon_data = SubResource("Resource_ugbui")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=166587267]
 scale = Vector2(0.25, 0.25)
@@ -116,7 +131,7 @@ max_speed = 500
 script = ExtResource("2_dovo2")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=522177963]
-zoom = Vector2(1.5, 1.5)
+zoom = Vector2(1.2, 1.2)
 position_smoothing_enabled = true
 
 [node name="HitboxComponent" type="Area2D" parent="." unique_id=1138836252 node_paths=PackedStringArray("shape")]
@@ -125,7 +140,7 @@ shape = NodePath("CollisionShape2D")
 metadata/_custom_type_script = "uid://bxmkgxah4aht4"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent" unique_id=2092141964]
-position = Vector2(85.5, -13.25)
+position = Vector2(59.5, -2)
 shape = SubResource("RectangleShape2D_fm80t")
 debug_color = Color(0.83145946, 0.38334653, 0.23211065, 0.41960785)
 

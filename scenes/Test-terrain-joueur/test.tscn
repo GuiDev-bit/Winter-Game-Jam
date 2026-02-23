@@ -1,22 +1,32 @@
 [gd_scene format=3 uid="uid://cilhcw4ye5gpp"]
 
 [ext_resource type="PackedScene" uid="uid://c3vj3s7xoi087" path="res://scenes/player/player.tscn" id="1_5q8km"]
+[ext_resource type="PackedScene" uid="uid://dhxrob07wfllc" path="res://scenes/arena/arena.tscn" id="2_w5rlo"]
+[ext_resource type="PackedScene" uid="uid://bw1vhtrhep4ky" path="res://scenes/ball/ball.tscn" id="3_jexli"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_w5rlo"]
-size = Vector2(869, 69)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jexli"]
+size = Vector2(218, 1783)
 
 [node name="test" type="Node2D" unique_id=844162785]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=315276996]
-position = Vector2(138, 544)
-
-[node name="ColorRect" type="ColorRect" parent="StaticBody2D" unique_id=912294408]
-offset_right = 866.0
-offset_bottom = 66.0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=2132927011]
-position = Vector2(434, 36)
-shape = SubResource("RectangleShape2D_w5rlo")
-
 [node name="Player" parent="." unique_id=1828741544 instance=ExtResource("1_5q8km")]
-position = Vector2(507, 40)
+position = Vector2(846, 332)
+
+[node name="Arena" parent="." unique_id=2015291178 instance=ExtResource("2_w5rlo")]
+scale = Vector2(1.9, 1.9)
+
+[node name="Ball" parent="." unique_id=1539097515 instance=ExtResource("3_jexli")]
+position = Vector2(1052, 81)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1752516894]
+collision_layer = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1246334344]
+position = Vector2(194, 580)
+shape = SubResource("RectangleShape2D_jexli")
+debug_color = Color(0.87184566, 0.2679288, 0.5730417, 0.41960785)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=875393635]
+position = Vector2(3369, 643)
+shape = SubResource("RectangleShape2D_jexli")
+debug_color = Color(0.87184566, 0.2679288, 0.5730417, 0.41960785)
