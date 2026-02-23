@@ -31,6 +31,7 @@ var ball_ref : Ball = null
 
 
 func _ready() -> void:
+	add_to_group("player")
 	switch_state(active_state)
 	GameManager.player_respawn.connect(_on_respawn)
 	aim_line.visible = false
@@ -55,7 +56,6 @@ func update_aim() -> void:
 	if not aim_line or not crosshair:
 		return
 	if ball_ref and ball_ref.player_nearby and Input.is_action_pressed("attack_r"):
-		
 		var mouse_pos = get_global_mouse_position()
 		var aim_dir = (mouse_pos - global_position).normalized()
 		var angle = (mouse_pos - global_position).angle()
