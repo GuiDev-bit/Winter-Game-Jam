@@ -8,10 +8,10 @@
 bounce = 0.6
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nv6q1"]
-radius = 38.013157
+radius = 30.016663
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_stoaj"]
-radius = 35.735138
+radius = 30.016663
 
 [node name="Ball" type="RigidBody2D" unique_id=1539097515]
 physics_material_override = SubResource("PhysicsMaterial_nv6q1")
@@ -22,11 +22,12 @@ max_contacts_reported = 4
 script = ExtResource("1_oqv3d")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=185056861]
-scale = Vector2(0.25, 0.25)
+position = Vector2(2.9999998, 0.99999994)
+scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_nv6q1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=180994026]
-position = Vector2(-3, -2)
+position = Vector2(-1, -1)
 shape = SubResource("CircleShape2D_nv6q1")
 
 [node name="HurtboxComponent" type="Area2D" parent="." unique_id=541620898]
@@ -34,7 +35,7 @@ script = ExtResource("3_stoaj")
 metadata/_custom_type_script = "uid://dnqt4p122fui7"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent" unique_id=166404881]
-position = Vector2(-4, -1)
+position = Vector2(-1, -1)
 shape = SubResource("CircleShape2D_stoaj")
 debug_color = Color(0.22950652, 0.6122144, 0.51398337, 0.41960785)
 
