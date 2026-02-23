@@ -5,6 +5,14 @@
 [ext_resource type="PackedScene" uid="uid://bw1vhtrhep4ky" path="res://scenes/ball/ball.tscn" id="2_6q06x"]
 [ext_resource type="PackedScene" uid="uid://c3vj3s7xoi087" path="res://scenes/player/player.tscn" id="3_ow5a4"]
 [ext_resource type="PackedScene" uid="uid://dhxrob07wfllc" path="res://scenes/arena/arena.tscn" id="4_hujxm"]
+[ext_resource type="Script" uid="uid://wcd5uqn0imo0" path="res://script/Ressources/attackressources/attack_data.gd" id="6_ow5a4"]
+
+[sub_resource type="Resource" id="Resource_hujxm"]
+script = ExtResource("6_ow5a4")
+damage = 1.0
+force = 1000.0
+direction = Vector2(0.9, 0.1)
+metadata/_custom_type_script = "uid://wcd5uqn0imo0"
 
 [node name="Main" type="Node2D" unique_id=1443848199]
 process_mode = 3
@@ -15,8 +23,11 @@ script = ExtResource("1_6q06x")
 [node name="Hud" parent="." unique_id=2070433748 instance=ExtResource("1_l3cfh")]
 
 [node name="Ball" parent="." unique_id=1473360421 instance=ExtResource("2_6q06x")]
+position = Vector2(870, -637)
 collision_layer = 2
-collision_mask = 0
+collision_mask = 8
 
 [node name="Player" parent="." unique_id=1175312892 instance=ExtResource("3_ow5a4")]
+position = Vector2(1033, 337)
 collision_mask = 12
+bat_data = SubResource("Resource_hujxm")
