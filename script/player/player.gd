@@ -11,11 +11,16 @@ class_name Player
 
 
 #the weapons
-enum Weapon { BAT, GlOVES, CANON}
-@export var current_weapon : Weapon =  Weapon.BAT
+enum Weapon {GlOVES, CANON}
+@export var use_secondweap := false
+@export var secondary_weapon : Weapon 
+var when_check := false #dsl c giga brouillon
+
 var attack_timer := 0.3
 var attack_time := 0.3
 @export var bat_data : AttackData
+@export var gloves_data : AttackData
+@export var snow_canon_data : AttackData
 
 #states
 enum STATE { FALL, FLOOR,JUMP, HURT, HIT }
@@ -26,6 +31,9 @@ var prev_velocity_x := 0.0
 #about animations
 var slide_anim:= ["slide_a", "slide_b","slide_c"]
 var current_slide:= ""
+
+var dir := Vector2(1,0)
+
 
 var ball_ref : Ball = null
 
@@ -46,7 +54,7 @@ func _physics_process(delta) -> void :
 	move_component.direction = input_component.x_input #assigner la directiomn au mouvement comp
 	process_state(delta)
 	update_animation()
-	update_aim()
+	#update_aim()
 
 
 	prev_velocity_x = lerp(prev_velocity_x, velocity.x, 6.7 * delta)
@@ -109,10 +117,20 @@ func switch_state(to_state : STATE) :
 		STATE.FLOOR :
 			pick_random_slide()
 		STATE.HIT :
-			bat_data.direction = get_direction_to_mouse()
-			hitbox.attack_data = bat_data
-			hitbox.lunch_attack()
-
+			if use_secondweap == false:
+				when_check = true
+				return
+			match secondary_weapon : 
+				Weapon.GlOVES :
+					gloves_data.direction = dir
+					hitbox.attack_data = gloves_data
+					hitbox.lunch_attack()
+					print(12)
+					when_check = false
+				Weapon.CANON : 
+					pass
+			
+	
 
 func process_state(delta: float) ->void : #handle state-logique
 	match active_state :
@@ -121,6 +139,8 @@ func process_state(delta: float) ->void : #handle state-logique
 			move_component.air_slide(delta)
 			if is_on_floor() :
 				switch_state(STATE.FLOOR)
+			else :
+				attack_state_transition()
 
 		STATE.FLOOR:
 			if not is_on_floor() :
@@ -128,29 +148,39 @@ func process_state(delta: float) ->void : #handle state-logique
 			move_component.slide(delta)
 			if input_component.jump_press :
 				switch_state(STATE.JUMP)
-			elif Input.is_action_just_pressed("attack_r") :
-				switch_state(STATE.HIT)
+			else :
+				attack_state_transition()
 
 		STATE.JUMP :
 			move_component.apply_gravity(delta)
 			move_component.slide(delta)
 			if velocity.y >=   0 : 
 				switch_state(STATE.FALL)
+			else :
+				attack_state_transition()
 
 		STATE.HIT :
-			if attack_timer > 0 :
-				attack_timer -= delta * 1
-			else : 
-				hitbox.end_attack()
+			if Input.is_action_just_released("attack_l") :
+				bat_data.direction = get_direction_to_mouse()
+				hitbox.attack_data = bat_data
+				hitbox.lunch_attack()
 				attack_timer = attack_time
-				switch_state(STATE.FLOOR)
+				when_check = false
+			check_attack_timer(delta)
+			if not is_on_floor() :
+				if velocity.y >=   0 :
+					move_component.apply_gravity(delta, 1.3)
+					move_component.air_slide(delta)
+				else : 
+						move_component.apply_gravity(delta)
+
+
 
 #Update the  animations 
 
 func update_animation() -> void:
 	#print("direction: ", move_component.direction)
 	#print("state: ", active_state)
-
 	match active_state:
 		STATE.FLOOR:
 			if velocity.x != 0: #i use velocity to know when he is  moving
@@ -170,10 +200,12 @@ func update_animation() -> void:
 		STATE.HURT:
 			animated_sprite.play("idle")
 	if move_component.direction > 0:
+		dir = Vector2(1,0)
 		animated_sprite.flip_h = false
 		hitbox.shape.position.x = 52
 	elif move_component.direction < 0:
 		animated_sprite.flip_h = true
+		dir = Vector2(-1,0)
 		hitbox.shape.position.x = -52
 
 #choisi une animation différente pour le slide
@@ -186,3 +218,20 @@ func get_direction_to_mouse() -> Vector2:
 	var mouse_pos = get_global_mouse_position() # position de la souris dans le monde
 	var direction = (mouse_pos - global_position).normalized()
 	return direction
+
+func check_attack_timer(delta) :
+	if when_check == false :
+			if attack_timer > 0 :
+				attack_timer -= delta * 1
+			else : 
+				hitbox.end_attack()
+				attack_timer = attack_time
+				switch_state(STATE.FLOOR)
+
+func attack_state_transition():
+			if Input.is_action_just_pressed("attack_l") :
+				switch_state(STATE.HIT)
+				use_secondweap = false
+			elif  Input.is_action_just_pressed("attack_r") :
+				use_secondweap = true
+				switch_state(STATE.HIT)

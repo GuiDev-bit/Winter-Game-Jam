@@ -20,6 +20,7 @@ func end_attack():
 func _on_area_entered(area: Area2D) -> void:
 	if attack_data and area is HurtboxComponent:
 		area.damage(attack_data)
+		end_attack()
 	if area is HurtboxComponent and area.get_parent() is Ball:
 		area.get_parent().set_player_nearby(true)
 		get_parent().ball_ref = area.get_parent()
