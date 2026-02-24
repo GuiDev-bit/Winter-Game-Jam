@@ -7,12 +7,15 @@
 [ext_resource type="Script" uid="uid://da52mkxllo62" path="res://script/component/movement_component.gd" id="2_gmlin"]
 [ext_resource type="Texture2D" uid="uid://byancfgpk66f4" path="res://assets/player_assets/Sans titre 423_20260221210525.png" id="2_lvxji"]
 [ext_resource type="Texture2D" uid="uid://ea8t1g2wo4gx" path="res://assets/player_assets/Sans titre 423_20260221223302.png" id="3_je7p5"]
+[ext_resource type="Texture2D" uid="uid://bpfc8t0odla3" path="res://assets/player_assets/Sans_titre_423_20260224152649.png" id="3_lgqa7"]
 [ext_resource type="Texture2D" uid="uid://20rni5d35jtf" path="res://assets/player_assets/Sans titre 423_20260221220307.png" id="3_p47bc"]
 [ext_resource type="Texture2D" uid="uid://b1uo28ptmaq2s" path="res://assets/player_assets/player_jump.png" id="4_qek5x"]
 [ext_resource type="Texture2D" uid="uid://dqfrhman4edha" path="res://assets/player_assets/Sans_titre_423_20260223194929.png" id="5_fcs02"]
+[ext_resource type="Texture2D" uid="uid://dfuxm4ob5b0ja" path="res://assets/player_assets/Sans_titre_423_20260224153539.png" id="5_uf5tr"]
 [ext_resource type="Texture2D" uid="uid://gypkioppnu0l" path="res://assets/player_assets/Sans_titre_423_20260222143159.png" id="6_fm80t"]
 [ext_resource type="Texture2D" uid="uid://2hbirnxlospi" path="res://assets/player_assets/Sans_titre_423_20260224112742.png" id="6_kvlxm"]
 [ext_resource type="Texture2D" uid="uid://bklxv2vtq53st" path="res://assets/player_assets/Sans_titre_423_20260223193744.png" id="6_myrg7"]
+[ext_resource type="Texture2D" uid="uid://2hbirnxlospi" path="res://assets/player_assets/Sans_titre_423_20260224112742.png" id="8_lgqa7"]
 [ext_resource type="Texture2D" uid="uid://bcpxp1jwdrv7t" path="res://assets/player_assets/Sans_titre_423_20260222143920.png" id="9_ugbui"]
 [ext_resource type="Script" uid="uid://bxmkgxah4aht4" path="res://script/component/hitbox_component.gd" id="11_je7p5"]
 [ext_resource type="Texture2D" uid="uid://q0h8ew76sego" path="res://assets/hud/cross.png" id="13_gx1jg"]
@@ -41,6 +44,14 @@ metadata/_custom_type_script = "uid://wcd5uqn0imo0"
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("3_lgqa7")
+}],
+"loop": true,
+"name": &"canon",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("2_0owmy")
 }],
 "loop": true,
@@ -57,7 +68,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("5_fcs02")
+"texture": ExtResource("5_uf5tr")
 }],
 "loop": true,
 "name": &"hit_bat",
@@ -77,6 +88,14 @@ animations = [{
 }],
 "loop": true,
 "name": &"hit_charge_bat",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_lgqa7")
+}],
+"loop": true,
+"name": &"hit_glove_a",
 "speed": 5.0
 }, {
 "frames": [{
@@ -143,6 +162,7 @@ height = 84.0
 collision_mask = 8
 floor_max_angle = 1.1013027
 script = ExtResource("1_8afob")
+secondary_weapon = 1
 bat_data = SubResource("Resource_gx1jg")
 gloves_data = SubResource("Resource_fm80t")
 snow_canon_data = SubResource("Resource_ugbui")

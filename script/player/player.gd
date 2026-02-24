@@ -16,6 +16,10 @@ enum Weapon {GlOVES, CANON}
 var is_bat_charging := false #dsl d'avoir nommé ca de facon random, en gros c pour savoir si le joueur charge l'attaque ou pass
 var charge_attack_bat := 1.0
 
+@onready var snow_ball_scene := preload("res://scenes/Hitbox and Hurtbox/snowball.tscn")
+
+var atk_cooldown := 5.0
+var atk_cooldown_timer := 0.0
 
 var attack_timer := 0.3
 var attack_time := 0.3
@@ -51,6 +55,7 @@ func _on_respawn(spawn_position: Vector2) -> void:
 	switch_state(STATE.FALL)
 
 func _physics_process(delta) -> void :
+	active_atk_cooldown(delta)
 	move_component.direction = input_component.x_input #assigner la directiomn au mouvement comp
 	process_state(delta)
 	update_animation()
@@ -185,7 +190,13 @@ func update_animation() -> void:
 			if is_bat_charging :
 				animated_sprite.play("hit_charge_bat")
 			else:
-				animated_sprite.play("hit_bat")
+				if use_secondweap :
+					play_correct_atk_anim()
+				elif is_on_floor() :
+					animated_sprite.play("hit_bat")
+
+				else :
+					animated_sprite.play("hit_bat_air")
 	check_direction()
 
 #choisi une animation différente pour le slide
@@ -211,14 +222,20 @@ func check_attack_timer(delta) : #gère la durée de l'attaque
 				hitbox.end_attack()
 				attack_timer = attack_time
 				switch_state(STATE.FLOOR)
+				atk_cooldown_timer = atk_cooldown
 
 func attack_state_transition(): #les conditions généralent pur switch vers attaque
+		if ! atk_cooldown_timer < 0 :
 			if Input.is_action_just_pressed("attack_l") :
 				switch_state(STATE.HIT)
 				use_secondweap = false
+				return
 			elif  Input.is_action_just_pressed("attack_r") :
 				use_secondweap = true
 				switch_state(STATE.HIT)
+				return
+		else : 
+			return 
 
 func check_direction():
 	if move_component.direction > 0:
@@ -248,9 +265,15 @@ func _attack_with_gloves():
 	hitbox.attack_data = gloves_data
 	hitbox.lunch_attack()
 	is_bat_charging = false
+	atk_cooldown_timer = atk_cooldown
 
 func _attack_with_canon():
-	# TODO: instancier
+	var snow : Snow = snow_ball_scene.instantiate()
+	print(snow.get_class())
+	snow.global_position = global_position
+	get_tree().current_scene.add_child(snow)
+	snow.hitbox.team = hitbox.team
+	snow.lunch_ball(get_direction_to_mouse())
 	is_bat_charging = false
 
 func _attack_with_bat():
@@ -261,6 +284,7 @@ func _attack_with_bat():
 		#print(hitbox.attack_data.damage )
 		attack_timer = attack_time
 		is_bat_charging = false
+
 		charge_attack_bat = 0.6
 
 func bat_power_scale(delta :float) :
@@ -274,6 +298,12 @@ func update_crossair():
 	#var mouse_pos = get_global_mouse_position() # position de la souris dans le monde
 	#var direction = (mouse_pos - global_position).normalized()
 	crossair.rotation =get_direction_to_mouse().angle()
+
+func active_atk_cooldown(delta : float):
+	if atk_cooldown_timer > 0:
+		atk_cooldown_timer -= delta
+	else :
+		atk_cooldown_timer = 0
 
 
 func handle_air_physics(delta :float): #gère les déplacement lors d'une attaque
@@ -292,4 +322,13 @@ func handle_air_physics(delta :float): #gère les déplacement lors d'une attaqu
 
 
 func _on_hurtbox_component_get_hit(data: AttackData) -> void:
-	pass # Replace with function body.
+	move_component.apply_knockback(data.direction, data.force)
+	switch_state(STATE.HURT)
+
+
+func play_correct_atk_anim():
+	match secondary_weapon :
+		Weapon.GlOVES :
+			animated_sprite.play("hit_glove_a")
+		Weapon.CANON :
+			animated_sprite.play("canon")

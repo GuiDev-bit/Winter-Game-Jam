@@ -11,7 +11,7 @@ class_name Ball
 @export var squash_amount : float = 0.4
 @export var stretch_amount : float = 0.3
 
-@export var air_drag := 800
+@export var air_drag := 700
 @export var max_strength := 2000.0   # puissance max horizontal
 @export var min_strength := 1200.0    # puissance min vertical
 
@@ -52,6 +52,7 @@ func apply_force_to_ball(direction: Vector2, force: float) -> void:
 	var adjusted_force = lerp(force, force * 0.6, vertical_factor)
 	
 	stop_ball_movement()
+	physics_material_override.bounce = 1.0
 	apply_impulse(dir * adjusted_force)
 	
 	
@@ -116,6 +117,7 @@ func gravity_update():
 func apply_horizontal_drag(_delta: float) -> void:
 	var vx = linear_velocity.x
 	if abs(vx) < 5.0:
+		physics_material_override.bounce =  0.45
 		return  # vitesse trop faible, pas besoin de friction
 	var drag = -sign(vx) * air_drag # 600 = force de friction, ajuste selon le feeling
 	apply_central_force(Vector2(drag, 0.0))
