@@ -141,7 +141,7 @@ snow_canon_data = SubResource("Resource_ugbui")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=166587267]
 scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_p47bc")
-animation = &"hit_charge_bat"
+animation = &"hit_bat"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=34379545]
 position = Vector2(5, -3.5)
@@ -160,6 +160,7 @@ zoom = Vector2(1.2, 1.2)
 position_smoothing_enabled = true
 
 [node name="HitboxComponent" type="Area2D" parent="." unique_id=1138836252 node_paths=PackedStringArray("shape")]
+collision_layer = 2
 script = ExtResource("11_je7p5")
 shape = NodePath("CollisionShape2D")
 metadata/_custom_type_script = "uid://bxmkgxah4aht4"
@@ -168,9 +169,6 @@ metadata/_custom_type_script = "uid://bxmkgxah4aht4"
 position = Vector2(49, -2)
 shape = SubResource("RectangleShape2D_fm80t")
 debug_color = Color(0.83145946, 0.38334653, 0.23211065, 0.41960785)
-
-[node name="AimLine" type="Line2D" parent="." unique_id=1647355917]
-default_color = Color(1, 1, 0, 1)
 
 [node name="Crossair" type="Node2D" parent="." unique_id=1308042394]
 z_index = 100

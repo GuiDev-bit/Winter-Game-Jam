@@ -1,11 +1,14 @@
 extends Node
 
+@onready var music_player : AudioStreamPlayer = $MusicPlayer
+@onready var sfx_player : AudioStreamPlayer = $SFXPlayer
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+func play_sfx(stream: AudioStream) -> void:
+	sfx_player.stream = stream
+	sfx_player.play()
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	pass
+func play_music(stream: AudioStream) -> void:
+	if music_player.stream == stream:
+		return
+	music_player.stream = stream
+	music_player.play()

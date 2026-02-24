@@ -1,6 +1,7 @@
 extends Node2D
 
 func _ready() -> void:
+	GameManager.game_ended.connect(_on_game_ended)
 	GameManager.start_game()
 	
 func _process(_delta: float) -> void:
@@ -11,3 +12,10 @@ func _process(_delta: float) -> void:
 		elif GameManager.current_state == GameManager.GameState.PAUSED:
 			get_tree().paused = false
 			GameManager.current_state = GameManager.GameState.PLAYING
+
+func _on_game_ended() -> void:
+	# Détermine gagnant
+	if GameManager.score_left > GameManager.score_right:
+		get_tree().change_scene_to_file("res://scenes/ui/win_menu.tscn")
+	else:
+		get_tree().change_scene_to_file("res://scenes/ui/lose_menu.tscn")

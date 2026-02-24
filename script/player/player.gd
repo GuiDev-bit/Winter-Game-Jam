@@ -5,7 +5,6 @@ class_name Player
 @onready var  input_component : Inputcomponent =$InputComponent
 @onready var animated_sprite : AnimatedSprite2D = $AnimatedSprite2D
 @onready var hitbox : HitboxComponent = $HitboxComponent
-@onready var aim_line : Line2D = $AimLine
 @onready var crosshair : Sprite2D 
 @onready var crossair : Node2D = $Crossair
 
@@ -44,7 +43,6 @@ func _ready() -> void:
 	add_to_group("player")
 	switch_state(active_state)
 	GameManager.player_respawn.connect(_on_respawn)
-	aim_line.visible = false
 	#crosshair.visible = false
 
 func _on_respawn(spawn_position: Vector2) -> void:
@@ -65,7 +63,7 @@ func _physics_process(delta) -> void :
 	move_and_slide()
 
 func update_aim() -> void:
-	if not aim_line or not crosshair:
+	if not  crosshair:
 		return
 	if ball_ref and ball_ref.player_nearby and Input.is_action_pressed("attack_r"):
 		var mouse_pos = get_global_mouse_position()
@@ -75,10 +73,6 @@ func update_aim() -> void:
 		crosshair.rotation = angle
 		crosshair.visible = true
 		calculate_trajectory(aim_dir)
-		aim_line.visible = true
-	else:
-		aim_line.visible = false
-#		crosshair.visible = false
 
 
 func calculate_trajectory(aim_dir: Vector2) -> void:
@@ -97,7 +91,6 @@ func calculate_trajectory(aim_dir: Vector2) -> void:
 		else:
 			points.append(to_local(sim_pos + sim_dir * 500))
 			break
-	aim_line.points = points
 
 
 func active_game():  #check if game is active 
