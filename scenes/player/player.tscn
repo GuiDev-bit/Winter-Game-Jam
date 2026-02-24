@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://gypkioppnu0l" path="res://assets/player_assets/Sans_titre_423_20260222143159.png" id="6_fm80t"]
 [ext_resource type="Texture2D" uid="uid://bcpxp1jwdrv7t" path="res://assets/player_assets/Sans_titre_423_20260222143920.png" id="9_ugbui"]
 [ext_resource type="Script" uid="uid://bxmkgxah4aht4" path="res://script/component/hitbox_component.gd" id="11_je7p5"]
+[ext_resource type="Texture2D" uid="uid://q0h8ew76sego" path="res://assets/hud/cross.png" id="13_gx1jg"]
 
 [sub_resource type="Resource" id="Resource_gx1jg"]
 script = ExtResource("2_fm80t")
@@ -147,7 +148,12 @@ debug_color = Color(0.83145946, 0.38334653, 0.23211065, 0.41960785)
 [node name="AimLine" type="Line2D" parent="." unique_id=1647355917]
 default_color = Color(1, 1, 0, 1)
 
-[node name="Crosshair" type="Sprite2D" parent="." unique_id=883643604]
+[node name="Crossair" type="Node2D" parent="." unique_id=1308042394]
+
+[node name="icone" type="Sprite2D" parent="Crossair" unique_id=883643604]
+position = Vector2(250, 0)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("13_gx1jg")
 
 [connection signal="area_entered" from="HitboxComponent" to="HitboxComponent" method="_on_area_entered"]
 [connection signal="area_exited" from="HitboxComponent" to="HitboxComponent" method="_on_area_exited"]

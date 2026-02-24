@@ -15,6 +15,8 @@ enum Weapon {GlOVES, CANON}
 @export var use_secondweap := false
 @export var secondary_weapon : Weapon 
 var is_bat_charging := false #dsl d'avoir nommé ca de facon random, en gros c pour savoir si le joueur charge l'attaque ou pass
+var charge_attack_bat := 1.0
+
 
 var attack_timer := 0.3
 var attack_time := 0.3
@@ -150,6 +152,7 @@ func process_state(delta: float) ->void : #handle state-logique
 		STATE.HIT :
 			if input_component.charged_bat :
 				_attack_with_bat()
+			bat_power_scale(delta)
 			check_attack_timer(delta)
 			handle_air_physics(delta)
 
@@ -245,20 +248,31 @@ func _attack_with_canon():
 func _attack_with_bat():
 		bat_data.direction = get_direction_to_mouse()
 		hitbox.attack_data = bat_data
+		hitbox.attack_data.force = 2500* charge_attack_bat
 		hitbox.lunch_attack()
+		#print(hitbox.attack_data.damage )
 		attack_timer = attack_time
 		is_bat_charging = false
+		charge_attack_bat = 0.6
+
+func bat_power_scale(delta :float) :
+	if is_bat_charging :
+		charge_attack_bat = clamp(charge_attack_bat,0.6 , 1.0)
+		charge_attack_bat = move_toward(charge_attack_bat, 1.0, delta / 1.5 )
+
+
+
 
 func handle_air_physics(delta :float): #gère les déplacement lors d'une attaque
 	if  is_on_floor() :
 		if is_bat_charging : 
-			move_component.deccelerate()
+			move_component.deccelerate(delta)
 		else : 
 			move_component.dash()
-		return
-	if velocity.y >=   0 :
+	else :
+		if velocity.y >=   0 :
 			move_component.apply_gravity(delta, 1.3)
 			move_component.air_slide(delta)
-	else : 
+		else : 
 			move_component.apply_gravity(delta)
 			move_component.air_slide(delta)

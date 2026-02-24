@@ -46,11 +46,11 @@ func apply_gravity(delta: float , gravity_multiplier := 1.0):
 	body.velocity.y = move_toward(body.velocity.y, gravity *gravity_multiplier, max_gravity * delta * gravity_multiplier)
 
 
-func deccelerate():
-	body.velocity.x = move_toward(body.velocity.y, 0 , decceleration )
+func deccelerate(delta : float ):
+	body.velocity.x = move_toward(body.velocity.x, 0 , decceleration * delta )
 
 func dash():
-	body.velocity.x = 500 * last_direction
+	body.velocity.x = 400 * last_direction
 
 func apply_knockback():
 	pass

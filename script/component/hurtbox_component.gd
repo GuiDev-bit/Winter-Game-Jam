@@ -12,6 +12,7 @@ signal get_hit(data)
 func damage(data : AttackData) :
 	if health_comp :
 		health_comp.deplete_health(data.damage)
+	#print(data.force)
 	emit_signal("get_hit", data)
 
 func _on_area_exited(area: Area2D) -> void:
