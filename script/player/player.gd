@@ -6,8 +6,8 @@ class_name Player
 @onready var animated_sprite : AnimatedSprite2D = $AnimatedSprite2D
 @onready var hitbox : HitboxComponent = $HitboxComponent
 @onready var aim_line : Line2D = $AimLine
-@onready var crosshair : Sprite2D = $Crosshair
-
+@onready var crosshair : Sprite2D 
+@onready var crossair : Node2D = $Crossair
 
 
 #the weapons
@@ -45,7 +45,7 @@ func _ready() -> void:
 	switch_state(active_state)
 	GameManager.player_respawn.connect(_on_respawn)
 	aim_line.visible = false
-	crosshair.visible = false
+	#crosshair.visible = false
 
 func _on_respawn(spawn_position: Vector2) -> void:
 	global_position = spawn_position
@@ -56,7 +56,9 @@ func _physics_process(delta) -> void :
 	move_component.direction = input_component.x_input #assigner la directiomn au mouvement comp
 	process_state(delta)
 	update_animation()
-	#update_aim()
+	update_crossair()
+	update_aim()
+
 
 
 	prev_velocity_x = lerp(prev_velocity_x, velocity.x, 6.7 * delta)
@@ -76,7 +78,7 @@ func update_aim() -> void:
 		aim_line.visible = true
 	else:
 		aim_line.visible = false
-		crosshair.visible = false
+#		crosshair.visible = false
 
 
 func calculate_trajectory(aim_dir: Vector2) -> void:
@@ -156,6 +158,10 @@ func process_state(delta: float) ->void : #handle state-logique
 			check_attack_timer(delta)
 			handle_air_physics(delta)
 
+		STATE.HURT :
+			move_component.actif_knockback(delta)
+			if move_component.knock_timer <= 0:
+				switch_state(STATE.FALL)
 
 
 
@@ -182,6 +188,11 @@ func update_animation() -> void:
 			animated_sprite.play("fall")
 		STATE.HURT:
 			animated_sprite.play("idle")
+		STATE.HIT :
+			if is_bat_charging :
+				animated_sprite.play("hit_charge_bat")
+			else:
+				animated_sprite.play("hit_bat")
 	check_direction()
 
 #choisi une animation différente pour le slide
@@ -193,6 +204,10 @@ func pick_random_slide():
 func get_direction_to_mouse() -> Vector2:
 	var mouse_pos = get_global_mouse_position() # position de la souris dans le monde
 	var direction = (mouse_pos - global_position).normalized()
+	if dir.x > 0 :
+		direction.x = abs(direction.x)
+	elif dir.x < 0 :
+		direction.x = -1 * abs(direction.x)
 	return direction
 
 func check_attack_timer(delta) : #gère la durée de l'attaque
@@ -216,11 +231,11 @@ func check_direction():
 	if move_component.direction > 0:
 		dir = Vector2(1,0)
 		animated_sprite.flip_h = false
-		hitbox.shape.position.x = 52
+		hitbox.shape.position.x = 44.5
 	elif move_component.direction < 0:
 		animated_sprite.flip_h = true
 		dir = Vector2(-1,0)
-		hitbox.shape.position.x = -52
+		hitbox.shape.position.x = -44.5
 
 func _on_enter_hit_state():
 	is_bat_charging = true
@@ -242,13 +257,13 @@ func _attack_with_gloves():
 	is_bat_charging = false
 
 func _attack_with_canon():
-	# TODO: projectile
+	# TODO: instancier
 	is_bat_charging = false
 
 func _attack_with_bat():
 		bat_data.direction = get_direction_to_mouse()
 		hitbox.attack_data = bat_data
-		hitbox.attack_data.force = 2500* charge_attack_bat
+		hitbox.attack_data.force = 2100* charge_attack_bat
 		hitbox.lunch_attack()
 		#print(hitbox.attack_data.damage )
 		attack_timer = attack_time
@@ -261,6 +276,11 @@ func bat_power_scale(delta :float) :
 		charge_attack_bat = move_toward(charge_attack_bat, 1.0, delta / 1.5 )
 
 
+
+func update_crossair():
+	#var mouse_pos = get_global_mouse_position() # position de la souris dans le monde
+	#var direction = (mouse_pos - global_position).normalized()
+	crossair.rotation =get_direction_to_mouse().angle()
 
 
 func handle_air_physics(delta :float): #gère les déplacement lors d'une attaque
@@ -276,3 +296,7 @@ func handle_air_physics(delta :float): #gère les déplacement lors d'une attaqu
 		else : 
 			move_component.apply_gravity(delta)
 			move_component.air_slide(delta)
+
+
+func _on_hurtbox_component_get_hit(data: AttackData) -> void:
+	pass # Replace with function body.
