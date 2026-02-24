@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bmao7wmbenncf"
+path="res://.godot/imported/MENU SWAF (1).ogg-ba5bbe1d510b1b939aefc928d126f760.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/audio/music/music menu/MENU SWAF (1).ogg"
+dest_files=["res://.godot/imported/MENU SWAF (1).ogg-ba5bbe1d510b1b939aefc928d126f760.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

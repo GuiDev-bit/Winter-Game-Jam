@@ -4,24 +4,72 @@
 [ext_resource type="Script" uid="uid://c0m2p6i0nqp1j" path="res://script/enemy/enemy.gd" id="1_5uy6h"]
 [ext_resource type="Script" uid="uid://bxmkgxah4aht4" path="res://script/component/hitbox_component.gd" id="2_5uy6h"]
 [ext_resource type="Script" uid="uid://cpx55onwhthnb" path="res://script/component/health_component.gd" id="3_c4w8v"]
+[ext_resource type="Texture2D" uid="uid://bhu2qnytf6p30" path="res://assets/enemy_assets/Sans_titre_428_20260224091336.png" id="4_4efjx"]
+[ext_resource type="Texture2D" uid="uid://bmf86khd6d1ux" path="res://assets/enemy_assets/Sans_titre_428_20260224110559.png" id="4_gl05p"]
+[ext_resource type="Texture2D" uid="uid://jhedm2y767if" path="res://assets/enemy_assets/Sans_titre_428_20260224110917.png" id="5_hvxgb"]
+[ext_resource type="Texture2D" uid="uid://c5wkedk4y5o0d" path="res://assets/enemy_assets/Sans_titre_428_20260224110610.png" id="6_peoo5"]
+[ext_resource type="Texture2D" uid="uid://b3up1efk7dha1" path="res://assets/enemy_assets/Sans_titre_428_20260224110550.png" id="8_2f3il"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4ra3w"]
-size = Vector2(106, 156)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dtxhd"]
+radius = 28.0
+height = 122.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5uy6h"]
-size = Vector2(107, 156)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_so3kp"]
+radius = 33.0
+height = 124.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c4w8v"]
-size = Vector2(75, 144)
+size = Vector2(55, 128)
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_xwavj"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_tjssy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_4efjx")
+}],
+"loop": true,
+"name": &"fall",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_hvxgb")
+}],
+"loop": true,
+"name": &"hit_bat",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_peoo5")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_gl05p")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_2f3il")
+}],
+"loop": true,
+"name": &"slide",
+"speed": 5.0
+}]
 
 [node name="Enemy" type="CharacterBody2D" unique_id=2023724772]
 script = ExtResource("1_5uy6h")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1589856721]
-position = Vector2(1359, 536)
-shape = SubResource("RectangleShape2D_4ra3w")
+position = Vector2(1359, 531)
+shape = SubResource("CapsuleShape2D_dtxhd")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=256980461]
 
@@ -31,21 +79,22 @@ health_comp = NodePath("../HealthComponent")
 metadata/_custom_type_script = "uid://dnqt4p122fui7"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent" unique_id=1565004791]
-position = Vector2(1358.5, 536)
-shape = SubResource("RectangleShape2D_5uy6h")
+position = Vector2(1360, 534)
+shape = SubResource("CapsuleShape2D_so3kp")
 
 [node name="HitboxComponent" type="Area2D" parent="." unique_id=1477100562]
 script = ExtResource("2_5uy6h")
 metadata/_custom_type_script = "uid://bxmkgxah4aht4"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent" unique_id=1735169367]
-position = Vector2(1269.5, 535)
+position = Vector2(1414.5, 529)
 shape = SubResource("RectangleShape2D_c4w8v")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=30663622]
-position = Vector2(1359.0001, 536)
-scale = Vector2(105.24998, 156.25)
-texture = SubResource("PlaceholderTexture2D_xwavj")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1556801690]
+position = Vector2(1356, 536)
+scale = Vector2(0.25, 0.249)
+sprite_frames = SubResource("SpriteFrames_tjssy")
+animation = &"hit_bat"
 
 [node name="HealthComponent" type="Node" parent="." unique_id=348332743]
 script = ExtResource("3_c4w8v")
