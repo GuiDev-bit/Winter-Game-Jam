@@ -3,7 +3,8 @@ class_name HitboxComponent
 
 @export var attack_data : AttackData 
 @export var shape : CollisionShape2D
-@export var team := 0
+enum Team {RED, BLUE, OTHER}
+@export var team : Team
 
 signal hit_something
 
@@ -21,6 +22,9 @@ func end_attack():
 
 func _on_area_entered(area: Area2D) -> void:
 	if attack_data and area is HurtboxComponent:
+		var hurtb : HurtboxComponent = area
+		if hurtb.team == team :
+			return
 		area.damage(attack_data)
 		emit_signal("hit_something")
 		end_attack()

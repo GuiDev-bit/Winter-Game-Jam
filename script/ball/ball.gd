@@ -7,7 +7,7 @@ class_name Ball
 
 # Physique
 @export var bounce_force : float = 800.0
-@export var gravity_scale_value : float = 1.5
+@export var gravity_scale_value : float = 1.20
 @export var squash_amount : float = 0.4
 @export var stretch_amount : float = 0.3
 
@@ -49,7 +49,7 @@ func apply_force_to_ball(direction: Vector2, force: float) -> void:
 	
 	# --- puissance adaptative selon l’angle vertical ---
 	var vertical_factor = abs(dir.y)  # 0 = horizontal, 1 = vertical
-	var adjusted_force = lerp(force, force * 0.5, vertical_factor)
+	var adjusted_force = lerp(force, force * 0.6, vertical_factor)
 	
 	stop_ball_movement()
 	apply_impulse(dir * adjusted_force)
@@ -109,7 +109,7 @@ func update_aim(delta : float):
 
 func gravity_update():
 	if linear_velocity.y > 0 :
-		gravity_scale = 2.5
+		gravity_scale = 2.35
 	else :
 		gravity_scale = gravity_scale_value
 

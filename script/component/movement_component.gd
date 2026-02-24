@@ -14,11 +14,16 @@ var last_direction := 1.0
 @export var direction := 1.0
 var past_direction = direction
 
+#knock_back
+var knockback := Vector2.ZERO
+var knock_timer := 0.0
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
 
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	if direction != 0 :
 		last_direction = direction
 
@@ -52,5 +57,14 @@ func deccelerate(delta : float ):
 func dash():
 	body.velocity.x = 400 * last_direction
 
-func apply_knockback():
-	pass
+func apply_knockback(direction : Vector2, force : float, duration : float = 0.2 ):
+	knockback = direction * force
+	knock_timer= duration
+
+func actif_knockback(delta : float) :
+	if knock_timer > 0 :
+		body.velocity = knockback
+		knock_timer -= delta
+	if knock_timer <= 0 :
+		#body.velocity =Vector2.ZERO
+		pass

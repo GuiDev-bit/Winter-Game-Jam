@@ -1,10 +1,11 @@
 extends Area2D
 class_name HurtboxComponent
 
-#@export var ball : Ball
-#@export var body : CharacterBody2D
 
 @export var health_comp : HealthComponent
+enum Team {RED, BLUE, OTHER}
+@export var team : Team
+
 
 signal get_hit(data)
 

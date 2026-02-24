@@ -9,15 +9,18 @@
 [ext_resource type="Texture2D" uid="uid://ea8t1g2wo4gx" path="res://assets/player_assets/Sans titre 423_20260221223302.png" id="3_je7p5"]
 [ext_resource type="Texture2D" uid="uid://20rni5d35jtf" path="res://assets/player_assets/Sans titre 423_20260221220307.png" id="3_p47bc"]
 [ext_resource type="Texture2D" uid="uid://b1uo28ptmaq2s" path="res://assets/player_assets/player_jump.png" id="4_qek5x"]
+[ext_resource type="Texture2D" uid="uid://dqfrhman4edha" path="res://assets/player_assets/Sans_titre_423_20260223194929.png" id="5_fcs02"]
 [ext_resource type="Texture2D" uid="uid://gypkioppnu0l" path="res://assets/player_assets/Sans_titre_423_20260222143159.png" id="6_fm80t"]
+[ext_resource type="Texture2D" uid="uid://bklxv2vtq53st" path="res://assets/player_assets/Sans_titre_423_20260223193744.png" id="6_myrg7"]
 [ext_resource type="Texture2D" uid="uid://bcpxp1jwdrv7t" path="res://assets/player_assets/Sans_titre_423_20260222143920.png" id="9_ugbui"]
 [ext_resource type="Script" uid="uid://bxmkgxah4aht4" path="res://script/component/hitbox_component.gd" id="11_je7p5"]
 [ext_resource type="Texture2D" uid="uid://q0h8ew76sego" path="res://assets/hud/cross.png" id="13_gx1jg"]
+[ext_resource type="Script" uid="uid://dnqt4p122fui7" path="res://script/component/hurtbox_component.gd" id="16_myrg7"]
 
 [sub_resource type="Resource" id="Resource_gx1jg"]
 script = ExtResource("2_fm80t")
 damage = 1.0
-force = 2000.0
+force = 2100.0
 direction = Vector2(1, -1)
 metadata/_custom_type_script = "uid://wcd5uqn0imo0"
 
@@ -49,6 +52,22 @@ animations = [{
 }],
 "loop": true,
 "name": &"friction",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_fcs02")
+}],
+"loop": true,
+"name": &"hit_bat",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_myrg7")
+}],
+"loop": true,
+"name": &"hit_charge_bat",
 "speed": 5.0
 }, {
 "frames": [{
@@ -105,10 +124,15 @@ radius = 22.0
 height = 115.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fm80t"]
-size = Vector2(51, 86)
+size = Vector2(90, 86)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kvlxm"]
+radius = 16.0
+height = 84.0
 
 [node name="Player" type="CharacterBody2D" unique_id=1828741544]
 collision_mask = 8
+floor_max_angle = 1.1013027
 script = ExtResource("1_8afob")
 bat_data = SubResource("Resource_gx1jg")
 gloves_data = SubResource("Resource_fm80t")
@@ -117,7 +141,7 @@ snow_canon_data = SubResource("Resource_ugbui")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=166587267]
 scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_p47bc")
-animation = &"slide_b"
+animation = &"hit_charge_bat"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=34379545]
 position = Vector2(5, -3.5)
@@ -141,7 +165,7 @@ shape = NodePath("CollisionShape2D")
 metadata/_custom_type_script = "uid://bxmkgxah4aht4"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent" unique_id=2092141964]
-position = Vector2(59.5, -2)
+position = Vector2(49, -2)
 shape = SubResource("RectangleShape2D_fm80t")
 debug_color = Color(0.83145946, 0.38334653, 0.23211065, 0.41960785)
 
@@ -149,11 +173,23 @@ debug_color = Color(0.83145946, 0.38334653, 0.23211065, 0.41960785)
 default_color = Color(1, 1, 0, 1)
 
 [node name="Crossair" type="Node2D" parent="." unique_id=1308042394]
+z_index = 100
 
 [node name="icone" type="Sprite2D" parent="Crossair" unique_id=883643604]
+z_index = 100
 position = Vector2(250, 0)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("13_gx1jg")
 
+[node name="HurtboxComponent" type="Area2D" parent="." unique_id=737455589]
+script = ExtResource("16_myrg7")
+metadata/_custom_type_script = "uid://dnqt4p122fui7"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent" unique_id=1191295061]
+position = Vector2(6, -1)
+shape = SubResource("CapsuleShape2D_kvlxm")
+debug_color = Color(0.26277184, 0.6149626, 0.44548863, 0.41960785)
+
 [connection signal="area_entered" from="HitboxComponent" to="HitboxComponent" method="_on_area_entered"]
 [connection signal="area_exited" from="HitboxComponent" to="HitboxComponent" method="_on_area_exited"]
+[connection signal="get_hit" from="HurtboxComponent" to="." method="_on_hurtbox_component_get_hit"]
