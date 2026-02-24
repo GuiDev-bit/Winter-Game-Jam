@@ -5,6 +5,8 @@ class_name HitboxComponent
 @export var shape : CollisionShape2D
 @export var team := 0
 
+signal hit_something
+
 func _ready() -> void:
 	end_attack()
 
@@ -15,11 +17,12 @@ func lunch_attack():
 func end_attack():
 	if shape:
 		shape.set_deferred("disabled", true)
-		attack_data = null
+	attack_data = null
 
 func _on_area_entered(area: Area2D) -> void:
 	if attack_data and area is HurtboxComponent:
 		area.damage(attack_data)
+		emit_signal("hit_something")
 		end_attack()
 	if area is HurtboxComponent and area.get_parent() is Ball:
 		area.get_parent().set_player_nearby(true)

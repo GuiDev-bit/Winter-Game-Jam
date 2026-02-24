@@ -51,6 +51,7 @@ func apply_force_to_ball(direction: Vector2, force: float) -> void:
 	var vertical_factor = abs(dir.y)  # 0 = horizontal, 1 = vertical
 	var adjusted_force = lerp(force, force * 0.5, vertical_factor)
 	
+	stop_ball_movement()
 	apply_impulse(dir * adjusted_force)
 	
 	
@@ -75,6 +76,7 @@ func _on_body_entered(_body: Node) -> void:
 @warning_ignore("unused_parameter")
 func _on_ball_get_hit(data: AttackData) -> void:
 	apply_force_to_ball(data.direction, data.force)
+	#print(data.force)
 
 
 func set_player_nearby(value: bool) -> void:
@@ -117,3 +119,11 @@ func apply_horizontal_drag(_delta: float) -> void:
 		return  # vitesse trop faible, pas besoin de friction
 	var drag = -sign(vx) * air_drag # 600 = force de friction, ajuste selon le feeling
 	apply_central_force(Vector2(drag, 0.0))
+
+
+func stop_ball_movement() -> void:
+	# Annule toute vélocité actuelle
+	linear_velocity = Vector2.ZERO
+
+	# Réinitialise previous_velocity pour squash/stretch
+	previous_velocity = Vector2.ZERO
