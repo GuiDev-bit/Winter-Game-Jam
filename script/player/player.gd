@@ -14,7 +14,7 @@ class_name Player
 enum Weapon {GlOVES, CANON}
 @export var use_secondweap := false
 @export var secondary_weapon : Weapon 
-var when_check := false #dsl c giga brouillon
+var is_bat_charging := false #dsl d'avoir nommé ca de facon random, en gros c pour savoir si le joueur charge l'attaque ou pass
 
 var attack_timer := 0.3
 var attack_time := 0.3
@@ -117,20 +117,8 @@ func switch_state(to_state : STATE) :
 		STATE.FLOOR :
 			pick_random_slide()
 		STATE.HIT :
-			if use_secondweap == false:
-				when_check = true
-				return
-			match secondary_weapon : 
-				Weapon.GlOVES :
-					gloves_data.direction = dir
-					hitbox.attack_data = gloves_data
-					hitbox.lunch_attack()
-					print(12)
-					when_check = false
-				Weapon.CANON : 
-					pass
-			
-	
+			_on_enter_hit_state()
+
 
 func process_state(delta: float) ->void : #handle state-logique
 	match active_state :
@@ -160,19 +148,11 @@ func process_state(delta: float) ->void : #handle state-logique
 				attack_state_transition()
 
 		STATE.HIT :
-			if Input.is_action_just_released("attack_l") :
-				bat_data.direction = get_direction_to_mouse()
-				hitbox.attack_data = bat_data
-				hitbox.lunch_attack()
-				attack_timer = attack_time
-				when_check = false
+			if input_component.charged_bat :
+				_attack_with_bat()
 			check_attack_timer(delta)
-			if not is_on_floor() :
-				if velocity.y >=   0 :
-					move_component.apply_gravity(delta, 1.3)
-					move_component.air_slide(delta)
-				else : 
-						move_component.apply_gravity(delta)
+			handle_air_physics(delta)
+
 
 
 
@@ -199,14 +179,7 @@ func update_animation() -> void:
 			animated_sprite.play("fall")
 		STATE.HURT:
 			animated_sprite.play("idle")
-	if move_component.direction > 0:
-		dir = Vector2(1,0)
-		animated_sprite.flip_h = false
-		hitbox.shape.position.x = 52
-	elif move_component.direction < 0:
-		animated_sprite.flip_h = true
-		dir = Vector2(-1,0)
-		hitbox.shape.position.x = -52
+	check_direction()
 
 #choisi une animation différente pour le slide
 func pick_random_slide():
@@ -219,8 +192,8 @@ func get_direction_to_mouse() -> Vector2:
 	var direction = (mouse_pos - global_position).normalized()
 	return direction
 
-func check_attack_timer(delta) :
-	if when_check == false :
+func check_attack_timer(delta) : #gère la durée de l'attaque
+	if is_bat_charging == false : #regarde si il charge pas l'attauqe
 			if attack_timer > 0 :
 				attack_timer -= delta * 1
 			else : 
@@ -228,10 +201,64 @@ func check_attack_timer(delta) :
 				attack_timer = attack_time
 				switch_state(STATE.FLOOR)
 
-func attack_state_transition():
+func attack_state_transition(): #les conditions généralent pur switch vers attaque
 			if Input.is_action_just_pressed("attack_l") :
 				switch_state(STATE.HIT)
 				use_secondweap = false
 			elif  Input.is_action_just_pressed("attack_r") :
 				use_secondweap = true
 				switch_state(STATE.HIT)
+
+func check_direction():
+	if move_component.direction > 0:
+		dir = Vector2(1,0)
+		animated_sprite.flip_h = false
+		hitbox.shape.position.x = 52
+	elif move_component.direction < 0:
+		animated_sprite.flip_h = true
+		dir = Vector2(-1,0)
+		hitbox.shape.position.x = -52
+
+func _on_enter_hit_state():
+	is_bat_charging = true
+	if not use_secondweap:
+		return
+	_launch_secondary_weapon()
+
+func _launch_secondary_weapon():
+	match secondary_weapon :
+		Weapon.GlOVES :
+			_attack_with_gloves()
+		Weapon.CANON :
+			_attack_with_canon()
+
+func _attack_with_gloves():
+	gloves_data.direction = dir
+	hitbox.attack_data = gloves_data
+	hitbox.lunch_attack()
+	is_bat_charging = false
+
+func _attack_with_canon():
+	# TODO: projectile
+	is_bat_charging = false
+
+func _attack_with_bat():
+		bat_data.direction = get_direction_to_mouse()
+		hitbox.attack_data = bat_data
+		hitbox.lunch_attack()
+		attack_timer = attack_time
+		is_bat_charging = false
+
+func handle_air_physics(delta :float): #gère les déplacement lors d'une attaque
+	if  is_on_floor() :
+		if is_bat_charging : 
+			move_component.deccelerate()
+		else : 
+			move_component.dash()
+		return
+	if velocity.y >=   0 :
+			move_component.apply_gravity(delta, 1.3)
+			move_component.air_slide(delta)
+	else : 
+			move_component.apply_gravity(delta)
+			move_component.air_slide(delta)
