@@ -47,3 +47,9 @@ func add_goal(team: String) -> void:
 	
 func respawn_player():
 	emit_signal("player_respawn", Vector2(100, 0))
+	
+func reset() -> void:
+	score_left = 0
+	score_right = 0
+	match_time = 0.0
+	current_state = GameState.MENU

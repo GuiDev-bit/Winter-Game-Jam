@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://dqfrhman4edha" path="res://assets/player_assets/Sans_titre_423_20260223194929.png" id="5_fcs02"]
 [ext_resource type="Texture2D" uid="uid://dfuxm4ob5b0ja" path="res://assets/player_assets/Sans_titre_423_20260224153539.png" id="5_uf5tr"]
 [ext_resource type="Texture2D" uid="uid://gypkioppnu0l" path="res://assets/player_assets/Sans_titre_423_20260222143159.png" id="6_fm80t"]
+[ext_resource type="Texture2D" uid="uid://2hbirnxlospi" path="res://assets/player_assets/Sans_titre_423_20260224112742.png" id="6_kvlxm"]
 [ext_resource type="Texture2D" uid="uid://bklxv2vtq53st" path="res://assets/player_assets/Sans_titre_423_20260223193744.png" id="6_myrg7"]
 [ext_resource type="Texture2D" uid="uid://2hbirnxlospi" path="res://assets/player_assets/Sans_titre_423_20260224112742.png" id="8_lgqa7"]
 [ext_resource type="Texture2D" uid="uid://bcpxp1jwdrv7t" path="res://assets/player_assets/Sans_titre_423_20260222143920.png" id="9_ugbui"]
@@ -75,10 +76,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("5_fcs02")
+"texture": ExtResource("6_kvlxm")
 }],
 "loop": true,
-"name": &"hit_bat_air",
+"name": &"hit_boxing_gloves",
 "speed": 5.0
 }, {
 "frames": [{
@@ -169,7 +170,7 @@ snow_canon_data = SubResource("Resource_ugbui")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=166587267]
 scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_p47bc")
-animation = &"canon"
+animation = &"hit_boxing_gloves"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=34379545]
 position = Vector2(5, -3.5)
@@ -188,6 +189,7 @@ zoom = Vector2(1.2, 1.2)
 position_smoothing_enabled = true
 
 [node name="HitboxComponent" type="Area2D" parent="." unique_id=1138836252 node_paths=PackedStringArray("shape")]
+collision_layer = 2
 script = ExtResource("11_je7p5")
 shape = NodePath("CollisionShape2D")
 metadata/_custom_type_script = "uid://bxmkgxah4aht4"
@@ -196,9 +198,6 @@ metadata/_custom_type_script = "uid://bxmkgxah4aht4"
 position = Vector2(49, -2)
 shape = SubResource("RectangleShape2D_fm80t")
 debug_color = Color(0.83145946, 0.38334653, 0.23211065, 0.41960785)
-
-[node name="AimLine" type="Line2D" parent="." unique_id=1647355917]
-default_color = Color(1, 1, 0, 1)
 
 [node name="Crossair" type="Node2D" parent="." unique_id=1308042394]
 z_index = 100

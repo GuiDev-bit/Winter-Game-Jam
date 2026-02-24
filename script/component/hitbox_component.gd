@@ -21,11 +21,13 @@ func end_attack():
 	attack_data = null
 
 func _on_area_entered(area: Area2D) -> void:
+	print("hitbox a touché: ", area.name, " attack_data: ", attack_data)
 	if attack_data and area is HurtboxComponent:
 		var hurtb : HurtboxComponent = area
 		if hurtb.team == team :
 			return
-		area.damage(attack_data)
+		var data_copy = attack_data 
+		area.damage(data_copy)
 		emit_signal("hit_something")
 		end_attack()
 	if area is HurtboxComponent and area.get_parent() is Ball:

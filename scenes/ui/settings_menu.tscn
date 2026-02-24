@@ -1,9 +1,71 @@
 [gd_scene format=3 uid="uid://4o2jn7lvf5ph"]
 
-[node name="SettingsMenu" type="Control" unique_id=873884730]
+[ext_resource type="Texture2D" uid="uid://biicvll1v04ba" path="res://assets/hud/Sans_titre_429_20260224150002.png" id="1_qwcqe"]
+
+[node name="SettingsMenu" type="Control" unique_id=1977151436]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="." unique_id=80299960]
+texture_filter = 1
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("1_qwcqe")
+stretch_mode = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=370370866]
+z_index = 9
+layout_mode = 0
+offset_left = 907.0
+offset_top = 112.0
+offset_right = 1817.0
+offset_bottom = 1002.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer" unique_id=1795084331]
+custom_minimum_size = Vector2(900, 0)
+layout_mode = 2
+
+[node name="Music" type="HBoxContainer" parent="HBoxContainer/VBoxContainer" unique_id=1199396877]
+custom_minimum_size = Vector2(2.05, 0)
+layout_mode = 2
+
+[node name="_Music_" type="Label" parent="HBoxContainer/VBoxContainer/Music" unique_id=2011356034]
+layout_mode = 2
+
+[node name="HSlider" type="HSlider" parent="HBoxContainer/VBoxContainer/Music" unique_id=452254913]
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+
+[node name="SFX" type="HBoxContainer" parent="HBoxContainer/VBoxContainer" unique_id=272435811]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/SFX" unique_id=2122824456]
+layout_mode = 2
+
+[node name="HSlider" type="HSlider" parent="HBoxContainer/VBoxContainer/SFX" unique_id=771669931]
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+
+[node name="Reset to default" type="Button" parent="HBoxContainer/VBoxContainer" unique_id=1788129171]
+layout_mode = 2
+
+[node name="Back" type="TextureButton" parent="HBoxContainer/VBoxContainer" unique_id=1257197359]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/Back" unique_id=256516679]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="SETTINGS" type="Label" parent="HBoxContainer/VBoxContainer" unique_id=1239046367]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer" unique_id=1565951706]
+layout_mode = 2
