@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dvpb22eoschc3"]
 
 [ext_resource type="Script" uid="uid://c6w1lrngufxbw" path="res://script/projectile/snowball.gd" id="1_jybsw"]
+[ext_resource type="Texture2D" uid="uid://din6brfx4p38k" path="res://assets/sprites/Sans_titre_427_20260224154211.png" id="2_3tc41"]
 [ext_resource type="Script" uid="uid://bxmkgxah4aht4" path="res://script/component/hitbox_component.gd" id="2_82u2l"]
 [ext_resource type="Script" uid="uid://wcd5uqn0imo0" path="res://script/Ressources/attackressources/attack_data.gd" id="3_3tc41"]
 
@@ -13,17 +14,34 @@ damage = 15.0
 force = 500.0
 metadata/_custom_type_script = "uid://wcd5uqn0imo0"
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_b7skv"]
+radius = 58.855755
+
 [node name="Snowball" type="RigidBody2D" unique_id=1254838951]
+collision_mask = 8
 script = ExtResource("1_jybsw")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1235061466]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_3tc41")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1030108044]
 shape = SubResource("CircleShape2D_e2327")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1235061466]
-
-[node name="HitboxComponent" type="Area2D" parent="." unique_id=308442962]
+[node name="HitboxComponent" type="Area2D" parent="." unique_id=308442962 node_paths=PackedStringArray("shape")]
+collision_mask = 9
 script = ExtResource("2_82u2l")
 attack_data = SubResource("Resource_b7skv")
+shape = NodePath("CollisionShape2D")
 metadata/_custom_type_script = "uid://bxmkgxah4aht4"
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent" unique_id=934250909]
+shape = SubResource("CircleShape2D_b7skv")
+debug_color = Color(0.81299645, 0.37749544, 0.43045458, 0.41960785)
+
+[node name="Timer" type="Timer" parent="." unique_id=1273825117]
+wait_time = 5.0
+autostart = true
+
 [connection signal="hit_something" from="HitboxComponent" to="." method="_on_hitbox_component_hit_something"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

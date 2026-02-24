@@ -33,6 +33,7 @@ shape = SubResource("CircleShape2D_nv6q1")
 
 [node name="HurtboxComponent" type="Area2D" parent="." unique_id=541620898]
 script = ExtResource("3_stoaj")
+team = 1
 metadata/_custom_type_script = "uid://dnqt4p122fui7"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent" unique_id=166404881]
