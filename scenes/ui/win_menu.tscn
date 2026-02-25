@@ -46,12 +46,12 @@ text = "Congratulations You Win!!"
 layout_mode = 2
 alignment = 1
 
-[node name="Play Again" type="TextureButton" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1209566276]
+[node name="play_again" type="TextureButton" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1209566276]
 layout_mode = 2
 texture_normal = ExtResource("2_8ch8s")
 stretch_mode = 3
 
-[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/Play Again" unique_id=1123807628]
+[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/play_again" unique_id=1123807628]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -70,12 +70,12 @@ theme_override_font_sizes/font_size = 40
 text = "Play Again"
 horizontal_alignment = 1
 
-[node name="Main Menu" type="TextureButton" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer" unique_id=415755882]
+[node name="main_menu" type="TextureButton" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer" unique_id=415755882]
 layout_mode = 2
 texture_normal = ExtResource("2_8ch8s")
 stretch_mode = 3
 
-[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/Main Menu" unique_id=71586627]
+[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/main_menu" unique_id=71586627]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -94,5 +94,5 @@ theme_override_font_sizes/font_size = 40
 text = "Main Menu"
 horizontal_alignment = 1
 
-[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/HBoxContainer/Play Again" to="." method="_on_play_again_pressed"]
-[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/HBoxContainer/Main Menu" to="." method="_on_main_menu_pressed"]
+[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/HBoxContainer/play_again" to="." method="_on_play_again_pressed"]
+[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/HBoxContainer/main_menu" to="." method="_on_main_menu_pressed"]

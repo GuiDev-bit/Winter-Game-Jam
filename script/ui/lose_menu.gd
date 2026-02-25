@@ -1,19 +1,12 @@
 extends Control
 
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
+@onready var retry : Button = $Panel/MarginContainer/VBoxContainer/HBoxContainer/Retry
+@onready var main_menu : Button = $Panel/MarginContainer/VBoxContainer/HBoxContainer/Main Menu
 
 func _on_retry_pressed() -> void:
-	get_tree().reload_current_scene()
-	#TODO reset all Globals
+	GameManager.reset()
+	get_tree().change_scene_to_file("res://scenes/main/main.tscn")
 
 func _on_main_menu_pressed() -> void:
+	GameManager.reset()
 	get_tree().change_scene_to_file("res://scenes/ui/main_menu.tscn")

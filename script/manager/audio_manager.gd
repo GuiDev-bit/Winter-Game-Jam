@@ -15,9 +15,13 @@ func _ready() -> void:
 	add_child(music_player)
 	add_child(sfx_player)
 	
+	var volumes = SaveManager.load_volume()
+	set_music_volume(volumes["music"])
+	set_sfx_volume(volumes["sfx"])
+	
 	menu_music = load("res://assets/audio/music/music menu/MENU SWAF (1).ogg")
 	win_music = load("res://assets/audio/music/music/VICTOIRE.wav")
-	bat_hit_sfx = load("res://assets/audio/SFX/SFX BaseBall Bat.wav")
+	bat_hit_sfx = load("res://assets/audio/SFX/SFX BaseBall Bat (1).wav")
 
 func play_music(stream: AudioStream) -> void:
 	if music_player.stream == stream and music_player.playing:

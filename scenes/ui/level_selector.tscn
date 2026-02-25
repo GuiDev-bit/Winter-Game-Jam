@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://k6r6x7to210p" path="res://assets/hud/UI_Button.png" id="1_jhogm"]
 [ext_resource type="Texture2D" uid="uid://vmug3ssx0wcb" path="res://assets/hud/UI_Credits.png" id="2_5irit"]
+[ext_resource type="Script" uid="uid://dtkkwhraawhw7" path="res://script/ui/level_selector.gd" id="2_lhagn"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lhagn"]
 texture = ExtResource("1_jhogm")
@@ -25,6 +26,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_cr31p")
+script = ExtResource("2_lhagn")
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=264648195]
 layout_mode = 1
@@ -91,3 +93,7 @@ rotation = -0.01940085
 theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 100
 text = "Back"
+
+[connection signal="pressed" from="PanelContainer/VBoxContainer/GridContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/GridContainer/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Button" to="." method="_on_back_pressed"]

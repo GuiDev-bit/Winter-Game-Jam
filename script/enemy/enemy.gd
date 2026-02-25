@@ -213,7 +213,8 @@ func check_ball_jump(delta: float) -> void:
 		return
 	var dist = global_position.distance_to(ball_ref.global_position)
 	var ball_is_above = ball_ref.global_position.y < global_position.y - 30
-	if dist < ball_jump_range and ball_is_above and jump_cooldown <= 0:
+	var ball_not_too_high = ball_ref.global_position.y > global_position.y - 300
+	if dist < ball_jump_range and ball_is_above and ball_not_too_high and jump_cooldown <= 0:
 		if randf() < jump_chance:
-			velocity.y = jump_force
+			movcomp.jump()
 			jump_cooldown = 1.5

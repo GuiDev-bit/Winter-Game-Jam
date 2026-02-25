@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://4o2jn7lvf5ph"]
 
+[ext_resource type="Script" uid="uid://ddiwqo5kd6r3w" path="res://script/ui/setting_menu.gd" id="1_mhswj"]
 [ext_resource type="Texture2D" uid="uid://biicvll1v04ba" path="res://assets/hud/Sans_titre_429_20260224150002.png" id="1_qwcqe"]
 
 [node name="SettingsMenu" type="Control" unique_id=1977151436]
@@ -9,6 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_mhswj")
 
 [node name="Background" type="TextureRect" parent="." unique_id=80299960]
 texture_filter = 1
@@ -69,3 +71,8 @@ layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer" unique_id=1565951706]
 layout_mode = 2
+
+[connection signal="value_changed" from="HBoxContainer/VBoxContainer/Music/HSlider" to="." method="_on_h_slider_value_changed"]
+[connection signal="value_changed" from="HBoxContainer/VBoxContainer/SFX/HSlider" to="." method="_on_h_slider_2_value_changed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/Reset to default" to="." method="_on_reset_to_default_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/Back" to="." method="_on_back_pressed"]
