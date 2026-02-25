@@ -22,12 +22,13 @@ var role : Role
 
 @export var attack_range : float = 150.0
 @export var attack_cooldown : float = 1.0
+var atk_cooldown_timer: float = 0.0
 
 var is_attacking := false
 
 
 
-enum STATE { IDLE, CHASE, ATTACK, DEAD }
+enum STATE { IDLE, CHASE, ATTACK, DEAD, HURT }
 var active_state : STATE = STATE.IDLE
 
 var player_ref : Player = null
@@ -50,6 +51,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	process_state(delta)
 	process_animation()
+	apply_atk_timer(delta)
 	move_and_slide()
 
 func switch_state(to_state: STATE) -> void:
@@ -72,10 +74,17 @@ func process_state(delta: float) -> void:
 
 		STATE.CHASE:
 			chase(delta)
+
 		STATE.ATTACK:
 			if is_attacking == false : 
 				switch_state(STATE.IDLE)
 			movcomp.deccelerate(delta)
+
+		STATE.HURT :
+			movcomp.actif_knockback(delta)
+			if movcomp.knock_timer <= 0:
+				switch_state(STATE.IDLE)
+
 
 #animation
 func process_animation():
@@ -91,8 +100,14 @@ func process_animation():
 			else :
 				sprite.play("slide")
 		STATE.ATTACK :
-			sprite.play("hit_bat")
+			if type == Type.BATTEUR :
+				sprite.play("hit_bat")
+			elif type == Type.BOXEUR :
+				sprite.play("hit_gloves")
+		STATE.HURT :
+			sprite.play("hurt")
 	sprite.flip_h = last_dir < 0 
+		
 
 
 func _on_died() -> void:
@@ -106,7 +121,10 @@ func chase(delta : float):
 		return
 	if distance_to_target  < attack_range:
 		direction = 0  # stoppe le mouvement
-		switch_state(STATE.ATTACK)
+		if atk_cooldown_timer  > 0 :
+			pass
+		else :
+			switch_state(STATE.ATTACK)
 	else : 
 		check_direction_to_target()
 	movcomp.direction = direction 
@@ -124,9 +142,6 @@ func check_direction_to_target() :
 			direction = -1.0
 			last_dir= -1
 			hitbox.shape.position.x = -84
-
-func attack():
-	pass
 
 
 
@@ -149,15 +164,25 @@ func lunch_attack():
 			hitbox.attack_data.direction = Vector2(last_dir, -1)
 		Type.BOXEUR :
 			use_correct(gloves_data)
+			hitbox.attack_data.direction = Vector2(last_dir, 0)
 	movcomp.dash()
 	timer_atk.start()
 	is_attacking = true
 	hitbox.lunch_attack()
+	atk_cooldown_timer = attack_cooldown
 	
 
 
+func apply_atk_timer(delta : float) :
+	if atk_cooldown_timer > 0.0 :
+		atk_cooldown_timer -= delta
+	else : 
+		atk_cooldown_timer = 0.0
+
+
 func _on_get_hit(data: AttackData) -> void:
-	pass
+	movcomp.apply_knockback(data.direction, data.force)
+	switch_state(STATE.HURT)
 
 
 func use_correct( data : AttackData):

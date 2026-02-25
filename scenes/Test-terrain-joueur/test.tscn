@@ -34,3 +34,6 @@ tile_map_data = PackedByteArray("AAD4/wUAAAAAAAAAAAD5/wUAAAABAAAAAAD6/wUAAAABAAA
 
 [node name="Enemy" parent="." unique_id=2023724772 instance=ExtResource("4_1mnxx")]
 position = Vector2(1706, 449)
+type = 1
+
+[node name="Enemy2" parent="." unique_id=990288769 instance=ExtResource("4_1mnxx")]

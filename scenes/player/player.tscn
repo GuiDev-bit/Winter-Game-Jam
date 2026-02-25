@@ -15,7 +15,9 @@
 [ext_resource type="Texture2D" uid="uid://gypkioppnu0l" path="res://assets/player_assets/Sans_titre_423_20260222143159.png" id="6_fm80t"]
 [ext_resource type="Texture2D" uid="uid://bklxv2vtq53st" path="res://assets/player_assets/Sans_titre_423_20260223193744.png" id="6_myrg7"]
 [ext_resource type="Texture2D" uid="uid://2hbirnxlospi" path="res://assets/player_assets/Sans_titre_423_20260224112742.png" id="8_lgqa7"]
+[ext_resource type="Texture2D" uid="uid://bk1lohuawq3gy" path="res://assets/player_assets/Sans_titre_423_20260224111705.png" id="9_3j4b4"]
 [ext_resource type="Texture2D" uid="uid://bcpxp1jwdrv7t" path="res://assets/player_assets/Sans_titre_423_20260222143920.png" id="9_ugbui"]
+[ext_resource type="Texture2D" uid="uid://drekk1boo5j0k" path="res://assets/player_assets/Sans_titre_423_20260224190744.png" id="10_8ydkj"]
 [ext_resource type="Script" uid="uid://bxmkgxah4aht4" path="res://script/component/hitbox_component.gd" id="11_je7p5"]
 [ext_resource type="Texture2D" uid="uid://q0h8ew76sego" path="res://assets/hud/cross.png" id="13_gx1jg"]
 [ext_resource type="Script" uid="uid://dnqt4p122fui7" path="res://script/component/hurtbox_component.gd" id="16_myrg7"]
@@ -91,6 +93,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("9_3j4b4")
+}],
+"loop": true,
+"name": &"hit_charge_air",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("6_myrg7")
 }],
 "loop": true,
@@ -103,6 +113,14 @@ animations = [{
 }],
 "loop": true,
 "name": &"hit_glove_a",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_8ydkj")
+}],
+"loop": true,
+"name": &"hurt",
 "speed": 5.0
 }, {
 "frames": [{
@@ -169,6 +187,7 @@ height = 84.0
 collision_mask = 8
 floor_max_angle = 1.1013027
 script = ExtResource("1_8afob")
+secondary_weapon = 1
 bat_data = SubResource("Resource_gx1jg")
 gloves_data = SubResource("Resource_fm80t")
 snow_canon_data = SubResource("Resource_ugbui")
@@ -176,7 +195,7 @@ snow_canon_data = SubResource("Resource_ugbui")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=166587267]
 scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_p47bc")
-animation = &"hit_bat_air"
+animation = &"hit_charge_air"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=34379545]
 position = Vector2(5, -3.5)
