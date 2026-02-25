@@ -6,6 +6,9 @@ class_name Enemy
 @onready var hurtbox : HurtboxComponent = $HurtboxComponent
 @onready var movcomp : MovementComponement = $MovementComponement
 @onready var sprite : AnimatedSprite2D =$AnimatedSprite2D
+@export var jump_force : float = -900.0
+@export var ball_jump_range : float = 200.0
+@export var jump_chance : float = 0.5
 
 enum Type {BATTEUR, BOXEUR, CANON}
 @export var type : Type
@@ -37,21 +40,23 @@ var attack_timer : float = 0.0
 var target = null
 var direction : float = 1.0
 var last_dir : float = 1.0
+var jump_cooldown : float = 0.0
 
 func _ready() -> void:
 	health_component.died.connect(_on_died)
 	hurtbox.get_hit.connect(_on_get_hit)
-	switch_state(STATE.CHASE)
 	add_to_group("enemies")
 	AiManager.register_enemy(self)
 	ball_ref = AiManager.ball
 	player_ref =AiManager.player
+	await get_tree().create_timer(randf_range(0.5, 2.0)).timeout
 	execute_role()
 
 func _physics_process(delta: float) -> void:
 	process_state(delta)
 	process_animation()
 	apply_atk_timer(delta)
+	check_ball_jump(delta)
 	move_and_slide()
 
 func switch_state(to_state: STATE) -> void:
@@ -91,12 +96,18 @@ func process_animation():
 	match active_state :
 		STATE.IDLE :
 			if not is_on_floor():
-				sprite.play("fall")
+				if velocity.y < 0:
+					sprite.play("jump")
+				else:
+					sprite.play("fall")
 			else :
 				sprite.play("deccelerate")
 		STATE.CHASE :
 			if not is_on_floor():
-				sprite.play("fall")
+				if velocity.y < 0:
+					sprite.play("jump")
+				else:
+					sprite.play("fall")
 			else :
 				sprite.play("slide")
 		STATE.ATTACK :
@@ -192,4 +203,17 @@ func use_correct( data : AttackData):
 func _on_atkduration_timeout() -> void:
 	is_attacking = false
 	hitbox.end_attack()
-	
+
+# pour qu'elle saute vers la balle
+func check_ball_jump(delta: float) -> void:
+	jump_cooldown -= delta
+	if not ball_ref or not is_on_floor():
+		return
+	if type != Type.BATTEUR:  # seulement les batteurs sautent vers la balle
+		return
+	var dist = global_position.distance_to(ball_ref.global_position)
+	var ball_is_above = ball_ref.global_position.y < global_position.y - 30
+	if dist < ball_jump_range and ball_is_above and jump_cooldown <= 0:
+		if randf() < jump_chance:
+			velocity.y = jump_force
+			jump_cooldown = 1.5

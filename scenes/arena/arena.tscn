@@ -4,15 +4,11 @@
 [ext_resource type="PackedScene" uid="uid://d3nd7funcfhcg" path="res://scenes/terrain/terrain.tscn" id="2_8trdl"]
 [ext_resource type="Script" uid="uid://iic5sq83nkom" path="res://script/enemy/enemyspawner.gd" id="3_5tue2"]
 [ext_resource type="PackedScene" uid="uid://dvpn2w6yufbyy" path="res://scenes/enemy/enemy.tscn" id="4_aj7ud"]
+[ext_resource type="PackedScene" uid="uid://vl1loif6phtb" path="res://scenes/arena/skittle_group_left.tscn" id="5_jx0ua"]
+[ext_resource type="PackedScene" uid="uid://cxycancmggn3b" path="res://scenes/arena/skittle_groupe_right.tscn" id="6_u52cf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5tue2"]
 size = Vector2(213.5, 1117)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1qjuf"]
-size = Vector2(132, 648)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8trdl"]
-size = Vector2(131, 648)
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_8trdl"]
 
@@ -32,18 +28,6 @@ position = Vector2(1952, 537)
 shape = SubResource("RectangleShape2D_5tue2")
 debug_color = Color(0.5643613, 0.47827423, 0.7634374, 0.41960785)
 
-[node name="GoalLeft" type="Area2D" parent="." unique_id=1941841028]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GoalLeft" unique_id=664083923]
-position = Vector2(66, 324)
-shape = SubResource("RectangleShape2D_1qjuf")
-
-[node name="GoalRight" type="Area2D" parent="." unique_id=584776893]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GoalRight" unique_id=1213569507]
-position = Vector2(1854, 324)
-shape = SubResource("RectangleShape2D_8trdl")
-
 [node name="Terrain" parent="." unique_id=1663087106 instance=ExtResource("2_8trdl")]
 tile_map_data = PackedByteArray("AAALAAYAAAAEAAMAAAALAAUAAAAEAAEAAAALAAQAAAAEAAAAAAAKAAYAAAABAAMAAAAKAAUAAAADAAIAAAAKAAQAAAACAAAAAAAJAAYAAAACAAMAAAAJAAUAAAACAAIAAAAJAAQAAAABAAAAAAAIAAYAAAABAAMAAAAIAAUAAAADAAEAAAAIAAQAAAADAAAAAAAHAAYAAAABAAMAAAAHAAUAAAADAAIAAAAHAAQAAAABAAAAAAAGAAYAAAACAAMAAAAGAAUAAAADAAEAAAAGAAQAAAADAAAAAAAFAAYAAAABAAMAAAAFAAUAAAADAAEAAAAEAAYAAAACAAMAAAAEAAUAAAADAAIAAAAEAAQAAAACAAAAAAADAAYAAAABAAMAAAADAAUAAAACAAEAAAADAAQAAAACAAAAAAACAAYAAAACAAMAAAACAAUAAAACAAEAAAACAAQAAAABAAAAAAABAAYAAAADAAMAAAABAAUAAAACAAEAAAABAAQAAAABAAAAAAAAAAYAAAAAAAMAAAAAAAUAAAAAAAEAAAAAAAQAAAAAAAAAAAAFAAQAAAADAAAAAAA=")
 
@@ -55,5 +39,8 @@ position = Vector2(1469, 534)
 script = ExtResource("3_5tue2")
 enemy_scene = ExtResource("4_aj7ud")
 
-[connection signal="body_entered" from="GoalLeft" to="." method="_on_goal_left_body_entered"]
-[connection signal="body_entered" from="GoalRight" to="." method="_on_goal_right_body_entered"]
+[node name="SkittleGroupLeft" parent="." unique_id=1885399607 instance=ExtResource("5_jx0ua")]
+position = Vector2(50, 604)
+
+[node name="skittle_groupe_right" parent="." unique_id=579108516 instance=ExtResource("6_u52cf")]
+position = Vector2(1713, 607)

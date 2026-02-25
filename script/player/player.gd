@@ -294,6 +294,7 @@ func _attack_with_bat():
 		#print(hitbox.attack_data.damage )
 		attack_timer = attack_time
 		is_bat_charging = false
+		AudioManager.play_bat_hit()
 
 		charge_attack_bat = 0.6
 

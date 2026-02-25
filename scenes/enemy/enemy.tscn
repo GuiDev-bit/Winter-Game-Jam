@@ -111,7 +111,7 @@ gloves_data = SubResource("Resource_peoo5")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1556801690]
 scale = Vector2(0.25, 0.249)
 sprite_frames = SubResource("SpriteFrames_tjssy")
-animation = &"hurt"
+animation = &"jump"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1589856721]
 shape = SubResource("CapsuleShape2D_dtxhd")

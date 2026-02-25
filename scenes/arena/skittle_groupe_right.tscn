@@ -1,0 +1,193 @@
+[gd_scene format=3 uid="uid://cxycancmggn3b"]
+
+[ext_resource type="Texture2D" uid="uid://v2graxi3ak7" path="res://assets/others/Sans_titre_424_20260222134253.png" id="1_amkg8"]
+[ext_resource type="Script" uid="uid://b2171dshpwhcy" path="res://script/arena/skittle_groupe.gd" id="1_fv8tl"]
+[ext_resource type="Script" uid="uid://cpx55onwhthnb" path="res://script/component/health_component.gd" id="2_amkg8"]
+[ext_resource type="Script" uid="uid://dd1lgwbfp2sv4" path="res://script/arena/skittle.gd" id="2_bp6qb"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_amkg8"]
+radius = 23.0
+height = 124.0
+
+[node name="SkittleGroup" type="Node2D" unique_id=579108516]
+script = ExtResource("1_fv8tl")
+team = 1
+
+[node name="Skittle1" type="RigidBody2D" parent="." unique_id=1234432415]
+z_index = 3
+position = Vector2(47, 2)
+script = ExtResource("2_bp6qb")
+
+[node name="Sprite2D" type="Sprite2D" parent="Skittle1" unique_id=82086478]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_amkg8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Skittle1" unique_id=668312180]
+position = Vector2(3, 1)
+shape = SubResource("CapsuleShape2D_amkg8")
+
+[node name="HealthComponent" type="Node" parent="Skittle1" unique_id=1520307740]
+script = ExtResource("2_amkg8")
+metadata/_custom_type_script = "uid://cpx55onwhthnb"
+
+[node name="Skittle2" type="RigidBody2D" parent="." unique_id=2129638489]
+z_index = 3
+script = ExtResource("2_bp6qb")
+
+[node name="Sprite2D" type="Sprite2D" parent="Skittle2" unique_id=268811462]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_amkg8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Skittle2" unique_id=1448969073]
+position = Vector2(3, 1)
+shape = SubResource("CapsuleShape2D_amkg8")
+
+[node name="HealthComponent" type="Node" parent="Skittle2" unique_id=541309654]
+script = ExtResource("2_amkg8")
+metadata/_custom_type_script = "uid://cpx55onwhthnb"
+
+[node name="Skittle3" type="RigidBody2D" parent="." unique_id=179116007]
+z_index = 3
+position = Vector2(94, 3)
+script = ExtResource("2_bp6qb")
+
+[node name="Sprite2D" type="Sprite2D" parent="Skittle3" unique_id=903315820]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_amkg8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Skittle3" unique_id=1399500312]
+position = Vector2(3, 1)
+shape = SubResource("CapsuleShape2D_amkg8")
+
+[node name="HealthComponent" type="Node" parent="Skittle3" unique_id=1796064903]
+script = ExtResource("2_amkg8")
+metadata/_custom_type_script = "uid://cpx55onwhthnb"
+
+[node name="Skittle4" type="RigidBody2D" parent="." unique_id=2110313349]
+z_index = 2
+position = Vector2(14, -2)
+script = ExtResource("2_bp6qb")
+
+[node name="Sprite2D" type="Sprite2D" parent="Skittle4" unique_id=651773842]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_amkg8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Skittle4" unique_id=1955021210]
+position = Vector2(3, 1)
+shape = SubResource("CapsuleShape2D_amkg8")
+
+[node name="HealthComponent" type="Node" parent="Skittle4" unique_id=2096689452]
+script = ExtResource("2_amkg8")
+metadata/_custom_type_script = "uid://cpx55onwhthnb"
+
+[node name="Skittle5" type="RigidBody2D" parent="." unique_id=1594331352]
+z_index = 2
+position = Vector2(56, 1)
+script = ExtResource("2_bp6qb")
+
+[node name="Sprite2D" type="Sprite2D" parent="Skittle5" unique_id=1513717599]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_amkg8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Skittle5" unique_id=1231464892]
+position = Vector2(3, 1)
+shape = SubResource("CapsuleShape2D_amkg8")
+
+[node name="HealthComponent" type="Node" parent="Skittle5" unique_id=1651945699]
+script = ExtResource("2_amkg8")
+metadata/_custom_type_script = "uid://cpx55onwhthnb"
+
+[node name="Skittle6" type="RigidBody2D" parent="." unique_id=1804944721]
+z_index = 2
+position = Vector2(104, 3)
+script = ExtResource("2_bp6qb")
+
+[node name="Sprite2D" type="Sprite2D" parent="Skittle6" unique_id=2055651796]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_amkg8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Skittle6" unique_id=1450249571]
+position = Vector2(3, 1)
+shape = SubResource("CapsuleShape2D_amkg8")
+
+[node name="HealthComponent" type="Node" parent="Skittle6" unique_id=1923821143]
+script = ExtResource("2_amkg8")
+metadata/_custom_type_script = "uid://cpx55onwhthnb"
+
+[node name="Skittle7" type="RigidBody2D" parent="." unique_id=1918456720]
+z_index = 1
+position = Vector2(34, -1)
+script = ExtResource("2_bp6qb")
+
+[node name="Sprite2D" type="Sprite2D" parent="Skittle7" unique_id=1283435156]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_amkg8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Skittle7" unique_id=378723705]
+position = Vector2(3, 1)
+shape = SubResource("CapsuleShape2D_amkg8")
+
+[node name="HealthComponent" type="Node" parent="Skittle7" unique_id=1065280239]
+script = ExtResource("2_amkg8")
+metadata/_custom_type_script = "uid://cpx55onwhthnb"
+
+[node name="Skittle8" type="RigidBody2D" parent="." unique_id=1038080358]
+z_index = 1
+position = Vector2(72, 2)
+script = ExtResource("2_bp6qb")
+
+[node name="Sprite2D" type="Sprite2D" parent="Skittle8" unique_id=1569887687]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_amkg8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Skittle8" unique_id=1278874845]
+position = Vector2(3, 1)
+shape = SubResource("CapsuleShape2D_amkg8")
+
+[node name="HealthComponent" type="Node" parent="Skittle8" unique_id=187538395]
+script = ExtResource("2_amkg8")
+metadata/_custom_type_script = "uid://cpx55onwhthnb"
+
+[node name="Skittle9" type="RigidBody2D" parent="." unique_id=1993939116]
+z_index = 1
+position = Vector2(118, 5)
+script = ExtResource("2_bp6qb")
+
+[node name="Sprite2D" type="Sprite2D" parent="Skittle9" unique_id=1036828525]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_amkg8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Skittle9" unique_id=1595386155]
+position = Vector2(3, 1)
+shape = SubResource("CapsuleShape2D_amkg8")
+
+[node name="HealthComponent" type="Node" parent="Skittle9" unique_id=1683819480]
+script = ExtResource("2_amkg8")
+metadata/_custom_type_script = "uid://cpx55onwhthnb"
+
+[node name="Skittle10" type="RigidBody2D" parent="." unique_id=1860402539]
+position = Vector2(-18, -1)
+script = ExtResource("2_bp6qb")
+
+[node name="Sprite2D" type="Sprite2D" parent="Skittle10" unique_id=1260832625]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_amkg8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Skittle10" unique_id=1835410609]
+position = Vector2(3, 1)
+shape = SubResource("CapsuleShape2D_amkg8")
+
+[node name="HealthComponent" type="Node" parent="Skittle10" unique_id=992127345]
+script = ExtResource("2_amkg8")
+metadata/_custom_type_script = "uid://cpx55onwhthnb"
+
+[connection signal="body_entered" from="Skittle1" to="Skittle1" method="_on_body_entered"]
+[connection signal="body_entered" from="Skittle2" to="Skittle2" method="_on_body_entered"]
+[connection signal="body_entered" from="Skittle3" to="Skittle3" method="_on_body_entered"]
+[connection signal="body_entered" from="Skittle4" to="Skittle4" method="_on_body_entered"]
+[connection signal="body_entered" from="Skittle5" to="Skittle5" method="_on_body_entered"]
+[connection signal="body_entered" from="Skittle6" to="Skittle6" method="_on_body_entered"]
+[connection signal="body_entered" from="Skittle7" to="Skittle7" method="_on_body_entered"]
+[connection signal="body_entered" from="Skittle8" to="Skittle8" method="_on_body_entered"]
+[connection signal="body_entered" from="Skittle9" to="Skittle9" method="_on_body_entered"]
+[connection signal="body_entered" from="Skittle10" to="Skittle10" method="_on_body_entered"]
