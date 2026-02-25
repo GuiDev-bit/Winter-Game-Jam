@@ -106,6 +106,9 @@ func active_game():  #check if game is active
 
 #state Transition
 func switch_state(to_state : STATE) :
+	if to_state == STATE.HIT :
+		if atk_cooldown_timer == 1000 :
+			return
 	active_state = to_state
 
 	#State specific thing that will run once when entering the state
@@ -150,7 +153,7 @@ func process_state(delta: float) ->void : #handle state-logique
 				attack_state_transition()
 
 		STATE.HIT :
-			if input_component.charged_bat :
+			if input_component.charged_bat and is_bat_charging :
 				_attack_with_bat()
 			bat_power_scale(delta)
 			check_attack_timer(delta)
@@ -223,6 +226,8 @@ func check_attack_timer(delta) : #gère la durée de l'attaque
 				attack_timer = attack_time
 				switch_state(STATE.FLOOR)
 				atk_cooldown_timer = atk_cooldown
+				use_secondweap = false
+
 
 func attack_state_transition(): #les conditions généralent pur switch vers attaque
 		if ! atk_cooldown_timer < 0 :
@@ -259,6 +264,7 @@ func _launch_secondary_weapon():
 			_attack_with_gloves()
 		Weapon.CANON :
 			_attack_with_canon()
+	
 
 func _attack_with_gloves():
 	gloves_data.direction = dir
