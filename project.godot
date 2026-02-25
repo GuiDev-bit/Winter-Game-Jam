@@ -23,6 +23,7 @@ config/features=PackedStringArray("4.6", "GL Compatibility")
 GameManager="*res://script/manager/game_manager.gd"
 AudioManager="*res://script/manager/audio_manager.gd"
 MatchManager="*uid://coaoeinnbyog8"
+AiManager="*uid://cnw0c8yukfane"
 
 [display]
 

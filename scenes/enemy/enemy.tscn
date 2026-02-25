@@ -3,26 +3,32 @@
 [ext_resource type="Script" uid="uid://dnqt4p122fui7" path="res://script/component/hurtbox_component.gd" id="1_4ra3w"]
 [ext_resource type="Script" uid="uid://c0m2p6i0nqp1j" path="res://script/enemy/enemy.gd" id="1_5uy6h"]
 [ext_resource type="Script" uid="uid://bxmkgxah4aht4" path="res://script/component/hitbox_component.gd" id="2_5uy6h"]
+[ext_resource type="Script" uid="uid://wcd5uqn0imo0" path="res://script/Ressources/attackressources/attack_data.gd" id="2_peoo5"]
 [ext_resource type="Script" uid="uid://cpx55onwhthnb" path="res://script/component/health_component.gd" id="3_c4w8v"]
 [ext_resource type="Texture2D" uid="uid://bhu2qnytf6p30" path="res://assets/enemy_assets/Sans_titre_428_20260224091336.png" id="4_4efjx"]
 [ext_resource type="Texture2D" uid="uid://bmf86khd6d1ux" path="res://assets/enemy_assets/Sans_titre_428_20260224110559.png" id="4_gl05p"]
 [ext_resource type="Texture2D" uid="uid://jhedm2y767if" path="res://assets/enemy_assets/Sans_titre_428_20260224110917.png" id="5_hvxgb"]
 [ext_resource type="Texture2D" uid="uid://c5wkedk4y5o0d" path="res://assets/enemy_assets/Sans_titre_428_20260224110610.png" id="6_peoo5"]
 [ext_resource type="Texture2D" uid="uid://b3up1efk7dha1" path="res://assets/enemy_assets/Sans_titre_428_20260224110550.png" id="8_2f3il"]
+[ext_resource type="Script" uid="uid://da52mkxllo62" path="res://script/component/movement_component.gd" id="10_hvxgb"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dtxhd"]
-radius = 28.0
-height = 122.0
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_so3kp"]
-radius = 33.0
-height = 124.0
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_c4w8v"]
-size = Vector2(55, 128)
+[sub_resource type="Resource" id="Resource_2f3il"]
+script = ExtResource("2_peoo5")
+damage = 1.0
+force = 2200.0
+direction = Vector2(1, -1)
+metadata/_custom_type_script = "uid://wcd5uqn0imo0"
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_tjssy"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_peoo5")
+}],
+"loop": true,
+"name": &"deccelerate",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("4_4efjx")
@@ -39,10 +45,7 @@ animations = [{
 "name": &"hit_bat",
 "speed": 5.0
 }, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("6_peoo5")
-}],
+"frames": [],
 "loop": true,
 "name": &"idle",
 "speed": 5.0
@@ -64,38 +67,63 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dtxhd"]
+radius = 28.0
+height = 122.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_so3kp"]
+radius = 33.0
+height = 124.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c4w8v"]
+size = Vector2(55, 128)
+
 [node name="Enemy" type="CharacterBody2D" unique_id=2023724772]
+collision_mask = 8
 script = ExtResource("1_5uy6h")
+bat_data = SubResource("Resource_2f3il")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1556801690]
+scale = Vector2(0.25, 0.249)
+sprite_frames = SubResource("SpriteFrames_tjssy")
+animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1589856721]
-position = Vector2(1359, 531)
 shape = SubResource("CapsuleShape2D_dtxhd")
-
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=256980461]
 
 [node name="HurtboxComponent" type="Area2D" parent="." unique_id=256924563 node_paths=PackedStringArray("health_comp")]
 script = ExtResource("1_4ra3w")
 health_comp = NodePath("../HealthComponent")
+team = 1
 metadata/_custom_type_script = "uid://dnqt4p122fui7"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent" unique_id=1565004791]
-position = Vector2(1360, 534)
 shape = SubResource("CapsuleShape2D_so3kp")
+debug_color = Color(0.31050387, 0.6160205, 0.34035134, 0.41960785)
 
-[node name="HitboxComponent" type="Area2D" parent="." unique_id=1477100562]
+[node name="HitboxComponent" type="Area2D" parent="." unique_id=1477100562 node_paths=PackedStringArray("shape")]
+collision_layer = 2
 script = ExtResource("2_5uy6h")
+shape = NodePath("CollisionShape2D")
+team = 1
 metadata/_custom_type_script = "uid://bxmkgxah4aht4"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent" unique_id=1735169367]
-position = Vector2(1414.5, 529)
+position = Vector2(84, 3)
 shape = SubResource("RectangleShape2D_c4w8v")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1556801690]
-position = Vector2(1356, 536)
-scale = Vector2(0.25, 0.249)
-sprite_frames = SubResource("SpriteFrames_tjssy")
-animation = &"hit_bat"
+debug_color = Color(0.89679736, 0.2700746, 0.43433076, 0.41960785)
 
 [node name="HealthComponent" type="Node" parent="." unique_id=348332743]
 script = ExtResource("3_c4w8v")
 metadata/_custom_type_script = "uid://cpx55onwhthnb"
+
+[node name="MovementComponement" type="Node" parent="." unique_id=165000179 node_paths=PackedStringArray("body")]
+script = ExtResource("10_hvxgb")
+body = NodePath("..")
+decceleration = 500
+metadata/_custom_type_script = "uid://da52mkxllo62"
+
+[node name="atkduration" type="Timer" parent="." unique_id=1626404383]
+
+[connection signal="area_entered" from="HitboxComponent" to="HitboxComponent" method="_on_area_entered"]
+[connection signal="timeout" from="atkduration" to="." method="_on_atkduration_timeout"]

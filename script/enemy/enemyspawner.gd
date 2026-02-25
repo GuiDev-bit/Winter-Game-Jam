@@ -14,7 +14,7 @@ func _process(delta: float) -> void:
 	spawn_timer += delta
 	if spawn_timer >= spawn_interval:
 		spawn_timer = 0.0
-		try_spawn()
+		#try_spawn()
 
 func try_spawn() -> void:
 	var current = get_tree().get_nodes_in_group("enemies").size()

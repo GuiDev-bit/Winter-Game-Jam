@@ -29,6 +29,7 @@ var aiming_cooldown : float = 0.0
 
 func _ready() -> void:
 	gravity_scale = gravity_scale_value
+	AiManager.get_ball_reference(self)
 
 func _physics_process(delta: float) -> void:
 	#active_game
