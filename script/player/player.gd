@@ -189,10 +189,13 @@ func update_animation() -> void:
 		STATE.FALL:
 			animated_sprite.play("fall")
 		STATE.HURT:
-			animated_sprite.play("idle")
+			animated_sprite.play("hurt")
 		STATE.HIT :
 			if is_bat_charging :
-				animated_sprite.play("hit_charge_bat")
+				if is_on_floor() :
+					animated_sprite.play("hit_charge_bat")
+				else :
+					animated_sprite.play("hit_charge_air")
 			else:
 				if use_secondweap :
 					play_correct_atk_anim()

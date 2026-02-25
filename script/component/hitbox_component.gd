@@ -5,10 +5,12 @@ class_name HitboxComponent
 @export var shape : CollisionShape2D
 enum Team {RED, BLUE, OTHER}
 @export var team : Team
-
+@export var always_active := false
 signal hit_something
 
 func _ready() -> void:
+	if always_active :
+		return
 	end_attack()
 
 func lunch_attack():
