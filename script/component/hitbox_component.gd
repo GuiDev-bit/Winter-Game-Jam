@@ -33,8 +33,9 @@ func _on_area_entered(area: Area2D) -> void:
 		emit_signal("hit_something")
 		end_attack()
 	if area is HurtboxComponent and area.get_parent() is Ball:
-		area.get_parent().set_player_nearby(true)
-		get_parent().ball_ref = area.get_parent()
+		#area.get_parent().set_player_nearby(true)
+		#get_parent().ball_ref = area.get_parent()
+		pass
 
 func _on_area_exited(area: Area2D) -> void:
 	if area is HurtboxComponent and area.get_parent() is Ball:

@@ -84,6 +84,8 @@ func process_state(delta: float) -> void:
 			if is_attacking == false : 
 				switch_state(STATE.IDLE)
 			movcomp.deccelerate(delta)
+			if not is_on_floor() :
+				movcomp.apply_gravity(delta)
 
 		STATE.HURT :
 			movcomp.actif_knockback(delta)
