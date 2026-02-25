@@ -5,6 +5,9 @@
 [ext_resource type="Script" uid="uid://bxmkgxah4aht4" path="res://script/component/hitbox_component.gd" id="2_82u2l"]
 [ext_resource type="Script" uid="uid://wcd5uqn0imo0" path="res://script/Ressources/attackressources/attack_data.gd" id="3_3tc41"]
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_82u2l"]
+bounce = 0.61
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_e2327"]
 radius = 59.093147
 
@@ -19,6 +22,7 @@ radius = 58.855755
 
 [node name="Snowball" type="RigidBody2D" unique_id=1254838951]
 collision_mask = 8
+physics_material_override = SubResource("PhysicsMaterial_82u2l")
 script = ExtResource("1_jybsw")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1235061466]

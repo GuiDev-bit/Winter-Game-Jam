@@ -1,7 +1,7 @@
 extends RigidBody2D
 class_name Snow
 
-var force := 2500
+var force := 2000
 @onready var hitbox = $HitboxComponent
 
 

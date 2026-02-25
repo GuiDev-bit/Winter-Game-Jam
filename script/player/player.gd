@@ -47,6 +47,7 @@ func _ready() -> void:
 	add_to_group("player")
 	switch_state(active_state)
 	GameManager.player_respawn.connect(_on_respawn)
+	AiManager.get_player_reference(self)
 	#crosshair.visible = false
 
 func _on_respawn(spawn_position: Vector2) -> void:
