@@ -58,7 +58,7 @@ func dash():
 	body.velocity.x = 400 * last_direction
 
 func apply_knockback(direction : Vector2, force : float, duration : float = 0.2 ):
-	force = clamp(force, 400 , 1000)
+	force = clamp(force, 500 , 800)
 	knockback = direction * force
 	knock_timer= duration
 

@@ -9,6 +9,9 @@ class_name Player
 @onready var crossair : Node2D = $Crossair
 
 
+var munition_max = 3
+var current_munition = 0
+
 #the weapons
 enum Weapon {GlOVES, CANON}
 @export var use_secondweap := false
@@ -48,6 +51,7 @@ func _ready() -> void:
 	switch_state(active_state)
 	GameManager.player_respawn.connect(_on_respawn)
 	AiManager.get_player_reference(self)
+	current_munition = munition_max
 	#crosshair.visible = false
 
 func _on_respawn(spawn_position: Vector2) -> void:
@@ -162,6 +166,8 @@ func process_state(delta: float) ->void : #handle state-logique
 
 		STATE.HURT :
 			move_component.actif_knockback(delta)
+			move_component.deccelerate(delta)
+			move_component.apply_gravity(delta)
 			if move_component.knock_timer <= 0:
 				switch_state(STATE.FALL)
 
@@ -278,12 +284,13 @@ func _attack_with_gloves():
 	atk_cooldown_timer = atk_cooldown
 
 func _attack_with_canon():
-	var snow : Snow = snow_ball_scene.instantiate()
-	print(snow.get_class())
-	snow.global_position = global_position
-	get_tree().current_scene.add_child(snow)
-	snow.hitbox.team = hitbox.team
-	snow.lunch_ball(get_direction_to_mouse())
+	if current_munition > 0 :
+		var snow : Snow = snow_ball_scene.instantiate()
+		snow.global_position = global_position
+		get_tree().current_scene.add_child(snow)
+		snow.hitbox.team = hitbox.team
+		snow.lunch_ball(get_direction_to_mouse())
+		current_munition -= 1
 	is_bat_charging = false
 
 func _attack_with_bat():
