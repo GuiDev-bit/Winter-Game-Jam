@@ -49,7 +49,6 @@ var ball_ref : Ball = null
 func _ready() -> void:
 	add_to_group("player")
 	switch_state(active_state)
-	GameManager.player_respawn.connect(_on_respawn)
 	AiManager.get_player_reference(self)
 	current_munition = munition_max
 	#crosshair.visible = false

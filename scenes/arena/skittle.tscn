@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://5llnbisxny5d"]
+
+[ext_resource type="Script" uid="uid://co7r8lr8chvmv" path="res://script/arena/skittle_new.gd" id="1_g7ku1"]
+[ext_resource type="Texture2D" uid="uid://v2graxi3ak7" path="res://assets/others/Sans_titre_424_20260222134253.png" id="2_srspx"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s8rk4"]
+radius = 85.0
+height = 464.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_23pv7"]
+radius = 93.0
+height = 478.0
+
+[node name="Skittle" type="RigidBody2D" unique_id=1897425450]
+collision_layer = 8
+collision_mask = 9
+script = ExtResource("1_g7ku1")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1471120047]
+position = Vector2(0, -25)
+texture = ExtResource("2_srspx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=955939090]
+position = Vector2(11, -15)
+shape = SubResource("CapsuleShape2D_s8rk4")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=942741134]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=599162455]
+position = Vector2(15, -15)
+shape = SubResource("CapsuleShape2D_23pv7")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

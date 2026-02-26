@@ -5,6 +5,7 @@ var ball : Ball
 var enemies = []
 var update_intervall := 0.5
 var timer = 0.0 
+var enemy_skittle : RigidBody2D
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	enemies = []

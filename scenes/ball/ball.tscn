@@ -11,7 +11,7 @@ bounce = 0.45
 radius = 30.016663
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_stoaj"]
-radius = 37.0
+radius = 43.046486
 
 [node name="Ball" type="RigidBody2D" unique_id=1539097515]
 collision_mask = 8

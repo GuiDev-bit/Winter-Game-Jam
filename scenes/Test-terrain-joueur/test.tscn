@@ -4,6 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://d3nd7funcfhcg" path="res://scenes/terrain/terrain.tscn" id="3_1mnxx"]
 [ext_resource type="PackedScene" uid="uid://bw1vhtrhep4ky" path="res://scenes/ball/ball.tscn" id="3_jexli"]
 [ext_resource type="PackedScene" uid="uid://dvpn2w6yufbyy" path="res://scenes/enemy/enemy.tscn" id="4_1mnxx"]
+[ext_resource type="Texture2D" uid="uid://biicvll1v04ba" path="res://assets/hud/Sans_titre_429_20260224150002.png" id="5_dfpif"]
+[ext_resource type="PackedScene" uid="uid://5llnbisxny5d" path="res://scenes/arena/skittle.tscn" id="6_5303q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jexli"]
 size = Vector2(218, 1783)
@@ -14,7 +16,7 @@ size = Vector2(218, 1783)
 position = Vector2(846, 332)
 
 [node name="Ball" parent="." unique_id=1539097515 instance=ExtResource("3_jexli")]
-position = Vector2(2880, 197)
+position = Vector2(1365, 61)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1752516894]
 collision_layer = 8
@@ -36,3 +38,30 @@ tile_map_data = PackedByteArray("AAD4/wUAAAAAAAAAAAD5/wUAAAABAAAAAAD6/wUAAAABAAA
 position = Vector2(1706, 449)
 
 [node name="Enemy2" parent="." unique_id=990288769 instance=ExtResource("4_1mnxx")]
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=2075136605]
+visible = false
+z_index = -1000
+offset_left = -1706.0
+offset_top = -1371.0
+offset_right = 10664.0
+offset_bottom = 5983.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_dfpif")
+stretch_mode = 1
+
+[node name="Enemy3" parent="." unique_id=341775706 instance=ExtResource("4_1mnxx")]
+type = 1
+
+[node name="Node2D" type="Node2D" parent="." unique_id=3314777]
+position = Vector2(3605, -160)
+
+[node name="Skittle" parent="." unique_id=1599060469 instance=ExtResource("6_5303q")]
+position = Vector2(3588, 256)
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=2035483749]
+z_index = -1000
+offset_left = -1609.0
+offset_top = -629.0
+offset_right = 4503.0
+offset_bottom = 2091.0

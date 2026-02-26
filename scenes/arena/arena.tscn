@@ -4,10 +4,11 @@
 [ext_resource type="PackedScene" uid="uid://d3nd7funcfhcg" path="res://scenes/terrain/terrain.tscn" id="2_8trdl"]
 [ext_resource type="Script" uid="uid://iic5sq83nkom" path="res://script/enemy/enemyspawner.gd" id="3_5tue2"]
 [ext_resource type="PackedScene" uid="uid://dvpn2w6yufbyy" path="res://scenes/enemy/enemy.tscn" id="4_aj7ud"]
-[ext_resource type="PackedScene" uid="uid://vl1loif6phtb" path="res://scenes/arena/skittle_group_left.tscn" id="5_jx0ua"]
-[ext_resource type="PackedScene" uid="uid://cxycancmggn3b" path="res://scenes/arena/skittle_groupe_right.tscn" id="6_u52cf"]
+[ext_resource type="PackedScene" uid="uid://5llnbisxny5d" path="res://scenes/arena/skittle.tscn" id="7_ii07k"]
 [ext_resource type="PackedScene" uid="uid://c3vj3s7xoi087" path="res://scenes/player/player.tscn" id="7_u52cf"]
+[ext_resource type="PackedScene" uid="uid://bc33e4giav80o" path="res://scenes/ui/hud.tscn" id="8_6w4xk"]
 [ext_resource type="PackedScene" uid="uid://bw1vhtrhep4ky" path="res://scenes/ball/ball.tscn" id="8_ii07k"]
+[ext_resource type="Script" uid="uid://d3iclx0vn8f01" path="res://player_spawn_point.gd" id="9_6w4xk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5tue2"]
 size = Vector2(213.5, 1117)
@@ -36,14 +37,39 @@ position = Vector2(1469, 534)
 script = ExtResource("3_5tue2")
 enemy_scene = ExtResource("4_aj7ud")
 
-[node name="SkittleGroupLeft" parent="." unique_id=1885399607 instance=ExtResource("5_jx0ua")]
-position = Vector2(50, 604)
-
-[node name="skittle_groupe_right" parent="." unique_id=579108516 instance=ExtResource("6_u52cf")]
-position = Vector2(1713, 607)
-
 [node name="Player" parent="." unique_id=1828741544 instance=ExtResource("7_u52cf")]
 position = Vector2(1047, 13)
 
 [node name="Ball" parent="." unique_id=1539097515 instance=ExtResource("8_ii07k")]
 position = Vector2(1225, -301)
+
+[node name="Skittle" parent="." unique_id=1599060469 instance=ExtResource("7_ii07k")]
+position = Vector2(168, 56)
+team = 1
+
+[node name="Skittle2" parent="." unique_id=1913140274 instance=ExtResource("7_ii07k")]
+position = Vector2(1712, 66)
+
+[node name="Hud" parent="." unique_id=617686044 instance=ExtResource("8_6w4xk")]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=530119779]
+position = Vector2(1721, -323)
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="." unique_id=2007654896]
+position = Vector2(181, -353)
+
+[node name="PinJoint2D" type="PinJoint2D" parent="." unique_id=115220246]
+position = Vector2(1726, -265)
+node_a = NodePath("../StaticBody2D")
+node_b = NodePath("../Skittle2")
+
+[node name="PlayerSpawn" type="Node2D" parent="." unique_id=395397356 node_paths=PackedStringArray("player")]
+position = Vector2(508, -441)
+script = ExtResource("9_6w4xk")
+player = NodePath("../Player")
+metadata/_custom_type_script = "uid://d3iclx0vn8f01"
+
+[node name="PinJoint2D2" type="PinJoint2D" parent="." unique_id=1495002259]
+position = Vector2(181, -353)
+node_a = NodePath("../StaticBody2D2")
+node_b = NodePath("../Skittle")
