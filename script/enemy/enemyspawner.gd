@@ -14,6 +14,7 @@ var enemy_quantities = {
 }
 
 func _ready():
+	GameManager.player_respawn.connect(Callable(self, "correct_pos") )
 	for type in enemy_quantities:
 		for i in range(enemy_quantities[type]):
 			spawn_enemy(type)
@@ -27,6 +28,21 @@ func spawn_enemy(type: Enemy.Type):
 	enemy_instance.global_position = spawn_points.pick_random().global_position
 	add_child(enemy_instance)
 
+
+func update_quantities_from_data(data: LevelData):
+	# On met à jour le dictionnaire interne du spawner avec les données de la ressource
+	enemy_quantities = {
+	Enemy.Type.BATTEUR: data.batteur_count,
+	Enemy.Type.BOXEUR: data.boxeur_count,
+	Enemy.Type.CANON : data.canon_count }
+	# On relance le spawn avec ces nouvelles valeurs
+	_ready()
+
 func start_respawn_cooldown(type: Enemy.Type):
 	get_tree().create_timer(respawn_cooldown).timeout.connect(spawn_enemy.bind(type))
 	#get_tree().current_scene.add_child.call_deferred(enemy)
+
+func correct_pos() :
+	for enemi in AiManager.enemies :
+		enemi.global_position = spawn_points.pick_random().global_position
+	
