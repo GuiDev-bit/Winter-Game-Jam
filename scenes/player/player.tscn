@@ -21,7 +21,7 @@
 [ext_resource type="Script" uid="uid://bxmkgxah4aht4" path="res://script/component/hitbox_component.gd" id="11_je7p5"]
 [ext_resource type="Texture2D" uid="uid://q0h8ew76sego" path="res://assets/hud/cross.png" id="13_gx1jg"]
 [ext_resource type="Script" uid="uid://dnqt4p122fui7" path="res://script/component/hurtbox_component.gd" id="16_myrg7"]
-[ext_resource type="Script" uid="uid://cebv5pv3ydqok" path="res://script/player/camera.gd" id="19_yj68g"]
+[ext_resource type="Script" path="res://script/player/camera.gd" id="19_yj68g"]
 
 [sub_resource type="Resource" id="Resource_gx1jg"]
 script = ExtResource("2_fm80t")
@@ -184,6 +184,155 @@ size = Vector2(90, 86)
 radius = 16.0
 height = 84.0
 
+[sub_resource type="Animation" id="Animation_yj68g"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.25, 0.25)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 3.5)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite2D:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ioxgp"]
+_data = {
+&"RESET": SubResource("Animation_yj68g")
+}
+
+[sub_resource type="Animation" id="Animation_cnsyf"]
+resource_name = "Idle"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 1.9333333),
+"transitions": PackedFloat32Array(0.5, 0.5, 0.5),
+"update": 0,
+"values": [Vector2(0.25, 0.25), Vector2(0.25, 0.23339844), Vector2(0.25, 0.25)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.0333333, 1.9333333),
+"transitions": PackedFloat32Array(0.5, 0.5, 0.5),
+"update": 0,
+"values": [Vector2(0, 3.5), Vector2(0, 7.75), Vector2(0, 3.5)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite2D:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(0.5),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_007i1"]
+resource_name = "Slide"
+length = 1.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.7666667, 1.4333333),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [Vector2(0.25, 0.25), Vector2(0.25, 0.2373047), Vector2(0.25, 0.25)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.7666667, 1.4333333),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [Vector2(0, 3.5), Vector2(0, 6.7500043), Vector2(0, 3.5)]
+}
+
+[sub_resource type="Animation" id="Animation_ioxgp"]
+resource_name = "sqash"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5),
+"transitions": PackedFloat32Array(0.5, 0.5, 0.5),
+"update": 0,
+"values": [Vector2(0, 3.5), Vector2(0.4999981, 14.250002), Vector2(0, 3.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5),
+"transitions": PackedFloat32Array(0.5, 0.5, 0.5),
+"update": 0,
+"values": [Vector2(0.25, 0.25), Vector2(0.31835938, 0.20800781), Vector2(0.25, 0.25)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6cv16"]
+_data = {
+&"Idle": SubResource("Animation_cnsyf"),
+&"Slide": SubResource("Animation_007i1"),
+&"sqash": SubResource("Animation_ioxgp")
+}
+
 [node name="Player" type="CharacterBody2D" unique_id=1828741544]
 collision_mask = 8
 floor_max_angle = 1.1013027
@@ -193,9 +342,10 @@ gloves_data = SubResource("Resource_fm80t")
 snow_canon_data = SubResource("Resource_ugbui")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=166587267]
+position = Vector2(0, 3.5)
 scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_p47bc")
-animation = &"hit_charge_air"
+animation = &"slide_a"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=34379545]
 position = Vector2(5, -3.5)
@@ -242,6 +392,10 @@ metadata/_custom_type_script = "uid://dnqt4p122fui7"
 position = Vector2(6, -1)
 shape = SubResource("CapsuleShape2D_kvlxm")
 debug_color = Color(0.26277184, 0.6149626, 0.44548863, 0.41960785)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1909316591]
+libraries/ = SubResource("AnimationLibrary_ioxgp")
+libraries/Entity = SubResource("AnimationLibrary_6cv16")
 
 [connection signal="area_entered" from="HitboxComponent" to="HitboxComponent" method="_on_area_entered"]
 [connection signal="area_exited" from="HitboxComponent" to="HitboxComponent" method="_on_area_exited"]
