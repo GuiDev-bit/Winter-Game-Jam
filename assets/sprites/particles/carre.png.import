@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c0mm3mb4ingf4"
-path="res://.godot/imported/étoile.png-5b6d17ca2900929eb1c9f3b387f0d583.ctex"
+uid="uid://l63qduocs4q2"
+path="res://.godot/imported/carre.png-29468295b127f8f22e3b218a42036825.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/particles/étoile.png"
-dest_files=["res://.godot/imported/étoile.png-5b6d17ca2900929eb1c9f3b387f0d583.ctex"]
+source_file="res://assets/sprites/particles/carre.png"
+dest_files=["res://.godot/imported/carre.png-29468295b127f8f22e3b218a42036825.ctex"]
 
 [params]
 

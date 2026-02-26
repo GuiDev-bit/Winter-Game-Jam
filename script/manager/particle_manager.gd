@@ -12,9 +12,9 @@ var cloud_tex : Texture2D
 
 func _ready() -> void:
 	circle_tex = load("res://assets/sprites/particles/boule.png")
-	star_tex = load("res://assets/sprites/particles/étoile.png")
+	star_tex = load("res://assets/sprites/particles/etoile.png")
 	sparkle_tex = load("res://assets/sprites/particles/jsp.png")
-	diamond_tex = load("res://assets/sprites/particles/carrépasdroit.png")
+	diamond_tex = load("res://assets/sprites/particles/carrepasdroit.png")
 	snowflake_tex = load("res://assets/sprites/particles/truc.png")
 	snowflake2_tex = load("res://assets/sprites/particles/trucchose.png")
 	cloud_tex = load("res://assets/sprites/particles/bouleneige.png")
