@@ -8,11 +8,11 @@ extends Control
 func _on_button_pressed() -> void:
 	# Niveau 1 = arena de base
 	GameManager.reset()
-	get_tree().change_scene_to_file("res://scenes/main/main.tscn")
+	Transition.change_scene("res://scenes/main/main.tscn")
 
 func _on_button_2_pressed() -> void:
 	# Niveau 2 à faire plus tard
 	pass
 
 func _on_back_pressed() -> void:
-	get_tree().change_scene_to_file("res://scenes/ui/main_menu.tscn")
+	Transition.change_scene("res://scenes/ui/main_menu.tscn")

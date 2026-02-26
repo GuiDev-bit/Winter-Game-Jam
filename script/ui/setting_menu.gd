@@ -26,4 +26,4 @@ func _on_reset_to_default_pressed() -> void:
 	SaveManager.save_volume(1.0, 1.0)
 
 func _on_back_pressed() -> void:
-	get_tree().change_scene_to_file("res://scenes/ui/main_menu.tscn")
+	Transition.change_scene("res://scenes/ui/main_menu.tscn")

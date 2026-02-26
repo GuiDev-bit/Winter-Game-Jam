@@ -349,3 +349,8 @@ func play_correct_atk_anim():
 			animated_sprite.play("hit_glove_a")
 		Weapon.CANON :
 			animated_sprite.play("canon")
+
+func flash_red() -> void:
+	animated_sprite.modulate = Color(1, 0, 0, 1)
+	await get_tree().create_timer(0.1).timeout
+	animated_sprite.modulate = Color(1, 1, 1, 1)

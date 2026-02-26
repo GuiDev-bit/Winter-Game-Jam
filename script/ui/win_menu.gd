@@ -16,8 +16,8 @@ func _ready() -> void:
 
 func _on_play_again_pressed() -> void:
 	GameManager.reset()
-	get_tree().change_scene_to_file("res://scenes/main/main.tscn")
+	Transition.change_scene("res://scenes/main/main.tscn")
 
 func _on_main_menu_pressed() -> void:
 	GameManager.reset()
-	get_tree().change_scene_to_file("res://scenes/ui/main_menu.tscn")
+	Transition.change_scene("res://scenes/ui/main_menu.tscn")
