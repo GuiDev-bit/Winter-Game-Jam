@@ -2,8 +2,6 @@ extends Control
 
 @onready var music_slider : HSlider = $HBoxContainer/VBoxContainer/Music/HSlider
 @onready var sfx_slider : HSlider = $HBoxContainer/VBoxContainer/SFX/HSlider
-@onready var back : TextureButton = $HBoxContainer/VBoxContainer/Back
-@onready var reset : Button = $"HBoxContainer/VBoxContainer/Reset to default"
 
 func _ready() -> void:
 	var volumes = SaveManager.load_volume()

@@ -1,10 +1,5 @@
 extends Control
 
-# Button et Button2 dans le GridContainer = niveau 1 et 2
-@onready var level1 : Button = $PanelContainer/VBoxContainer/GridContainer/Button
-@onready var level2 : Button = $PanelContainer/VBoxContainer/GridContainer/Button2
-@onready var back : TextureButton = $PanelContainer/VBoxContainer/Button
-
 func _on_button_pressed() -> void:
 	# Niveau 1 = arena de base
 	GameManager.reset()
@@ -16,3 +11,7 @@ func _on_button_2_pressed() -> void:
 
 func _on_back_pressed() -> void:
 	Transition.change_scene("res://scenes/ui/main_menu.tscn")
+
+
+func _on_go_pressed() -> void:
+	pass # Replace with function body.

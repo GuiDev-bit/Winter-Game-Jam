@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://k6r6x7to210p" path="res://assets/hud/UI_Button.png" id="1_jhogm"]
 [ext_resource type="Texture2D" uid="uid://vmug3ssx0wcb" path="res://assets/hud/UI_Credits.png" id="2_5irit"]
 [ext_resource type="Script" uid="uid://dtkkwhraawhw7" path="res://script/ui/level_selector.gd" id="2_lhagn"]
+[ext_resource type="Texture2D" uid="uid://2o16b27830s2" path="res://assets/hud/UI_Play.png" id="3_lhagn"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lhagn"]
 texture = ExtResource("1_jhogm")
@@ -36,47 +37,96 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=348457532]
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=39185145]
 layout_mode = 2
-size_flags_horizontal = 4
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="Level Selector" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=348457532]
+layout_mode = 2
+size_flags_horizontal = 8
 size_flags_vertical = 4
 theme_override_constants/separation = 100
 
-[node name="Label" type="Label" parent="PanelContainer/VBoxContainer" unique_id=602746684]
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/Level Selector" unique_id=602746684]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 100
 text = "Level Selector"
 horizontal_alignment = 1
 
-[node name="GridContainer" type="GridContainer" parent="PanelContainer/VBoxContainer" unique_id=205284586]
+[node name="GridContainer" type="GridContainer" parent="PanelContainer/MarginContainer/Level Selector" unique_id=205284586]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/h_separation = 50
 theme_override_constants/v_separation = 50
-columns = 3
 
-[node name="Button" type="Button" parent="PanelContainer/VBoxContainer/GridContainer" unique_id=689046480]
+[node name="Button" type="Button" parent="PanelContainer/MarginContainer/Level Selector/GridContainer" unique_id=689046480]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 100
 text = "1"
 
-[node name="Button2" type="Button" parent="PanelContainer/VBoxContainer/GridContainer" unique_id=215345912]
+[node name="Button2" type="Button" parent="PanelContainer/MarginContainer/Level Selector/GridContainer" unique_id=215345912]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 100
 text = "2"
 
-[node name="Button" type="TextureButton" parent="PanelContainer/VBoxContainer" unique_id=843049220]
+[node name="Level Info" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=582977258]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_constants/separation = 100
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/Level Info" unique_id=1259115473]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 100
+text = "Level Information"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="PanelContainer/MarginContainer/Level Info" unique_id=760927917]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "sdddddddddddasd asd asd asdssdasdasd asd asd asd asd asd asd asd asd as dasd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd "
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="GO" type="TextureButton" parent="PanelContainer/MarginContainer/Level Info" unique_id=1965595605]
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("3_lhagn")
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/Level Info/GO" unique_id=904630132]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -79.0
+offset_top = -59.5
+offset_right = 100.0
+offset_bottom = 77.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 100
+text = "GO!"
+
+[node name="Button" type="TextureButton" parent="PanelContainer/MarginContainer" unique_id=843049220]
 custom_minimum_size = Vector2(500, 200)
 layout_mode = 2
 size_flags_horizontal = 4
+size_flags_vertical = 8
 texture_normal = ExtResource("2_5irit")
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/Button" unique_id=535762204]
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/Button" unique_id=535762204]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -94,6 +144,7 @@ theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 100
 text = "Back"
 
-[connection signal="pressed" from="PanelContainer/VBoxContainer/GridContainer/Button" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="PanelContainer/VBoxContainer/GridContainer/Button2" to="." method="_on_button_2_pressed"]
-[connection signal="pressed" from="PanelContainer/VBoxContainer/Button" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/Level Selector/GridContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/Level Selector/GridContainer/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/Level Info/GO" to="." method="_on_go_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/Button" to="." method="_on_back_pressed"]

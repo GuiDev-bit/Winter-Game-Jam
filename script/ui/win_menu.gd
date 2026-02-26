@@ -1,8 +1,6 @@
 extends Control
 
 @onready var label : Label = $Panel/MarginContainer/VBoxContainer/Label
-@onready var play_again : Button = $"Panel/MarginContainer/VBoxContainer/HBoxContainer/Play Again"
-@onready var main_menu_btn : Button = $"Panel/MarginContainer/VBoxContainer/HBoxContainer/Main Menu"
 
 func _ready() -> void:
 	AudioManager.play_win_music()

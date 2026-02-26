@@ -1,9 +1,5 @@
 extends Control
 
-@onready var start : TextureButton = $VBoxContainer/Start
-@onready var settings : TextureButton = $VBoxContainer/Settings
-@onready var exit : TextureButton = $VBoxContainer/Exit
-
 func _ready() -> void:
 	AudioManager.play_menu_music()
 	Transition.fade_in_only()
