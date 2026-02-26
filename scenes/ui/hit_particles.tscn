@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://kkquqcxr5ijm"]
+
+[ext_resource type="Script" uid="uid://dk0crngcrepbk" path="res://script/ui/hit_particle.gd" id="1_egatg"]
+
+[node name="HitParticle" type="Node2D" unique_id=1895349870]
+script = ExtResource("1_egatg")
+
+[node name="Particle" type="GPUParticles2D" parent="." unique_id=470397949]

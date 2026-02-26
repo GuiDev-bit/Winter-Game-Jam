@@ -21,6 +21,7 @@
 [ext_resource type="Script" uid="uid://bxmkgxah4aht4" path="res://script/component/hitbox_component.gd" id="11_je7p5"]
 [ext_resource type="Texture2D" uid="uid://q0h8ew76sego" path="res://assets/hud/cross.png" id="13_gx1jg"]
 [ext_resource type="Script" uid="uid://dnqt4p122fui7" path="res://script/component/hurtbox_component.gd" id="16_myrg7"]
+[ext_resource type="Script" uid="uid://cebv5pv3ydqok" path="res://script/player/camera.gd" id="19_yj68g"]
 
 [sub_resource type="Resource" id="Resource_gx1jg"]
 script = ExtResource("2_fm80t")
@@ -211,6 +212,7 @@ script = ExtResource("2_dovo2")
 [node name="Camera2D" type="Camera2D" parent="." unique_id=522177963]
 zoom = Vector2(1.1, 1.1)
 position_smoothing_enabled = true
+script = ExtResource("19_yj68g")
 
 [node name="HitboxComponent" type="Area2D" parent="." unique_id=1138836252 node_paths=PackedStringArray("shape")]
 collision_layer = 2

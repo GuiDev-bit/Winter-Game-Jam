@@ -11,7 +11,10 @@ func _ready():
 func _process(_delta: float) -> void:
 	if GameManager.current_state == GameManager.GameState.PLAYING:
 		var time_left = int(GameManager.match_duration - GameManager.match_time)
-		timer_label.text = str(time_left)
+		@warning_ignore("integer_division")
+		var minutes : int = time_left / 60
+		var seconds : int = time_left % 60
+		timer_label.text = str(minutes) + ":" + ("%02d" % seconds)
 
 func _on_game_started():
 	update_score()

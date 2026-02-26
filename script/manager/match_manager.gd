@@ -1,5 +1,6 @@
 extends Node
 
+@export var match_duration : float = 120.0
 
 signal match_configured
 signal match_completed
@@ -13,7 +14,6 @@ enum MatchType {
 # Configuration du match
 var match_type : MatchType= MatchType.NORMAL
 var score_to_win : int = 5 # points pour gagner
-var match_duration : float = 60.0
 var storm_level : int = 0 
 
 # Teams

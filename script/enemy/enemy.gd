@@ -213,6 +213,7 @@ func apply_atk_timer(delta : float) :
 
 
 func _on_get_hit(data: AttackData) -> void:
+	flash_red()
 	movcomp.apply_knockback(data.direction, data.force)
 	switch_state(STATE.HURT)
 
@@ -239,3 +240,8 @@ func check_ball_jump(delta: float) -> void:
 		if randf() < jump_chance:
 			movcomp.jump()
 			jump_cooldown = 1.5
+
+func flash_red() -> void:
+	sprite.modulate = Color(1, 0, 0, 1)
+	await get_tree().create_timer(0.1).timeout
+	sprite.modulate = Color(1, 1, 1, 1)
