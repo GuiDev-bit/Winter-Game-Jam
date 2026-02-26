@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cijtiyy4m2b46" path="res://script/ui/main_menu.gd" id="1_m1kxf"]
 [ext_resource type="Texture2D" uid="uid://2o16b27830s2" path="res://assets/hud/UI_Play.png" id="1_sl1te"]
+[ext_resource type="Theme" uid="uid://be30gaya8c5ly" path="res://assets/hud/Theme.tres" id="1_uhagc"]
 [ext_resource type="Texture2D" uid="uid://vmug3ssx0wcb" path="res://assets/hud/UI_Credits.png" id="2_1g8jr"]
 [ext_resource type="Texture2D" uid="uid://cxhx25ojnwxge" path="res://assets/hud/UI_Quit.png" id="3_m1kxf"]
 [ext_resource type="Texture2D" uid="uid://biicvll1v04ba" path="res://assets/hud/Sans_titre_429_20260224150002.png" id="5_x2yvf"]
@@ -13,6 +14,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_uhagc")
 script = ExtResource("1_m1kxf")
 
 [node name="Background" type="TextureRect" parent="." unique_id=674624070]
@@ -50,10 +52,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -110.0
-offset_top = -48.0
-offset_right = 125.0
-offset_bottom = 89.0
+offset_left = -106.0
+offset_top = -31.0
+offset_right = 145.0
+offset_bottom = 106.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = -0.11377194
@@ -74,10 +76,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -120.0
-offset_top = -42.5
-offset_right = 115.0
-offset_bottom = 94.5
+offset_left = -128.0
+offset_top = -27.5
+offset_right = 119.0
+offset_bottom = 109.5
 grow_horizontal = 2
 grow_vertical = 2
 rotation = -0.01855011
@@ -98,10 +100,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -59.0
-offset_top = -44.5
-offset_right = 176.0
-offset_bottom = 92.5
+offset_left = -52.0
+offset_top = -30.5
+offset_right = 183.0
+offset_bottom = 106.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/outline_size = 10

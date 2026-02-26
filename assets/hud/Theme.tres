@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://egj6annk5t6i" path="res://assets/hud/UI_Hover.png" id="1_xghyi"]
 [ext_resource type="Texture2D" uid="uid://d3qpkgi46okbe" path="res://assets/hud/UI_Normal.png" id="2_f0and"]
 [ext_resource type="Texture2D" uid="uid://dcpuprcq88cgk" path="res://assets/hud/UI_Pressed.png" id="3_na0qg"]
+[ext_resource type="FontFile" uid="uid://dpc6gmfb05ope" path="res://assets/hud/Super Popstar.ttf" id="4_f0and"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_e6adr"]
 texture = ExtResource("1_xghyi")
@@ -26,6 +27,7 @@ texture_margin_right = 4.0
 texture_margin_bottom = 4.0
 
 [resource]
+default_font = ExtResource("4_f0and")
 Button/colors/font_color = Color(0, 0, 0, 1)
 Button/colors/font_hover_color = Color(1, 0, 0.23137255, 1)
 Button/colors/font_pressed_color = Color(1, 0, 0.23137255, 1)
