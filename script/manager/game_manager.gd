@@ -16,7 +16,7 @@ var has_already_scored := false
 
 var current_state : GameState = GameState.MENU
 var match_time : float = 0.0
-var match_duration : float = 60.0
+var match_duration : float = 120.0
 
 
 

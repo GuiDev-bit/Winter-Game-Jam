@@ -32,6 +32,9 @@ func _on_area_entered(area: Area2D) -> void:
 		area.damage(data_copy)
 		emit_signal("hit_something")
 		end_attack()
+		var player = get_tree().get_first_node_in_group("player")
+		if player and player.camera:
+			player.camera.shake(5.0, 0.2)
 	if area is HurtboxComponent and area.get_parent() is Ball:
 		#area.get_parent().set_player_nearby(true)
 		#get_parent().ball_ref = area.get_parent()

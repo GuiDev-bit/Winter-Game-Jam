@@ -7,6 +7,7 @@ class_name Player
 @onready var hitbox : HitboxComponent = $HitboxComponent
 @onready var crosshair : Sprite2D 
 @onready var crossair : Node2D = $Crossair
+@onready var camera : Camera2D = $Camera2D
 
 
 var munition_max = 3
@@ -339,6 +340,9 @@ func handle_air_physics(delta :float): #gère les déplacement lors d'une attaqu
 
 
 func _on_hurtbox_component_get_hit(data: AttackData) -> void:
+	flash_red()
+	camera.shake(6.0, 0.3)
+	ParticleManager.player_hit(global_position)
 	move_component.apply_knockback(data.direction, data.force)
 	switch_state(STATE.HURT)
 
@@ -354,3 +358,7 @@ func flash_red() -> void:
 	animated_sprite.modulate = Color(1, 0, 0, 1)
 	await get_tree().create_timer(0.1).timeout
 	animated_sprite.modulate = Color(1, 1, 1, 1)
+
+
+func trigger_end_chaos() -> void:
+	camera.end_game_chaos()
