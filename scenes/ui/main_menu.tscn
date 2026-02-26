@@ -18,9 +18,12 @@ theme = ExtResource("1_uhagc")
 script = ExtResource("1_m1kxf")
 
 [node name="Background" type="TextureRect" parent="." unique_id=674624070]
-layout_mode = 0
-offset_right = 1920.0
-offset_bottom = 1080.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("5_x2yvf")
 stretch_mode = 1
 
