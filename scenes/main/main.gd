@@ -3,6 +3,7 @@ extends Node2D
 func _ready() -> void:
 	GameManager.game_ended.connect(_on_game_ended)
 	GameManager.start_game()
+	AudioManager.play_game_music()
 	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 	
 func _process(_delta: float) -> void:

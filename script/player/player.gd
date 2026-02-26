@@ -295,6 +295,7 @@ func _attack_with_canon():
 	is_bat_charging = false
 
 func _attack_with_bat():
+		hitstop()
 		ParticleManager.charge_release(global_position)
 		bat_data.direction = get_direction_to_mouse()
 		hitbox.attack_data = bat_data
@@ -364,3 +365,8 @@ func flash_red() -> void:
 
 func trigger_end_chaos() -> void:
 	camera.end_game_chaos()
+
+func hitstop(duration: float = 0.08) -> void:
+	Engine.time_scale = 0.0
+	await get_tree().create_timer(duration, true).timeout
+	Engine.time_scale = 1.0

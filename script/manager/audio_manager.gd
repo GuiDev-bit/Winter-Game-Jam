@@ -6,8 +6,10 @@ var sfx_player : AudioStreamPlayer
 @export var menu_music : AudioStream
 @export var win_music : AudioStream
 @export var bat_hit_sfx : AudioStream
+@export var game_music : AudioStream
 
 func _ready() -> void:
+	game_music = load("res://assets/audio/SNOW IN YOUR HAND vf (2).ogg")
 	music_player = AudioStreamPlayer.new()
 	sfx_player = AudioStreamPlayer.new()
 	music_player.bus = "Music"
@@ -43,6 +45,9 @@ func play_menu_music() -> void:
 
 func play_win_music() -> void:
 	play_music(win_music)
+
+func play_game_music() -> void:
+	play_music(game_music)
 
 func play_bat_hit() -> void:
 	play_sfx(bat_hit_sfx)
