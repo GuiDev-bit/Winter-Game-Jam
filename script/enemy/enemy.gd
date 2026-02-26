@@ -9,6 +9,7 @@ class_name Enemy
 @export var jump_force : float = -900.0
 @export var ball_jump_range : float = 200.0
 @export var jump_chance : float = 0.5
+@export var speed = 300
 
 enum Type {BATTEUR, BOXEUR, CANON}
 @export var type : Type
@@ -17,6 +18,8 @@ enum Role {
 	STRIKER,
 	SUPPORT,
 }
+
+var idle_timer = 1.0
 
 var role : Role
 
@@ -64,6 +67,7 @@ func switch_state(to_state: STATE) -> void:
 
 	match active_state:
 		STATE.IDLE :
+			idle_timer = randf_range(0.5, 1.5)
 			execute_role()
 		STATE.ATTACK:
 			lunch_attack()
@@ -74,11 +78,17 @@ func switch_state(to_state: STATE) -> void:
 func process_state(delta: float) -> void:
 	match active_state:
 		STATE.IDLE:
+			movcomp.deccelerate(delta)
 			if not is_on_floor() :
 				movcomp.apply_gravity(delta)
+			if idle_timer > 0 :
+				idle_timer -= delta
+			if target  and idle_timer < 0 :
+				switch_state(STATE.CHASE)
 
 		STATE.CHASE:
 			chase(delta)
+			execute_role()
 
 		STATE.ATTACK:
 			if is_attacking == false : 
@@ -162,18 +172,20 @@ func check_direction_to_target() :
 func execute_role():
 	match role :
 		Role.STRIKER :
-			if type == Type.BATTEUR :
+			movcomp.max_speed = speed
+		Role.SUPPORT : 
+			movcomp.max_speed = 200
+	if type == Type.BATTEUR :
 				target = ball_ref
-			else :
+	else :
 				target = player_ref
-	if target :
-			switch_state(STATE.CHASE)
 
 
 func lunch_attack():
 	match  type :
 		Type.BATTEUR :
 			use_correct(bat_data)
+			update_last_dir()
 			hitbox.attack_data.direction = Vector2(last_dir, -1)
 		Type.BOXEUR :
 			use_correct(gloves_data)
@@ -183,7 +195,13 @@ func lunch_attack():
 	is_attacking = true
 	hitbox.lunch_attack()
 	atk_cooldown_timer = attack_cooldown
-	
+
+func update_last_dir():
+	if AiManager.enemy_skittle  :
+		if randf() < 0.2 :
+			pass
+		else :
+			last_dir = signf(AiManager.enemy_skittle.global_position.x - global_position.x)
 
 
 func apply_atk_timer(delta : float) :
@@ -214,8 +232,8 @@ func check_ball_jump(delta: float) -> void:
 	if type != Type.BATTEUR:  # seulement les batteurs sautent vers la balle
 		return
 	var dist = global_position.distance_to(ball_ref.global_position)
-	var ball_is_above = ball_ref.global_position.y < global_position.y - 30
-	var ball_not_too_high = ball_ref.global_position.y > global_position.y - 300
+	var ball_is_above = ball_ref.global_position.y > global_position.y + 30
+	var ball_not_too_high = ball_ref.global_position.y <  global_position.y + 300
 	if dist < ball_jump_range and ball_is_above and ball_not_too_high and jump_cooldown <= 0:
 		if randf() < jump_chance:
 			movcomp.jump()

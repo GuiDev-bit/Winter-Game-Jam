@@ -3,7 +3,7 @@ extends Node
 signal game_started
 signal game_ended
 signal goal_scored(team)
-signal player_respawn(position)
+signal player_respawn
 
 enum GameState {
 	MENU,
@@ -12,9 +12,14 @@ enum GameState {
 	GAME_OVER
 }
 
+var has_already_scored := false
+
 var current_state : GameState = GameState.MENU
 var match_time : float = 0.0
 var match_duration : float = 60.0
+
+
+
 
 var score_left : int = 0
 var score_right : int = 0
@@ -30,6 +35,7 @@ func start_game():
 	score_right = 0
 	match_time = 0.0
 	current_state = GameState.PLAYING
+	respawn_player()
 	emit_signal("game_started")
 
 func end_game():
@@ -37,17 +43,22 @@ func end_game():
 	emit_signal("game_ended")
 
 func add_goal(team: String) -> void:
+	if has_already_scored :
+		return
 	if team == "left":
 		score_left += 1
 	elif team == "right":
 		score_right += 1
 	emit_signal("goal_scored", team)
-	await get_tree().create_timer(1.0).timeout
+	has_already_scored = true
+	await get_tree().create_timer(2.0).timeout
 	respawn_player()
-	
+	has_already_scored = false
+
 func respawn_player():
-	emit_signal("player_respawn", Vector2(100, 0))
-	
+	player_respawn.emit()
+
+
 func reset() -> void:
 	score_left = 0
 	score_right = 0
