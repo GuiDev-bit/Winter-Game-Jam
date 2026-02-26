@@ -4,6 +4,3 @@
 
 [node name="HitParticle" type="Node2D" unique_id=1895349870]
 script = ExtResource("1_egatg")
-
-[node name="Particle" type="GPUParticles2D" parent="." unique_id=470397949]
-emitting = false

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="LevelData" format=3 uid="uid://dwkhohayon7m"]
+
+[ext_resource type="PackedScene" uid="uid://c14weyjqdmmqi" path="res://scenes/main/main.tscn" id="1_57l3u"]
+[ext_resource type="Script" uid="uid://dftm4j2bj838b" path="res://script/Ressources/Leveldata.gd" id="1_201j5"]
+
+[resource]
+script = ExtResource("1_201j5")
+level_name = "Niveau 2"
+map_scene = ExtResource("1_57l3u")
+batteur_count = 3
+boxeur_count = 2
+canon_count = 1
+metadata/_custom_type_script = "uid://dftm4j2bj838b"

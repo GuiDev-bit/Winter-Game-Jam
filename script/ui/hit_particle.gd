@@ -1,6 +1,10 @@
 extends Node2D
 
-@onready var particles : GPUParticles2D = $Particles
+var particles : GPUParticles2D
+
+func _ready() -> void:
+	particles = GPUParticles2D.new()
+	add_child(particles)
 
 func setup(sprite: Texture2D, color: Color, amount: int, spread: float, lifetime: float) -> void:
 	var mat := ParticleProcessMaterial.new()
@@ -12,14 +16,11 @@ func setup(sprite: Texture2D, color: Color, amount: int, spread: float, lifetime
 	mat.scale_min = 0.1
 	mat.scale_max = 0.3
 	mat.color = color
-	
 	particles.process_material = mat
 	particles.texture = sprite
 	particles.amount = amount
 	particles.lifetime = lifetime
 	particles.one_shot = true
 	particles.emitting = true
-	
-	# Se supprime automatiquement
 	await get_tree().create_timer(lifetime + 0.5).timeout
 	queue_free()
