@@ -32,7 +32,7 @@ var atk_cooldown_timer: float = 0.0
 
 var is_attacking := false
 
-
+var spawner_manager : EnemySpawner
 
 enum STATE { IDLE, CHASE, ATTACK, DEAD, HURT }
 var active_state : STATE = STATE.IDLE
