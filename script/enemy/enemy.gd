@@ -67,12 +67,13 @@ func switch_state(to_state: STATE) -> void:
 
 	match active_state:
 		STATE.IDLE :
-			idle_timer = randf_range(0.5, 1.5)
+			idle_timer = randf_range(1.5, 3.0)
 			execute_role()
 		STATE.ATTACK:
 			lunch_attack()
 		STATE.DEAD:
 			AiManager.quit_list(self)
+			spawner_manager.start_respawn_cooldown(type)
 			queue_free()
 
 func process_state(delta: float) -> void:
@@ -174,7 +175,7 @@ func execute_role():
 		Role.STRIKER :
 			movcomp.max_speed = speed
 		Role.SUPPORT : 
-			movcomp.max_speed = 200
+			movcomp.max_speed = 150
 	if type == Type.BATTEUR :
 				target = ball_ref
 	else :
