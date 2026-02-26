@@ -1,23 +1,10 @@
 [gd_scene format=3 uid="uid://dqj4obq8jriuf"]
 
-[ext_resource type="Texture2D" uid="uid://k6r6x7to210p" path="res://assets/hud/UI_Button.png" id="1_jhogm"]
+[ext_resource type="Theme" uid="uid://be30gaya8c5ly" path="res://assets/hud/Theme.tres" id="1_lhagn"]
 [ext_resource type="Texture2D" uid="uid://vmug3ssx0wcb" path="res://assets/hud/UI_Credits.png" id="2_5irit"]
 [ext_resource type="Script" uid="uid://dtkkwhraawhw7" path="res://script/ui/level_selector.gd" id="2_lhagn"]
+[ext_resource type="Texture2D" uid="uid://biicvll1v04ba" path="res://assets/hud/Sans_titre_429_20260224150002.png" id="3_84sm8"]
 [ext_resource type="Texture2D" uid="uid://2o16b27830s2" path="res://assets/hud/UI_Play.png" id="3_lhagn"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lhagn"]
-texture = ExtResource("1_jhogm")
-texture_margin_left = 24.0
-texture_margin_top = 24.0
-texture_margin_right = 24.0
-texture_margin_bottom = 24.0
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_84sm8"]
-
-[sub_resource type="Theme" id="Theme_cr31p"]
-Button/colors/font_color = Color(0, 0, 0, 1)
-Button/styles/normal = SubResource("StyleBoxTexture_lhagn")
-Button/styles/pressed = SubResource("StyleBoxTexture_84sm8")
 
 [node name="LevelSelector" type="Control" unique_id=2090920073]
 layout_mode = 3
@@ -26,7 +13,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = SubResource("Theme_cr31p")
+theme = ExtResource("1_lhagn")
 script = ExtResource("2_lhagn")
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=264648195]
@@ -36,6 +23,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer" unique_id=1582792549]
+layout_mode = 2
+texture = ExtResource("3_84sm8")
+stretch_mode = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=39185145]
 layout_mode = 2
