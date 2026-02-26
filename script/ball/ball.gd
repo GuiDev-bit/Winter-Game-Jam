@@ -50,7 +50,7 @@ func apply_force_to_ball(direction: Vector2, force: float) -> void:
 	
 	# --- puissance adaptative selon l’angle vertical ---
 	var vertical_factor = abs(dir.y)  # 0 = horizontal, 1 = vertical
-	var adjusted_force = lerp(force, force * 0.6, vertical_factor)
+	var adjusted_force = lerp(force, force * 0.55, vertical_factor)
 	
 	stop_ball_movement()
 	physics_material_override.bounce = 1.0

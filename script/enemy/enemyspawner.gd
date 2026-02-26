@@ -9,7 +9,7 @@ class_name EnemySpawner
 # On utilise les clés de l'enum directement
 var enemy_quantities = {
 	Enemy.Type.BATTEUR: 2,
-	Enemy.Type.BOXEUR: 0,
+	Enemy.Type.BOXEUR: 1,
 	Enemy.Type.CANON: 0
 }
 

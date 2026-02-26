@@ -17,7 +17,7 @@
 [sub_resource type="Resource" id="Resource_2f3il"]
 script = ExtResource("2_peoo5")
 damage = 1.0
-force = 1500.0
+force = 2000.0
 direction = Vector2(1, -1)
 metadata/_custom_type_script = "uid://wcd5uqn0imo0"
 
@@ -100,7 +100,7 @@ radius = 33.0
 height = 124.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c4w8v"]
-size = Vector2(55, 128)
+size = Vector2(81, 128)
 
 [node name="Enemy" type="CharacterBody2D" unique_id=2023724772]
 collision_mask = 8
@@ -113,7 +113,7 @@ gloves_data = SubResource("Resource_peoo5")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1556801690]
 scale = Vector2(0.25, 0.249)
 sprite_frames = SubResource("SpriteFrames_tjssy")
-animation = &"jump"
+animation = &"hit_bat"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1589856721]
 shape = SubResource("CapsuleShape2D_dtxhd")
@@ -136,7 +136,7 @@ team = 1
 metadata/_custom_type_script = "uid://bxmkgxah4aht4"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent" unique_id=1735169367]
-position = Vector2(84, 3)
+position = Vector2(74.5, 3)
 shape = SubResource("RectangleShape2D_c4w8v")
 debug_color = Color(0.89679736, 0.2700746, 0.43433076, 0.41960785)
 

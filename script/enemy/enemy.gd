@@ -199,7 +199,7 @@ func lunch_attack():
 
 func update_last_dir():
 	if AiManager.enemy_skittle  :
-		if randf() < 0.2 :
+		if randf() < 0.4 :
 			pass
 		else :
 			last_dir = signf(AiManager.enemy_skittle.global_position.x - global_position.x)
@@ -233,8 +233,8 @@ func check_ball_jump(delta: float) -> void:
 	if type != Type.BATTEUR:  # seulement les batteurs sautent vers la balle
 		return
 	var dist = global_position.distance_to(ball_ref.global_position)
-	var ball_is_above = ball_ref.global_position.y > global_position.y + 30
-	var ball_not_too_high = ball_ref.global_position.y <  global_position.y + 300
+	var ball_is_above = ball_ref.global_position.y  <global_position.y - 30
+	var ball_not_too_high = ball_ref.global_position.y >  global_position.y - 300
 	if dist < ball_jump_range and ball_is_above and ball_not_too_high and jump_cooldown <= 0:
 		if randf() < jump_chance:
 			movcomp.jump()
