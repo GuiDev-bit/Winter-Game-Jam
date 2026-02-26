@@ -1,8 +1,8 @@
 extends Control
 
-@onready var start : Button = $VBoxContainer/Start
-@onready var settings : Button = $VBoxContainer/Settings
-@onready var exit : Button = $VBoxContainer/Exit
+@onready var start : TextureButton = $VBoxContainer/Start
+@onready var settings : TextureButton = $VBoxContainer/Settings
+@onready var exit : TextureButton = $VBoxContainer/Exit
 
 func _ready() -> void:
 	AudioManager.play_menu_music()
