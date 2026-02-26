@@ -2,7 +2,7 @@ extends Control
 
 @onready var music_slider : HSlider = $HBoxContainer/VBoxContainer/Music/HSlider
 @onready var sfx_slider : HSlider = $HBoxContainer/VBoxContainer/SFX/HSlider
-@onready var back : Button = $HBoxContainer/VBoxContainer/Back
+@onready var back : TextureButton = $HBoxContainer/VBoxContainer/Back
 @onready var reset : Button = $"HBoxContainer/VBoxContainer/Reset to default"
 
 func _ready() -> void:

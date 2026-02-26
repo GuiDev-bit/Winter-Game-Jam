@@ -3,7 +3,7 @@ extends Control
 # Button et Button2 dans le GridContainer = niveau 1 et 2
 @onready var level1 : Button = $PanelContainer/VBoxContainer/GridContainer/Button
 @onready var level2 : Button = $PanelContainer/VBoxContainer/GridContainer/Button2
-@onready var back : Button = $PanelContainer/VBoxContainer/Button
+@onready var back : TextureButton = $PanelContainer/VBoxContainer/Button
 
 func _on_button_pressed() -> void:
 	# Niveau 1 = arena de base
