@@ -295,7 +295,7 @@ func _attack_with_canon():
 func _attack_with_bat():
 		bat_data.direction = get_direction_to_mouse()
 		hitbox.attack_data = bat_data
-		hitbox.attack_data.force = 2100* charge_attack_bat
+		hitbox.attack_data.force = 2400* charge_attack_bat
 		hitbox.lunch_attack()
 		#print(hitbox.attack_data.damage )
 		attack_timer = attack_time
