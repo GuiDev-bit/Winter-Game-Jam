@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c0mm3mb4ingf4"
-path="res://.godot/imported/Sans_titre_434_20260226123131.png-e17da227e66858eab94ba4e33fc82054.ctex"
+uid="uid://bkkgpkxyx1v40"
+path="res://.godot/imported/trucchose.png-1546e0a0f3e7134f5a4f4a9c807962f3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/particles/Sans_titre_434_20260226123131.png"
-dest_files=["res://.godot/imported/Sans_titre_434_20260226123131.png-e17da227e66858eab94ba4e33fc82054.ctex"]
+source_file="res://assets/sprites/particles/trucchose.png"
+dest_files=["res://.godot/imported/trucchose.png-1546e0a0f3e7134f5a4f4a9c807962f3.ctex"]
 
 [params]
 

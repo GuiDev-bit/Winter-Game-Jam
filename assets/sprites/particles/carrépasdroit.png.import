@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://l63qduocs4q2"
-path="res://.godot/imported/Sans_titre_434_20260226124039.png-9287226cf3530d78abb5290743de79b7.ctex"
+uid="uid://yw8maxdy12b4"
+path="res://.godot/imported/carrépasdroit.png-7459ff4c60bfa4ed3ee9cbded349f243.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/particles/Sans_titre_434_20260226124039.png"
-dest_files=["res://.godot/imported/Sans_titre_434_20260226124039.png-9287226cf3530d78abb5290743de79b7.ctex"]
+source_file="res://assets/sprites/particles/carrépasdroit.png"
+dest_files=["res://.godot/imported/carrépasdroit.png-7459ff4c60bfa4ed3ee9cbded349f243.ctex"]
 
 [params]
 

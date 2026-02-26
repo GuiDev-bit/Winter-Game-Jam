@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dgo0q772868fq"
-path="res://.godot/imported/Sans_titre_434_20260226122930.png-4380abb22550b81679d32a4442f8952e.ctex"
+uid="uid://h0h61yor2v3f"
+path="res://.godot/imported/bouleneige.png-59871042aee1b683179626358b2ee852.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/particles/Sans_titre_434_20260226122930.png"
-dest_files=["res://.godot/imported/Sans_titre_434_20260226122930.png-4380abb22550b81679d32a4442f8952e.ctex"]
+source_file="res://assets/sprites/particles/bouleneige.png"
+dest_files=["res://.godot/imported/bouleneige.png-59871042aee1b683179626358b2ee852.ctex"]
 
 [params]
 

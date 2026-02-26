@@ -2,28 +2,28 @@ extends Node
 
 const HIT_PARTICLES = preload("res://scenes/ui/hit_particles.tscn")
 
-# Sprites
 var circle_tex : Texture2D
 var star_tex : Texture2D
 var sparkle_tex : Texture2D
 var diamond_tex : Texture2D
-var cloud_tex : Texture2D
 var snowflake_tex : Texture2D
+var snowflake2_tex : Texture2D
+var cloud_tex : Texture2D
 
 func _ready() -> void:
-	circle_tex = load("res://assets/sprites/particles/circle.png")
-	star_tex = load("res://assets/sprites/particles/star.png")
-	sparkle_tex = load("res://assets/sprites/particles/sparkle.png")
-	diamond_tex = load("res://assets/sprites/particles/diamond.png")
-	cloud_tex = load("res://assets/sprites/particles/cloud.png")
-	snowflake_tex = load("res://assets/sprites/particles/snowflake.png")
+	circle_tex = load("res://assets/sprites/particles/boule.png")
+	star_tex = load("res://assets/sprites/particles/étoile.png")
+	sparkle_tex = load("res://assets/sprites/particles/jsp.png")
+	diamond_tex = load("res://assets/sprites/particles/carrépasdroit.png")
+	snowflake_tex = load("res://assets/sprites/particles/truc.png")
+	snowflake2_tex = load("res://assets/sprites/particles/trucchose.png")
+	cloud_tex = load("res://assets/sprites/particles/bouleneige.png")
 
 func spawn(pos: Vector2, sprite: Texture2D, color: Color, amount: int = 8, spread: float = 45.0, lifetime: float = 0.4) -> void:
 	var p = HIT_PARTICLES.instantiate()
 	get_tree().current_scene.add_child(p)
 	p.global_position = pos
 	p.setup(sprite, color, amount, spread, lifetime)
-
 
 func player_hit(pos: Vector2) -> void:
 	spawn(pos, circle_tex, Color(1, 0.2, 0.2), 10, 360)
