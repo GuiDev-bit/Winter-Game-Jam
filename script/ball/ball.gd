@@ -69,6 +69,7 @@ func apply_squash_stretch() -> void:
 	sprite.scale = sprite.scale.lerp(Vector2(base_scale.x * squash, base_scale.y * stretch), 0.3)
 
 func _on_body_entered(_body: Node) -> void:
+	ParticleManager.ball_hit(global_position)
 	#print("collision avec: ", _body.name)
 	var impact_strength = previous_velocity.length() / bounce_force
 	var squash = 1.0 + impact_strength * squash_amount

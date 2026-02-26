@@ -122,6 +122,7 @@ func switch_state(to_state : STATE) :
 			pass
 		STATE.JUMP :
 			move_component.jump()
+			ParticleManager.jump_puff(global_position + Vector2(0, 30))
 			if input_component.x_input != 0:
 				velocity.x = 500 * input_component.x_input
 		STATE.FLOOR :
@@ -184,7 +185,7 @@ func update_animation() -> void:
 				if move_component.direction == 0 : #je check quand il dérape
 					animated_sprite.play("friction")
 				elif  move_component.direction * velocity.x  < 0 :
-					#animated_sprite.play("slide_transition") 
+					ParticleManager.slide_dust(global_position + Vector2(0, 20))
 					pick_random_slide()
 				else :
 					animated_sprite.play(current_slide)
@@ -294,6 +295,7 @@ func _attack_with_canon():
 	is_bat_charging = false
 
 func _attack_with_bat():
+		ParticleManager.charge_release(global_position)
 		bat_data.direction = get_direction_to_mouse()
 		hitbox.attack_data = bat_data
 		hitbox.attack_data.force = 2400* charge_attack_bat

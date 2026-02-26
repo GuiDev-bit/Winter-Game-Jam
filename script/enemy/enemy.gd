@@ -214,6 +214,7 @@ func apply_atk_timer(delta : float) :
 
 func _on_get_hit(data: AttackData) -> void:
 	flash_red()
+	ParticleManager.enemy_hit(global_position)
 	movcomp.apply_knockback(data.direction, data.force)
 	switch_state(STATE.HURT)
 
