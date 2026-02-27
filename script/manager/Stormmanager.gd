@@ -65,6 +65,7 @@ func change_state(new_state: StormState) -> void:
 			ball_force_multiplier = STORM_MULTIPLIER
 			print("Temps écoulé (", time_elapsed, "s) -> La tempête commence (STORM) !")
 		StormState.EXTREME:
+			ball_force_multiplier = EXTREME_MULTIPLIER
 			print("Temps écoulé (", time_elapsed, "s) -> C'est la fin du monde (EXTREME) !")
 			
 	# On avertit tout le reste du jeu que la tempête a changé

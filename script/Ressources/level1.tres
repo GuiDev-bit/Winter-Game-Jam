@@ -5,5 +5,8 @@
 
 [resource]
 script = ExtResource("1_i3xlq")
+level_name = "Été"
+level_description = "Pas de tempête, parfait pour débuter !"
 map_scene = ExtResource("1_po2n0")
+max_storm_level = 0
 metadata/_custom_type_script = "uid://dftm4j2bj838b"
