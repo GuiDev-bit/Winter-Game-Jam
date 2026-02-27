@@ -26,10 +26,10 @@ buses/default_bus_layout="uid://dna3hidt0jtib"
 
 GameManager="*res://script/manager/game_manager.gd"
 MatchManager="*uid://coaoeinnbyog8"
+AiManager="*uid://cnw0c8yukfane"
 LevelManager="*uid://tdhtb5yio6f6"
 AudioManager="*res://script/manager/audio_manager.gd"
 SaveManager="*uid://cjws4nr77wrlf"
-AiManager="*uid://cnw0c8yukfane"
 Transition="*uid://c1rjnpxl2syff"
 ParticleManager="*uid://c2hyed1hnda5v"
 

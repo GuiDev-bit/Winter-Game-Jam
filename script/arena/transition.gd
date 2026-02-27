@@ -22,6 +22,20 @@ func change_scene(path: String) -> void:
 	await t2.finished
 	rect.visible = false
 
+
+func change_scene_packed(path: PackedScene) -> void:
+	rect.visible = true
+	var t = create_tween()
+	t.tween_property(rect, "color", Color(0,0,0,1), 0.4)
+	await t.finished
+	get_tree().change_scene_to_packed(path)
+	await get_tree().process_frame
+	var t2 = create_tween()
+	t2.tween_property(rect, "color", Color(0,0,0,0), 0.4)
+	await t2.finished
+	rect.visible = false
+
+
 func fade_in_only() -> void:
 	rect.visible = true
 	rect.color = Color(0, 0, 0, 1)

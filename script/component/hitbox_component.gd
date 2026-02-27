@@ -31,7 +31,8 @@ func _on_area_entered(area: Area2D) -> void:
 		var data_copy = attack_data 
 		area.damage(data_copy)
 		emit_signal("hit_something")
-		end_attack()
+		if not always_active :
+			end_attack()
 		var player = get_tree().get_first_node_in_group("player")
 		if player and player.camera:
 			player.camera.shake(5.0, 0.2)

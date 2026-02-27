@@ -16,6 +16,7 @@ func _process(delta: float) -> void:
 	update_roles()
 
 
+
 func register_enemy(enemy : Enemy) :
 	enemies.append(enemy)
 
@@ -23,6 +24,17 @@ func quit_list(enemy : Enemy) :
 	enemies.erase(enemy)
 
 func update_roles():
+	# 1. SÉCURITÉ : Vérifier si la balle et le joueur existent toujours dans la mémoire
+	if not is_instance_valid(ball) or not is_instance_valid(player):
+		return # On coupe la fonction ici, on ne fait rien !
+
+	# 2. SÉCURITÉ : Nettoyer la liste au cas où des ennemis fantômes (détruits par le changement de scène) y seraient encore
+	enemies = enemies.filter(func(e): return is_instance_valid(e))
+
+	if enemies.is_empty():
+		return
+	
+	
 	# --- BATTEURS ---
 	var batteurs = enemies.filter(func(e):
 		return e.type == e.Type.BATTEUR
@@ -37,7 +49,7 @@ func update_roles():
 	for i in range(batteurs.size()):
 		if i == 0:
 			batteurs[i].role = batteurs[i].Role.STRIKER
-			
+
 
 
 		else:

@@ -95,11 +95,11 @@ script = ExtResource("9_6w4xk")
 player = NodePath("../../Player")
 metadata/_custom_type_script = "uid://d3iclx0vn8f01"
 
-[node name="EnemySpawner" parent="spawner" unique_id=1221298138 node_paths=PackedStringArray("spawn_points") instance=ExtResource("9_2ml6w")]
-position = Vector2(-181, 353)
-spawn_points = [NodePath("../../Points/Marker2D"), NodePath("../../Points/Marker2D2")]
-
 [node name="Ball_spawner" type="Node2D" parent="spawner" unique_id=1577818192 node_paths=PackedStringArray("ball")]
 position = Vector2(551, -158)
 script = ExtResource("10_2ml6w")
 ball = NodePath("../../Ball")
+
+[node name="EnemySpawner" parent="spawner" unique_id=1221298138 node_paths=PackedStringArray("spawn_points") instance=ExtResource("9_2ml6w")]
+position = Vector2(-181, 353)
+spawn_points = [NodePath("../../Points/Marker2D"), NodePath("../../Points/Marker2D2")]

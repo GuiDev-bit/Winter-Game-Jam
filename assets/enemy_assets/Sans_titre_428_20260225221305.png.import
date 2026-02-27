@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c0mm3mb4ingf4"
-path="res://.godot/imported/étoile.png-5b6d17ca2900929eb1c9f3b387f0d583.ctex"
+uid="uid://dhduu4vnsg0a4"
+path="res://.godot/imported/Sans_titre_428_20260225221305.png-48b737eaf4840ee27f72e3b2ad37c462.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/particles/étoile.png"
-dest_files=["res://.godot/imported/étoile.png-5b6d17ca2900929eb1c9f3b387f0d583.ctex"]
+source_file="res://assets/enemy_assets/Sans_titre_428_20260225221305.png"
+dest_files=["res://.godot/imported/Sans_titre_428_20260225221305.png-48b737eaf4840ee27f72e3b2ad37c462.ctex"]
 
 [params]
 

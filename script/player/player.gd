@@ -8,7 +8,7 @@ class_name Player
 @onready var crosshair : Sprite2D 
 @onready var crossair : Node2D = $Crossair
 @onready var camera : Camera2D = $Camera2D
-
+@onready var anim : AnimationPlayer = $AnimationPlayer
 
 var munition_max = 3
 var current_munition = 0
@@ -122,6 +122,7 @@ func switch_state(to_state : STATE) :
 			pass
 		STATE.JUMP :
 			move_component.jump()
+			anim.play("Entity/scretch")
 			ParticleManager.jump_puff(global_position + Vector2(0, 30))
 			if input_component.x_input != 0:
 				velocity.x = 500 * input_component.x_input
@@ -137,7 +138,10 @@ func process_state(delta: float) ->void : #handle state-logique
 			move_component.apply_gravity(delta, 1.3)
 			move_component.air_slide(delta)
 			if is_on_floor() :
+				anim.play("Entity/sqash")
+				ParticleManager.jump_puff(global_position + Vector2(0, 30))
 				switch_state(STATE.FLOOR)
+
 			else :
 				attack_state_transition()
 
@@ -185,10 +189,12 @@ func update_animation() -> void:
 				if move_component.direction == 0 : #je check quand il dérape
 					animated_sprite.play("friction")
 				elif  move_component.direction * velocity.x  < 0 :
-					ParticleManager.slide_dust(global_position + Vector2(0, 20))
+					
 					pick_random_slide()
 				else :
+					ParticleManager.slide_dust(global_position + Vector2(0, 50))
 					animated_sprite.play(current_slide)
+					anim.play("Entity/Slide")
 			else:
 				animated_sprite.play("idle")
 		STATE.JUMP:
@@ -332,7 +338,10 @@ func handle_air_physics(delta :float): #gère les déplacement lors d'une attaqu
 		if is_bat_charging : 
 			move_component.deccelerate(delta)
 		else : 
-			move_component.dash()
+			if use_secondweap and secondary_weapon == Weapon.CANON :
+				move_component.dash(-1.0)
+			else :
+				move_component.dash()
 	else :
 		if velocity.y >=   0 :
 			move_component.apply_gravity(delta, 1.3)
@@ -367,6 +376,29 @@ func trigger_end_chaos() -> void:
 	camera.end_game_chaos()
 
 func hitstop(duration: float = 0.08) -> void:
-	Engine.time_scale = 0.0
+	Engine.time_scale = 0.5
 	await get_tree().create_timer(duration, true).timeout
 	Engine.time_scale = 1.0
+
+
+func play_right_anim():
+	pass
+
+
+func _on_animated_sprite_2d_animation_changed() -> void: 
+	if animated_sprite.animation != "jump" or animated_sprite.animation != "idle" :
+		if animated_sprite.animation == "hit_bat" :
+			anim.play("Entity/scretch")
+		else :
+			anim.play("Entity/sqash")
+		
+
+
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "sqash" or anim_name == "scretch" :
+			if animated_sprite.animation == "idle" :
+				anim.play("Entity/Idle")
+				print(223)
+			elif active_state == STATE.FLOOR : 
+				anim.play("Entity/Slide")

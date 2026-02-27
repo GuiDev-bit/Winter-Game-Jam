@@ -16,8 +16,6 @@ func _ready() -> void:
 func lunch_ball(  direction : Vector2):
 	apply_impulse(direction * force)
 
-func _on_hitbox_component_hit_something() -> void:
-	queue_free()
 
 
 func _on_timer_timeout() -> void:
