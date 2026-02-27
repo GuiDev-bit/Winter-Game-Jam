@@ -34,23 +34,33 @@ func start_game():
 	score_left = 0
 	score_right = 0
 	match_time = 0.0
+	match_duration = MatchManager.match_duration
 	current_state = GameState.PLAYING
 	respawn_player()
 	emit_signal("game_started")
 
 func end_game():
 	current_state = GameState.GAME_OVER
+	
 	emit_signal("game_ended")
+	MatchManager._on_game_ended()
 
 func add_goal(team: String) -> void:
 	if has_already_scored :
 		return
 	if team == "left":
 		score_left += 1
+		MatchManager.team_left_score = score_left
 	elif team == "right":
 		score_right += 1
+		MatchManager.team_right_score = score_right
 	emit_signal("goal_scored", team)
 	has_already_scored = true
+	# Vérification de la victoire via l'autre Autoload
+	var winner = MatchManager.check_win_condition()
+	if winner != "":
+		end_game()
+		return
 	await get_tree().create_timer(2.0).timeout
 	respawn_player()
 	has_already_scored = false

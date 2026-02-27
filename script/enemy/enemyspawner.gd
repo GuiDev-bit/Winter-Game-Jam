@@ -8,13 +8,15 @@ class_name EnemySpawner
 
 # On utilise les clés de l'enum directement
 var enemy_quantities = {
-	Enemy.Type.BATTEUR: 2,
-	Enemy.Type.BOXEUR: 1,
+	Enemy.Type.BATTEUR: 0,
+	Enemy.Type.BOXEUR: 0,
 	Enemy.Type.CANON: 0
 }
 
 func _ready():
 	GameManager.player_respawn.connect(Callable(self, "correct_pos") )
+	LevelManager.spawner = self
+	LevelManager._initialize_level_spawner()
 	for type in enemy_quantities:
 		for i in range(enemy_quantities[type]):
 			spawn_enemy(type)
@@ -36,13 +38,14 @@ func update_quantities_from_data(data: LevelData):
 	Enemy.Type.BOXEUR: data.boxeur_count,
 	Enemy.Type.CANON : data.canon_count }
 	# On relance le spawn avec ces nouvelles valeurs
-	_ready()
+
 
 func start_respawn_cooldown(type: Enemy.Type):
 	get_tree().create_timer(respawn_cooldown).timeout.connect(spawn_enemy.bind(type))
 	#get_tree().current_scene.add_child.call_deferred(enemy)
 
-func correct_pos() :
-	for enemi in AiManager.enemies :
-		enemi.global_position = spawn_points.pick_random().global_position
-	
+func correct_pos():
+	for enemi in AiManager.enemies:
+		# is_instance_valid est ton meilleur ami ici
+		if is_instance_valid(enemi) and enemi.is_inside_tree():
+			enemi.global_position = spawn_points.pick_random().global_position

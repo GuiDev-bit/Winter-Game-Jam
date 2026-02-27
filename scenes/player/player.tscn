@@ -366,6 +366,7 @@ _data = {
 collision_mask = 8
 floor_max_angle = 1.1013027
 script = ExtResource("1_8afob")
+secondary_weapon = 1
 bat_data = SubResource("Resource_gx1jg")
 gloves_data = SubResource("Resource_fm80t")
 snow_canon_data = SubResource("Resource_ugbui")
@@ -375,7 +376,7 @@ position = Vector2(0, 3.5)
 scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_p47bc")
 animation = &"idle"
-frame_progress = 0.8725358
+frame_progress = 0.89438206
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=34379545]
 position = Vector2(5, -3.5)
@@ -390,7 +391,7 @@ max_speed = 500
 script = ExtResource("2_dovo2")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=522177963]
-zoom = Vector2(1.1, 1.1)
+zoom = Vector2(1.5, 1.5)
 position_smoothing_enabled = true
 script = ExtResource("19_yj68g")
 

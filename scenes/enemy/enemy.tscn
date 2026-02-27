@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://c0m2p6i0nqp1j" path="res://script/enemy/enemy.gd" id="1_5uy6h"]
 [ext_resource type="Script" uid="uid://bxmkgxah4aht4" path="res://script/component/hitbox_component.gd" id="2_5uy6h"]
 [ext_resource type="Script" uid="uid://wcd5uqn0imo0" path="res://script/Ressources/attackressources/attack_data.gd" id="2_peoo5"]
+[ext_resource type="Texture2D" uid="uid://tpe4fmqy44vh" path="res://assets/enemy_assets/Sans_titre_428_20260224185226.png" id="3_5woo5"]
 [ext_resource type="Script" uid="uid://cpx55onwhthnb" path="res://script/component/health_component.gd" id="3_c4w8v"]
 [ext_resource type="Texture2D" uid="uid://bhu2qnytf6p30" path="res://assets/enemy_assets/Sans_titre_428_20260224091336.png" id="4_4efjx"]
 [ext_resource type="Texture2D" uid="uid://bmf86khd6d1ux" path="res://assets/enemy_assets/Sans_titre_428_20260224110559.png" id="4_gl05p"]
@@ -12,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://c5wkedk4y5o0d" path="res://assets/enemy_assets/Sans_titre_428_20260224110610.png" id="6_peoo5"]
 [ext_resource type="Texture2D" uid="uid://bvfkamuglhpe7" path="res://assets/enemy_assets/Sans_titre_428_20260224190922.png" id="7_so3kp"]
 [ext_resource type="Texture2D" uid="uid://b3up1efk7dha1" path="res://assets/enemy_assets/Sans_titre_428_20260224110550.png" id="8_2f3il"]
+[ext_resource type="Texture2D" uid="uid://dhduu4vnsg0a4" path="res://assets/enemy_assets/Sans_titre_428_20260225221305.png" id="9_pb0yv"]
 [ext_resource type="Script" uid="uid://da52mkxllo62" path="res://script/component/movement_component.gd" id="10_hvxgb"]
 
 [sub_resource type="Resource" id="Resource_2f3il"]
@@ -29,6 +31,14 @@ metadata/_custom_type_script = "uid://wcd5uqn0imo0"
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_tjssy"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_5woo5")
+}],
+"loop": true,
+"name": &"canon",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("6_peoo5")
@@ -69,7 +79,10 @@ animations = [{
 "name": &"hurt",
 "speed": 5.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_pb0yv")
+}],
 "loop": true,
 "name": &"idle",
 "speed": 5.0
@@ -113,7 +126,7 @@ gloves_data = SubResource("Resource_peoo5")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1556801690]
 scale = Vector2(0.25, 0.249)
 sprite_frames = SubResource("SpriteFrames_tjssy")
-animation = &"hit_bat"
+animation = &"canon"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1589856721]
 shape = SubResource("CapsuleShape2D_dtxhd")

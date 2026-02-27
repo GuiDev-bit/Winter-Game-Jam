@@ -35,6 +35,7 @@ func setup_tutorial() -> void:
 
 func check_win_condition() -> String:
 	if team_left_score >= score_to_win:
+		emit_signal("match_completed")
 		return "left"
 	elif team_right_score >= score_to_win:
 		emit_signal("match_completed")

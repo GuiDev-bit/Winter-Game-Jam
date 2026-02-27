@@ -139,6 +139,7 @@ func process_state(delta: float) ->void : #handle state-logique
 			move_component.air_slide(delta)
 			if is_on_floor() :
 				anim.play("Entity/sqash")
+				ParticleManager.jump_puff(global_position + Vector2(0, 30))
 				switch_state(STATE.FLOOR)
 
 			else :
@@ -188,10 +189,12 @@ func update_animation() -> void:
 				if move_component.direction == 0 : #je check quand il dérape
 					animated_sprite.play("friction")
 				elif  move_component.direction * velocity.x  < 0 :
-					ParticleManager.slide_dust(global_position + Vector2(0, 20))
+					
 					pick_random_slide()
 				else :
+					ParticleManager.slide_dust(global_position + Vector2(0, 50))
 					animated_sprite.play(current_slide)
+					anim.play("Entity/Slide")
 			else:
 				animated_sprite.play("idle")
 		STATE.JUMP:
@@ -335,7 +338,10 @@ func handle_air_physics(delta :float): #gère les déplacement lors d'une attaqu
 		if is_bat_charging : 
 			move_component.deccelerate(delta)
 		else : 
-			move_component.dash()
+			if use_secondweap and secondary_weapon == Weapon.CANON :
+				move_component.dash(-1.0)
+			else :
+				move_component.dash()
 	else :
 		if velocity.y >=   0 :
 			move_component.apply_gravity(delta, 1.3)

@@ -34,7 +34,7 @@ func enemy_hit(pos: Vector2) -> void:
 	spawn(pos, diamond_tex, Color(0.5, 0.8, 1), 6, 360)
 
 func ball_hit(pos: Vector2) -> void:
-	spawn(pos, sparkle_tex, Color(1, 1, 0.5), 8, 360)
+	spawn(pos, sparkle_tex, Color(1, 1, 0.5), 2, 360)
 
 func jump_puff(pos: Vector2) -> void:
 	spawn(pos, cloud_tex, Color(1, 1, 1, 0.8), 3, 60, 0.3)
@@ -44,4 +44,4 @@ func charge_release(pos: Vector2) -> void:
 	spawn(pos, star_tex, Color(1, 1, 1), 8, 360)
 
 func slide_dust(pos: Vector2) -> void:
-	spawn(pos, diamond_tex, Color(0.7, 0.9, 1, 0.7), 5, 30, 0.2)
+	spawn(pos, diamond_tex, Color(0.7, 0.9, 1, 0.7), 1, 30, 0.2)

@@ -11,6 +11,8 @@ class_name Enemy
 @export var jump_chance : float = 0.5
 @export var speed = 300
 
+@onready var snow_ball_scene := preload("res://scenes/Hitbox and Hurtbox/snowball.tscn")
+
 enum Type {BATTEUR, BOXEUR, CANON}
 @export var type : Type
 @onready var timer_atk: Timer = $atkduration
@@ -54,6 +56,8 @@ func _ready() -> void:
 	player_ref =AiManager.player
 	await get_tree().create_timer(randf_range(0.5, 2.0)).timeout
 	execute_role()
+	if type == Type.CANON :
+		attack_range = 700
 
 func _physics_process(delta: float) -> void:
 	process_state(delta)
@@ -114,7 +118,7 @@ func process_animation():
 				else:
 					sprite.play("fall")
 			else :
-				sprite.play("deccelerate")
+				sprite.play("idle")
 		STATE.CHASE :
 			if not is_on_floor():
 				if velocity.y < 0:
@@ -128,6 +132,8 @@ func process_animation():
 				sprite.play("hit_bat")
 			elif type == Type.BOXEUR :
 				sprite.play("hit_gloves")
+			else :
+				sprite.play("canon")
 		STATE.HURT :
 			sprite.play("hurt")
 	sprite.flip_h = last_dir < 0 
@@ -171,6 +177,8 @@ func check_direction_to_target() :
 
 
 func execute_role():
+	ball_ref = AiManager.ball
+	player_ref =AiManager.player
 	match role :
 		Role.STRIKER :
 			movcomp.max_speed = speed
@@ -180,6 +188,7 @@ func execute_role():
 				target = ball_ref
 	else :
 				target = player_ref
+				movcomp.max_speed = 100
 
 
 func lunch_attack():
@@ -188,14 +197,21 @@ func lunch_attack():
 			use_correct(bat_data)
 			update_last_dir()
 			hitbox.attack_data.direction = Vector2(last_dir, -1)
+			movcomp.dash()
 		Type.BOXEUR :
 			use_correct(gloves_data)
 			hitbox.attack_data.direction = Vector2(last_dir, 0)
-	movcomp.dash()
+			movcomp.dash()
+		Type.CANON :
+			canon_attack()
+			movcomp.dash(-1.0)
+	
 	timer_atk.start()
 	is_attacking = true
 	hitbox.lunch_attack()
-	atk_cooldown_timer = attack_cooldown
+	if type == Type.CANON :
+		atk_cooldown_timer = 10.0
+	else : atk_cooldown_timer = attack_cooldown
 
 func update_last_dir():
 	if AiManager.enemy_skittle  :
@@ -221,6 +237,15 @@ func _on_get_hit(data: AttackData) -> void:
 
 func use_correct( data : AttackData):
 	hitbox.attack_data =  data
+
+
+func canon_attack():
+		var direction_vers_joueur = (player_ref.global_position - global_position).normalized()
+		var snow : Snow = snow_ball_scene.instantiate()
+		snow.global_position = global_position
+		get_tree().current_scene.add_child(snow)
+		snow.hitbox.team = hitbox.team
+		snow.lunch_ball(Vector2(last_dir  , direction_vers_joueur.y))
 
 
 func _on_atkduration_timeout() -> void:
