@@ -23,7 +23,7 @@ var knock_timer := 0.0
 func _ready() -> void:
 	pass # Replace with function body.
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if direction != 0 :
 		last_direction = direction
 

@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://biicvll1v04ba" path="res://assets/hud/Sans_titre_429_20260224150002.png" id="3_84sm8"]
 [ext_resource type="Texture2D" uid="uid://2o16b27830s2" path="res://assets/hud/UI_Play.png" id="3_lhagn"]
 
-[node name="LevelSelector" type="Control" unique_id=2090920073]
+[node name="LevelSelector" type="Control" unique_id=807568109]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -135,8 +135,3 @@ rotation = -0.01940085
 theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 100
 text = "Back"
-
-[connection signal="pressed" from="PanelContainer/MarginContainer/Level Selector/GridContainer/Button" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="PanelContainer/MarginContainer/Level Selector/GridContainer/Button2" to="." method="_on_button_2_pressed"]
-[connection signal="pressed" from="PanelContainer/MarginContainer/Level Info/GO" to="." method="_on_go_pressed"]
-[connection signal="pressed" from="PanelContainer/MarginContainer/Button" to="." method="_on_back_pressed"]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://brrvegkdxvqhi"
-path="res://.godot/imported/clic_droit.png-da5897a99ab44b78c8ffaa249b5c90fa.ctex"
+uid="uid://cvpf2bfrl5g8w"
+path="res://.godot/imported/gant_boxe_hud.png-750ec5e23b40ae369dc2b200296c3465.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/hud/icon/clic_droit.png"
-dest_files=["res://.godot/imported/clic_droit.png-da5897a99ab44b78c8ffaa249b5c90fa.ctex"]
+source_file="res://assets/hud/icon/gant_boxe_hud.png"
+dest_files=["res://.godot/imported/gant_boxe_hud.png-750ec5e23b40ae369dc2b200296c3465.ctex"]
 
 [params]
 

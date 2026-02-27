@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cevr3ykdkfcp7"
-path="res://.godot/imported/clic_gauche.png-657b9260d596dd38430c8fd9ce4bd77d.ctex"
+uid="uid://b80y8p185l4uv"
+path="res://.godot/imported/batte_hud.png-310cf101d4c182efbbe20e4c15b73071.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/hud/icon/clic_gauche.png"
-dest_files=["res://.godot/imported/clic_gauche.png-657b9260d596dd38430c8fd9ce4bd77d.ctex"]
+source_file="res://assets/hud/icon/batte_hud.png"
+dest_files=["res://.godot/imported/batte_hud.png-310cf101d4c182efbbe20e4c15b73071.ctex"]
 
 [params]
 

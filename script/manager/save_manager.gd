@@ -37,3 +37,10 @@ func save_score(score: int) -> void:
 
 func load_scores() -> Array:
 	return config.get_value("scores", "top5", [])
+
+func save_controls_visible(value: bool) -> void:
+	config.set_value("settings", "controls_visible", value)
+	save_data()
+
+func load_controls_visible() -> bool:
+	return config.get_value("settings", "controls_visible", true)
