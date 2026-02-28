@@ -10,10 +10,15 @@
 [ext_resource type="PackedScene" uid="uid://bdoihyf18mekj" path="res://scenes/spawner/enemy_spawner.tscn" id="9_2ml6w"]
 [ext_resource type="Script" uid="uid://d3iclx0vn8f01" path="res://player_spawn_point.gd" id="9_6w4xk"]
 [ext_resource type="Script" uid="uid://dvrh63ese1r83" path="res://script/component/ball_spawner.gd" id="10_2ml6w"]
-[ext_resource type="PackedScene" uid="uid://ds2nmcitdg4v" path="res://scenes/terrain/backgroud_1.tscn" id="11_xgbxb"]
+[ext_resource type="PackedScene" path="res://scenes/terrain/backgroud_1.tscn" id="11_xgbxb"]
+[ext_resource type="Script" uid="uid://clmgkvcrhrjkm" path="res://script/arena/storm_wind_particles.gd" id="12_vmsrg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5tue2"]
 size = Vector2(213.5, 1117)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_vmsrg"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 98, 0)
 
 [node name="Arena" type="Node2D" unique_id=2015291178]
 position = Vector2(-4704, -712)
@@ -39,6 +44,7 @@ tile_map_data = PackedByteArray("AAALAAYAAAACAAIAAAALAAUAAAACAAEAAAALAAQAAAAHAAE
 
 [node name="Player" parent="." unique_id=1828741544 instance=ExtResource("7_u52cf")]
 position = Vector2(1047, 13)
+use_secondweap = false
 
 [node name="Ball" parent="." unique_id=1539097515 instance=ExtResource("8_ii07k")]
 position = Vector2(873, -216)
@@ -92,7 +98,7 @@ position = Vector2(1468, -416)
 position = Vector2(181, -353)
 
 [node name="PlayerSpawn" type="Node2D" parent="spawner" unique_id=395397356 node_paths=PackedStringArray("player")]
-position = Vector2(125, -101)
+position = Vector2(125, -15)
 script = ExtResource("9_6w4xk")
 player = NodePath("../../Player")
 metadata/_custom_type_script = "uid://d3iclx0vn8f01"
@@ -109,3 +115,33 @@ spawn_points = [NodePath("../../Points/Marker2D"), NodePath("../../Points/Marker
 [node name="Backgroud_1" parent="." unique_id=879696323 instance=ExtResource("11_xgbxb")]
 z_index = -200
 position = Vector2(610, 287)
+
+[node name="WindParticles" type="GPUParticles2D" parent="." unique_id=281637499]
+position = Vector2(1930, -292)
+process_material = SubResource("ParticleProcessMaterial_vmsrg")
+script = ExtResource("12_vmsrg")
+
+[node name="WindParticles2" type="GPUParticles2D" parent="." unique_id=1593250468]
+position = Vector2(1938, -158)
+process_material = SubResource("ParticleProcessMaterial_vmsrg")
+script = ExtResource("12_vmsrg")
+
+[node name="WindParticles3" type="GPUParticles2D" parent="." unique_id=75381865]
+position = Vector2(1943, -12)
+process_material = SubResource("ParticleProcessMaterial_vmsrg")
+script = ExtResource("12_vmsrg")
+
+[node name="WindParticles4" type="GPUParticles2D" parent="." unique_id=1521997656]
+position = Vector2(1943, 122)
+process_material = SubResource("ParticleProcessMaterial_vmsrg")
+script = ExtResource("12_vmsrg")
+
+[node name="WindParticles5" type="GPUParticles2D" parent="." unique_id=200862472]
+position = Vector2(1934, 251)
+process_material = SubResource("ParticleProcessMaterial_vmsrg")
+script = ExtResource("12_vmsrg")
+
+[node name="WindParticles6" type="GPUParticles2D" parent="." unique_id=400908637]
+position = Vector2(1905, 447)
+process_material = SubResource("ParticleProcessMaterial_vmsrg")
+script = ExtResource("12_vmsrg")
