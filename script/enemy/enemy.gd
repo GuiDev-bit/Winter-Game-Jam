@@ -25,6 +25,8 @@ var idle_timer = 1.0
 
 var role : Role
 
+var is_dead := false
+
 @export var bat_data : AttackData
 @export var gloves_data : AttackData
 
@@ -76,9 +78,11 @@ func switch_state(to_state: STATE) -> void:
 		STATE.ATTACK:
 			lunch_attack()
 		STATE.DEAD:
-			AiManager.quit_list(self)
-			spawner_manager.start_respawn_cooldown(type)
-			queue_free()
+			if is_dead == false :
+				AiManager.quit_list(self)
+				spawner_manager.start_respawn_cooldown(type)
+				queue_free()
+				is_dead = true
 
 func process_state(delta: float) -> void:
 	match active_state:
@@ -141,6 +145,7 @@ func process_animation():
 
 
 func _on_died() -> void:
+
 	switch_state(STATE.DEAD)
 
 func chase(delta : float):

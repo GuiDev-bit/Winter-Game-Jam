@@ -7,6 +7,8 @@ class_name PlayerSpawn
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	GameManager.player_respawn.connect(Callable(self, "spawn_player"))
+	if player :
+		player.i_died.connect(Callable(self, "spawn_player"))
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -18,4 +20,5 @@ func spawn_player():
 	if player == null : 
 		return
 	player.global_position = global_position
+	player.health.reset_health()
 	

@@ -10,41 +10,16 @@
 [ext_resource type="PackedScene" uid="uid://bdoihyf18mekj" path="res://scenes/spawner/enemy_spawner.tscn" id="9_2ml6w"]
 [ext_resource type="Script" uid="uid://d3iclx0vn8f01" path="res://player_spawn_point.gd" id="9_6w4xk"]
 [ext_resource type="Script" uid="uid://dvrh63ese1r83" path="res://script/component/ball_spawner.gd" id="10_2ml6w"]
-[ext_resource type="PackedScene" path="res://scenes/terrain/backgroud_1.tscn" id="11_xgbxb"]
-[ext_resource type="Script" uid="uid://clmgkvcrhrjkm" path="res://script/arena/storm_wind_particles.gd" id="12_vmsrg"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5tue2"]
-size = Vector2(213.5, 1117)
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_vmsrg"]
-particle_flag_disable_z = true
-gravity = Vector3(0, 98, 0)
+[ext_resource type="PackedScene" uid="uid://ds2nmcitdg4v" path="res://scenes/terrain/backgroud_1.tscn" id="12_vmsrg"]
 
 [node name="Arena" type="Node2D" unique_id=2015291178]
-position = Vector2(-4704, -712)
 script = ExtResource("1_1qjuf")
-
-[node name="Walls" type="StaticBody2D" parent="." unique_id=106267902]
-position = Vector2(-1955, 879)
-collision_layer = 0
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls" unique_id=1866878321]
-position = Vector2(-49.75, 519.5)
-shape = SubResource("RectangleShape2D_5tue2")
-debug_color = Color(0.5643613, 0.47827423, 0.7634374, 0.41960785)
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Walls" unique_id=1940934627]
-position = Vector2(1952, 537)
-shape = SubResource("RectangleShape2D_5tue2")
-debug_color = Color(0.5643613, 0.47827423, 0.7634374, 0.41960785)
 
 [node name="Terrain" parent="." unique_id=1663087106 instance=ExtResource("2_8trdl")]
 tile_map_data = PackedByteArray("AAALAAYAAAACAAIAAAALAAUAAAACAAEAAAALAAQAAAAHAAEAAAAKAAYAAAABAAIAAAAKAAUAAAABAAEAAAAKAAQAAAADAAAAAAAJAAYAAAACAAEAAAAJAAUAAAACAAIAAAAJAAQAAAACAAAAAAAIAAYAAAABAAEAAAAIAAUAAAABAAIAAAAIAAQAAAACAAAAAAAHAAYAAAABAAIAAAAHAAUAAAABAAEAAAAHAAQAAAABAAAAAAAGAAYAAAADAAIAAAAGAAUAAAADAAEAAAAGAAQAAAADAAAAAAAFAAYAAAACAAIAAAAFAAUAAAACAAEAAAAEAAYAAAABAAIAAAAEAAUAAAABAAEAAAAEAAQAAAACAAAAAAADAAYAAAADAAIAAAADAAUAAAADAAEAAAADAAQAAAACAAAAAAACAAYAAAACAAIAAAACAAUAAAACAAEAAAACAAQAAAABAAAAAAABAAYAAAABAAIAAAABAAUAAAABAAEAAAABAAQAAAABAAAAAAAAAAYAAAADAAIAAAAAAAUAAAADAAEAAAAAAAQAAAABAAAAAAAFAAQAAAADAAAAAAD//wQAAAABAAAAAAD+/wQAAAABAAAAAAD9/wQAAAABAAAAAAD8/wQAAAAGAAEAAAD8/wUAAAADAAEAAAD8/wYAAAADAAIAAAD8/wcAAAADAAEAAAD8/wgAAAADAAIAAAD8/wkAAAAAAAMAAAD9/wkAAAABAAMAAAD+/wkAAAABAAMAAAD//wkAAAADAAMAAAAAAAkAAAABAAMAAAABAAkAAAACAAMAAAACAAkAAAACAAMAAAADAAkAAAADAAMAAAAEAAkAAAADAAMAAAAFAAkAAAACAAMAAAAGAAkAAAADAAMAAAAJAAkAAAACAAMAAAAKAAkAAAADAAMAAAALAAkAAAAEAAMAAAD+/wUAAAABAAEAAAD+/wYAAAABAAIAAAD//wUAAAACAAEAAAD//wYAAAACAAIAAAD+/wcAAAACAAEAAAD+/wgAAAACAAIAAAD//wcAAAACAAEAAAD//wgAAAACAAIAAAAAAAcAAAADAAEAAAAAAAgAAAADAAIAAAABAAcAAAABAAEAAAABAAgAAAABAAIAAAACAAcAAAACAAEAAAACAAgAAAACAAIAAAADAAcAAAADAAEAAAADAAgAAAADAAIAAAABAAsAAAABAAEAAAACAAwAAAACAAIAAAADAAsAAAADAAEAAAADAAwAAAADAAIAAAD+/wsAAAACAAEAAAD+/wwAAAACAAIAAAD//wsAAAACAAEAAAD//wwAAAACAAIAAAAAAAsAAAADAAEAAAD+/w0AAAACAAEAAAD+/w4AAAACAAIAAAAAAA4AAAADAAIAAAD+/w8AAAABAAEAAAD+/xAAAAABAAIAAAAAAA8AAAADAAEAAAAAABAAAAADAAIAAAD9/wUAAAACAAEAAAD9/wYAAAACAAIAAAD9/wcAAAACAAEAAAD9/wgAAAACAAIAAAAEAAcAAAABAAEAAAAEAAgAAAABAAIAAAAFAAcAAAACAAEAAAAFAAgAAAACAAIAAAAGAAcAAAADAAEAAAAGAAgAAAADAAIAAAAHAAcAAAABAAEAAAAHAAgAAAABAAIAAAAIAAcAAAABAAIAAAAIAAgAAAACAAIAAAAJAAcAAAABAAEAAAAJAAgAAAABAAIAAAAKAAcAAAABAAIAAAAKAAgAAAACAAIAAAALAAcAAAACAAIAAAALAAgAAAAEAAIAAAAHAAkAAAACAAMAAAAIAAkAAAACAAMAAAD6/wMAAAABAAEAAAD6/wQAAAABAAIAAAD7/wMAAAACAAEAAAD7/wQAAAACAAIAAAD6/wEAAAABAAEAAAD6/wIAAAABAAIAAAD7/wEAAAACAAEAAAD7/wIAAAACAAIAAAD6////AAABAAEAAAD6/wAAAAABAAIAAAD7////AAACAAEAAAD7/wAAAAACAAIAAAD6//3/AAABAAEAAAD6//7/AAABAAIAAAD7//3/AAACAAEAAAD7//7/AAACAAIAAAD8/wIAAAAEAAEAAAD8/wMAAAAEAAIAAAD8/wAAAAAEAAEAAAD8/wEAAAAEAAIAAAD8//7/AAAEAAIAAAD8////AAAEAAIAAAD8//3/AAAEAAEAAAAMAPz/AAADAAEAAAAMAP3/AAADAAIAAAAMAP7/AAADAAEAAAAMAP//AAADAAIAAAAMAAAAAAACAAIAAAAMAAEAAAADAAIAAAAMAAIAAAABAAEAAAAMAAMAAAABAAIAAAANAP//AAABAAIAAAANAAAAAAABAAIAAAALAPz/AAAAAAEAAAALAP3/AAAAAAIAAAALAP7/AAAAAAEAAAALAP//AAAAAAIAAAALAAAAAAAAAAEAAAALAAEAAAAAAAIAAAALAAIAAAAAAAEAAAALAAMAAAAAAAIAAAAMAAQAAAABAAEAAAAMAAUAAAADAAEAAAANAAQAAAACAAEAAAANAAUAAAACAAIAAAAOAAQAAAADAAEAAAAOAAUAAAADAAIAAAANAAIAAAABAAEAAAANAAMAAAABAAIAAAAOAAIAAAACAAEAAAAOAAMAAAACAAIAAAAPAAIAAAADAAEAAAAPAAMAAAADAAIAAAANAAEAAAABAAIAAAAOAAAAAAACAAIAAAAOAAEAAAACAAIAAAAPAAAAAAADAAIAAAAPAAEAAAADAAIAAAAOAP//AAACAAIAAAAPAP//AAADAAIAAAANAP7/AAABAAEAAAAOAP7/AAACAAEAAAAPAP7/AAADAAEAAAD3//3/AAABAAEAAAD3//7/AAABAAIAAAD4//3/AAACAAEAAAD4//7/AAACAAIAAAD5//3/AAADAAEAAAD5//7/AAADAAIAAAD3////AAABAAEAAAD3/wAAAAABAAIAAAD4////AAACAAEAAAD4/wAAAAACAAIAAAD5////AAADAAEAAAD5/wAAAAADAAIAAAD3/wEAAAABAAEAAAD3/wIAAAABAAIAAAD4/wEAAAACAAEAAAD4/wIAAAACAAIAAAD5/wEAAAADAAEAAAD5/wIAAAADAAIAAAD3/wMAAAABAAEAAAD3/wQAAAABAAIAAAD4/wMAAAACAAEAAAD4/wQAAAACAAIAAAD5/wMAAAADAAEAAAD5/wQAAAADAAIAAAD3/wUAAAABAAEAAAD3/wYAAAABAAIAAAD4/wUAAAACAAEAAAD4/wYAAAACAAIAAAD5/wUAAAABAAEAAAD5/wYAAAABAAIAAAD6/wUAAAABAAEAAAD6/wYAAAABAAIAAAD7/wUAAAACAAEAAAD7/wYAAAACAAIAAAD5/wcAAAADAAEAAAD5/wgAAAADAAIAAAD6/wcAAAABAAEAAAD6/wgAAAABAAIAAAD7/wcAAAACAAEAAAD7/wgAAAACAAIAAAD3/wcAAAABAAEAAAD3/wgAAAABAAIAAAD4/wcAAAACAAEAAAD4/wgAAAACAAIAAAAMAAYAAAADAAIAAAAMAAcAAAADAAIAAAA=")
 
 [node name="Player" parent="." unique_id=1828741544 instance=ExtResource("7_u52cf")]
 position = Vector2(1047, 13)
-use_secondweap = false
 
 [node name="Ball" parent="." unique_id=1539097515 instance=ExtResource("8_ii07k")]
 position = Vector2(873, -216)
@@ -98,7 +73,7 @@ position = Vector2(1468, -416)
 position = Vector2(181, -353)
 
 [node name="PlayerSpawn" type="Node2D" parent="spawner" unique_id=395397356 node_paths=PackedStringArray("player")]
-position = Vector2(125, -15)
+position = Vector2(125, -101)
 script = ExtResource("9_6w4xk")
 player = NodePath("../../Player")
 metadata/_custom_type_script = "uid://d3iclx0vn8f01"
@@ -112,36 +87,15 @@ ball = NodePath("../../Ball")
 position = Vector2(-181, 353)
 spawn_points = [NodePath("../../Points/Marker2D"), NodePath("../../Points/Marker2D2")]
 
-[node name="Backgroud_1" parent="." unique_id=879696323 instance=ExtResource("11_xgbxb")]
-z_index = -200
-position = Vector2(610, 287)
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1988059942]
+visible = false
+z_index = -100
+offset_left = -2476.0
+offset_top = -1321.0
+offset_right = 2612.0
+offset_bottom = 1951.0
+stretch_mode = 1
 
-[node name="WindParticles" type="GPUParticles2D" parent="." unique_id=281637499]
-position = Vector2(1930, -292)
-process_material = SubResource("ParticleProcessMaterial_vmsrg")
-script = ExtResource("12_vmsrg")
-
-[node name="WindParticles2" type="GPUParticles2D" parent="." unique_id=1593250468]
-position = Vector2(1938, -158)
-process_material = SubResource("ParticleProcessMaterial_vmsrg")
-script = ExtResource("12_vmsrg")
-
-[node name="WindParticles3" type="GPUParticles2D" parent="." unique_id=75381865]
-position = Vector2(1943, -12)
-process_material = SubResource("ParticleProcessMaterial_vmsrg")
-script = ExtResource("12_vmsrg")
-
-[node name="WindParticles4" type="GPUParticles2D" parent="." unique_id=1521997656]
-position = Vector2(1943, 122)
-process_material = SubResource("ParticleProcessMaterial_vmsrg")
-script = ExtResource("12_vmsrg")
-
-[node name="WindParticles5" type="GPUParticles2D" parent="." unique_id=200862472]
-position = Vector2(1934, 251)
-process_material = SubResource("ParticleProcessMaterial_vmsrg")
-script = ExtResource("12_vmsrg")
-
-[node name="WindParticles6" type="GPUParticles2D" parent="." unique_id=400908637]
-position = Vector2(1905, 447)
-process_material = SubResource("ParticleProcessMaterial_vmsrg")
-script = ExtResource("12_vmsrg")
+[node name="Backgroud_1" parent="." unique_id=879696323 instance=ExtResource("12_vmsrg")]
+z_index = -100
+position = Vector2(692, 273)
