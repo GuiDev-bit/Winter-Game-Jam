@@ -33,7 +33,7 @@ tile_map_data = PackedByteArray("AAD8////AAAGAAEAAAD9////AAABAAAAAAD+////AAACAAA
 position = Vector2(1333, 197)
 
 [node name="for skitlle" type="Node2D" parent="." unique_id=1018719853]
-position = Vector2(572, 875)
+position = Vector2(597, 773)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="for skitlle" unique_id=931974058]
 position = Vector2(1811, -1015)
