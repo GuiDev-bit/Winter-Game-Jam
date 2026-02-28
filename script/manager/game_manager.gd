@@ -34,6 +34,7 @@ func start_game():
 	score_left = 0
 	score_right = 0
 	match_time = 0.0
+
 	match_duration = MatchManager.match_duration
 	current_state = GameState.PLAYING
 	AudioManager.play_game_music()
@@ -75,3 +76,4 @@ func reset() -> void:
 	score_right = 0
 	match_time = 0.0
 	current_state = GameState.MENU
+	has_already_scored = false
