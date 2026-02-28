@@ -22,7 +22,7 @@ var team_right_name : String = "Right"
 var team_left_score : int = 0
 var team_right_score : int = 0
 
-func setup_match(type: MatchType, score_max: int, duration: float) -> void:
+func setup_match(type: MatchType , score_max : int, duration : float ) -> void:
 	match_type = type
 	score_to_win = score_max
 	match_duration = duration
@@ -51,4 +51,6 @@ func _on_game_ended() -> void:
 		AudioManager.play_win_music()
 	else:
 		Transition.change_scene("res://scenes/ui/lose_menu.tscn")
+	team_left_score = 0
+	team_right_score = 0
 		#AudioManager.
