@@ -20,5 +20,6 @@ func spawn_player():
 	if player == null : 
 		return
 	player.global_position = global_position
+	player.current_munition = player.munition_max
 	player.health.reset_health()
 	
