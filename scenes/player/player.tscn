@@ -393,7 +393,7 @@ max_speed = 500
 script = ExtResource("2_dovo2")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=522177963]
-zoom = Vector2(1.5, 1.5)
+zoom = Vector2(1.2, 1.2)
 position_smoothing_enabled = true
 script = ExtResource("19_yj68g")
 

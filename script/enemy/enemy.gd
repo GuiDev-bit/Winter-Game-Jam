@@ -243,8 +243,8 @@ func use_correct( data : AttackData):
 func canon_attack():
 		var direction_vers_joueur = (player_ref.global_position - global_position).normalized()
 		var snow : Snow = snow_ball_scene.instantiate()
-		snow.global_position = global_position
 		get_tree().current_scene.add_child(snow)
+		snow.global_position = global_position
 		snow.hitbox.team = hitbox.team
 		snow.lunch_ball(Vector2(last_dir  , direction_vers_joueur.y))
 

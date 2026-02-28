@@ -248,7 +248,7 @@ func check_attack_timer(delta) : #gère la durée de l'attaque
 
 
 func attack_state_transition(): #les conditions généralent pur switch vers attaque
-		if ! atk_cooldown_timer < 0 :
+		if  (atk_cooldown_timer < 0 ) == false:
 			if Input.is_action_just_pressed("attack_l") :
 				switch_state(STATE.HIT)
 				use_secondweap = false
@@ -294,8 +294,8 @@ func _attack_with_gloves():
 func _attack_with_canon():
 	if current_munition > 0 :
 		var snow : Snow = snow_ball_scene.instantiate()
-		snow.global_position = global_position
 		get_tree().current_scene.add_child(snow)
+		snow.global_position = global_position
 		snow.hitbox.team = hitbox.team
 		snow.lunch_ball(get_direction_to_mouse())
 		current_munition -= 1
