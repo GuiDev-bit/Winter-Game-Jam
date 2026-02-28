@@ -27,11 +27,11 @@ func spawn(pos: Vector2, sprite: Texture2D, color: Color, amount: int = 8, sprea
 
 func player_hit(pos: Vector2) -> void:
 	spawn(pos, circle_tex, Color(1, 0.2, 0.2), 10, 360)
-	spawn(pos, star_tex, Color(1, 0.5, 0), 6, 360)
+	spawn(pos, star_tex, Color(1, 0.5, 0), 3, 360)
 
 func enemy_hit(pos: Vector2) -> void:
 	spawn(pos, circle_tex, Color(1, 1, 1), 8, 360)
-	spawn(pos, diamond_tex, Color(0.5, 0.8, 1), 6, 360)
+	spawn(pos, diamond_tex, Color(0.5, 0.8, 1), 3, 360)
 
 func ball_hit(pos: Vector2) -> void:
 	spawn(pos, sparkle_tex, Color(1, 1, 0.5), 2, 360)

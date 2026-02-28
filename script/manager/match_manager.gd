@@ -48,5 +48,7 @@ func _on_game_ended() -> void:
 	await get_tree().create_timer(1.5).timeout
 	if winner == "left":
 		Transition.change_scene("res://scenes/ui/win_menu.tscn")
+		AudioManager.play_win_music()
 	else:
 		Transition.change_scene("res://scenes/ui/lose_menu.tscn")
+		#AudioManager.
