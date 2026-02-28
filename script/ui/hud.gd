@@ -4,8 +4,10 @@ extends CanvasLayer
 @onready var score_label = $Control/ScoreLabel
 @onready var controls_hud : Control = $ControlsHUD
 @onready var health_label : Label = $HealthHUD/Label
+@onready var munition :=$ControlsHUD/munition
 
 var player_health_comp : HealthComponent = null
+var player : Player
 
 func _ready() -> void:
 	GameManager.game_started.connect(_on_game_started)
@@ -13,7 +15,7 @@ func _ready() -> void:
 	GameManager.game_ended.connect(_on_game_ended)
 	controls_hud.visible = SaveManager.load_controls_visible()
 	await get_tree().process_frame
-	var player = get_tree().get_first_node_in_group("player")
+	player = get_tree().get_first_node_in_group("player")
 	if player:
 		player_health_comp = player.get_node_or_null("HealthComponent")
 		if player_health_comp:
@@ -28,7 +30,10 @@ func _process(_delta: float) -> void:
 		var minutes : int = time_left / 60
 		var seconds : int = time_left % 60
 		timer_label.text = str(minutes) + ":" + ("%02d" % seconds)
-
+		if player and player.secondary_weapon == player.Weapon.CANON :
+			munition.text =str(int(player.current_munition )) + "/" + str(int(player.munition_max))
+		
+		
 func _on_health_changed(new_health: float) -> void:
 	health_label.text = str(int(new_health)) + " / " + str(int(player_health_comp.max_health))
 

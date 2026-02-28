@@ -98,6 +98,15 @@ offset_bottom = 1340.0
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("6_gss2c")
 
+[node name="munition" type="Label" parent="ControlsHUD" unique_id=1564261324]
+layout_mode = 0
+offset_left = 1696.0
+offset_top = 760.0
+offset_right = 1890.0
+offset_bottom = 829.0
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/font_size = 50
+
 [node name="HealthHUD" type="Control" parent="." unique_id=218947086]
 layout_mode = 3
 anchors_preset = 0
