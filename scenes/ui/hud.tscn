@@ -22,11 +22,16 @@ grow_vertical = 2
 
 [node name="TimerLabel" type="Label" parent="Control" unique_id=1817310336]
 layout_mode = 1
-offset_left = 55.0
-offset_top = 35.999996
-offset_right = 95.0
-offset_bottom = 58.999996
-scale = Vector2(2.3105013, 1.8800001)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -46.0
+offset_top = 168.0
+offset_right = 33.203613
+offset_bottom = 256.0
+grow_horizontal = 2
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/font_size = 32
 
 [node name="ScoreLabel" type="Label" parent="Control" unique_id=1375036341]
 layout_mode = 1
@@ -35,10 +40,11 @@ anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -57.0
 offset_top = 34.0
-offset_right = -17.0
-offset_bottom = 57.0
+offset_right = 34.6734
+offset_bottom = 122.0
 grow_horizontal = 2
-scale = Vector2(2.99978, 1.9943122)
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/font_size = 64
 horizontal_alignment = 1
 
 [node name="ControlsHUD" type="Control" parent="." unique_id=201034255]
@@ -109,11 +115,12 @@ texture = ExtResource("7_h022r")
 
 [node name="Label" type="Label" parent="HealthHUD" unique_id=1504469661]
 layout_mode = 0
-offset_left = 175.0
-offset_top = 80.0
-offset_right = 333.0
-offset_bottom = 152.0
-scale = Vector2(3.22, 3.22)
+offset_left = 195.0
+offset_top = 89.0
+offset_right = 367.0
+offset_bottom = 366.0
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/font_size = 32
 text = "100
 "
 

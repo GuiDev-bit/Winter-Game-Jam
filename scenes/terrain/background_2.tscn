@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://c8cs4tie4riop"]
+
+[ext_resource type="Texture2D" uid="uid://dqumru1pg0dwd" path="res://assets/audio/music/background/Storm/Sky_storm_layer_cielgris.png" id="1_xr3vy"]
+[ext_resource type="Texture2D" uid="uid://cj0emrp4vu7d4" path="res://assets/audio/music/background/Storm/Sky_storm_layer_20260227183650.png" id="2_s5mcv"]
+[ext_resource type="Texture2D" uid="uid://d4cmrts1luxeu" path="res://assets/audio/music/background/Storm/Sky_storm_layer_20260227183652.png" id="3_od7nd"]
+[ext_resource type="Texture2D" uid="uid://haf4w0es2ts6" path="res://assets/audio/music/background/Storm/Sky_storm_layer_20260227183644.png" id="4_ejj5d"]
+[ext_resource type="Texture2D" uid="uid://cc7xfmpjagypj" path="res://assets/audio/music/background/Storm/Sky_storm_layer_20260227183640.png" id="5_jb5op"]
+
+[node name="background2" type="Node2D" unique_id=554837005]
+
+[node name="Parallax2D" type="Parallax2D" parent="." unique_id=326904758]
+
+[node name="SkyStormLayerCielgris" type="Sprite2D" parent="Parallax2D" unique_id=1762627715]
+texture = ExtResource("1_xr3vy")
+
+[node name="SkyStormLayer20260227183650" type="Sprite2D" parent="Parallax2D" unique_id=1286760169]
+texture = ExtResource("2_s5mcv")
+
+[node name="SkyStormLayer20260227183652" type="Sprite2D" parent="Parallax2D" unique_id=1991067764]
+position = Vector2(5, 12)
+texture = ExtResource("3_od7nd")
+
+[node name="SkyStormLayer20260227183644" type="Sprite2D" parent="Parallax2D" unique_id=880929132]
+texture = ExtResource("4_ejj5d")
+
+[node name="SkyStormLayer20260227183640" type="Sprite2D" parent="Parallax2D" unique_id=117991013]
+texture = ExtResource("5_jb5op")

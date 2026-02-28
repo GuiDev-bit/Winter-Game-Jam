@@ -9,6 +9,7 @@ class_name Player
 @onready var crossair : Node2D = $Crossair
 @onready var camera : Camera2D = $Camera2D
 @onready var anim : AnimationPlayer = $AnimationPlayer
+@onready var health := $HealthComponent
 
 var munition_max = 3
 var current_munition = 0
@@ -43,6 +44,7 @@ var current_slide:= ""
 
 var dir := Vector2(1,0)
 
+signal i_died
 
 var ball_ref : Ball = null
 
@@ -52,7 +54,8 @@ func _ready() -> void:
 	switch_state(active_state)
 	AiManager.get_player_reference(self)
 	current_munition = munition_max
-	$HealthComponent.died.connect(_on_died)
+	#$HealthComponent.died.connect(_on_died)
+	#GameManager.connect()
 	#crosshair.visible = false
 
 func _on_respawn(spawn_position: Vector2) -> void:
@@ -405,11 +408,5 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 				anim.play("Entity/Slide")
 
 func _on_died() -> void:
-	visible = false
-	set_physics_process(false)
-	await get_tree().create_timer(5.0).timeout
 	$HealthComponent.reset_health()
-	global_position = Vector2(640, 300)
-	visible = true
-	set_physics_process(true)
-	switch_state(STATE.FALL)
+	i_died.emit()

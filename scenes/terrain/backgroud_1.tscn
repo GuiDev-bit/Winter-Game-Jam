@@ -12,7 +12,6 @@
 
 [node name="Parallax2D" type="Parallax2D" parent="." unique_id=343942640]
 scroll_scale = Vector2(0, 0)
-follow_viewport = false
 
 [node name="Cielbo" type="Sprite2D" parent="Parallax2D" unique_id=951792713]
 z_index = -11
@@ -30,7 +29,6 @@ visible = false
 scroll_scale = Vector2(0.1, 0.1)
 scroll_offset = Vector2(14, -11)
 repeat_times = 3
-follow_viewport = false
 
 [node name="mont 3" type="Sprite2D" parent="Parallax2D5" unique_id=1074606514]
 position = Vector2(5, -122)
@@ -41,7 +39,6 @@ visible = false
 scroll_scale = Vector2(0.2, 0.2)
 scroll_offset = Vector2(25, 27)
 repeat_times = 3
-follow_viewport = false
 
 [node name="mont2" type="Sprite2D" parent="Parallax2D4" unique_id=131215030]
 position = Vector2(5, -274)
@@ -52,7 +49,6 @@ visible = false
 scroll_scale = Vector2(0.3, 0.3)
 scroll_offset = Vector2(36, -129)
 repeat_times = 3
-follow_viewport = false
 
 [node name="mont 1" type="Sprite2D" parent="Parallax2D3" unique_id=51638384]
 position = Vector2(-10, -333)
