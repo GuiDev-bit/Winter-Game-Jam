@@ -21,7 +21,7 @@
 [ext_resource type="Script" uid="uid://bxmkgxah4aht4" path="res://script/component/hitbox_component.gd" id="11_je7p5"]
 [ext_resource type="Texture2D" uid="uid://q0h8ew76sego" path="res://assets/hud/cross.png" id="13_gx1jg"]
 [ext_resource type="Script" uid="uid://dnqt4p122fui7" path="res://script/component/hurtbox_component.gd" id="16_myrg7"]
-[ext_resource type="Script" path="res://script/player/camera.gd" id="19_yj68g"]
+[ext_resource type="Script" uid="uid://cebv5pv3ydqok" path="res://script/player/camera.gd" id="19_yj68g"]
 [ext_resource type="Script" uid="uid://cpx55onwhthnb" path="res://script/component/health_component.gd" id="23_ioxgp"]
 
 [sub_resource type="Resource" id="Resource_gx1jg"]

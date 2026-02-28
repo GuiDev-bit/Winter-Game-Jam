@@ -128,6 +128,7 @@ func switch_state(to_state : STATE) :
 			pass
 		STATE.JUMP :
 			move_component.jump()
+			AudioManager.play_jump()
 			anim.play("Entity/scretch")
 			ParticleManager.jump_puff(global_position + Vector2(0, 30))
 			if input_component.x_input != 0:
@@ -298,6 +299,7 @@ func _attack_with_gloves():
 
 func _attack_with_canon():
 	if current_munition > 0 :
+		AudioManager.play_cannon()
 		var snow : Snow = snow_ball_scene.instantiate()
 		get_tree().current_scene.add_child(snow)
 		snow.global_position = global_position

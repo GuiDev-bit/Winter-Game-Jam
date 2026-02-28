@@ -1,12 +1,12 @@
-[gd_resource type="Resource" script_class="LevelData" format=3 uid="uid://da26vkegiq1lv"]
+[gd_resource type="Resource" script_class="LevelData" format=3 uid="uid://dvt1isfmjuml3"]
 
 [ext_resource type="PackedScene" uid="uid://dhxrob07wfllc" path="res://scenes/arena/arena.tscn" id="1_bfscn"]
 [ext_resource type="Script" uid="uid://dftm4j2bj838b" path="res://script/Ressources/Leveldata.gd" id="1_kct0q"]
 
 [resource]
 script = ExtResource("1_kct0q")
-level_name = "Un 2 v 1 !"
+level_name = "Niveau 3"
 level_description = "On dirait qu'un ennemi plus combatif c'est joint a vous."
 map_scene = ExtResource("1_bfscn")
-boxeur_count = 1
+canon_count = 1
 metadata/_custom_type_script = "uid://dftm4j2bj838b"

@@ -234,6 +234,7 @@ func apply_atk_timer(delta : float) :
 
 
 func _on_get_hit(data: AttackData) -> void:
+	AudioManager.play_enemy_hit()
 	flash_red()
 	ParticleManager.enemy_hit(global_position)
 	movcomp.apply_knockback(data.direction, data.force)

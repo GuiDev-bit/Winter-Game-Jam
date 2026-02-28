@@ -1,10 +1,14 @@
-[gd_resource type="Resource" script_class="LevelData" format=3 uid="uid://2dtqe4a6npnp"]
+[gd_resource type="Resource" script_class="LevelData" format=3 uid="uid://j1fnd74eit0x"]
 
+[ext_resource type="PackedScene" uid="uid://dhxrob07wfllc" path="res://scenes/arena/arena.tscn" id="1_cjjcq"]
 [ext_resource type="Script" uid="uid://dftm4j2bj838b" path="res://script/Ressources/Leveldata.gd" id="1_wba5t"]
 
 [resource]
 script = ExtResource("1_wba5t")
-level_name = "Confrontation"
-level_description = "Préparé vous vous allez affronté deux batteurs , la météo anonce mauvais temps."
+level_name = "Niveau 4"
+level_description = "Préparez vous vous allez affronter deux batteurs , la météo annonce mauvais temps."
+map_scene = ExtResource("1_cjjcq")
 max_storm_level = 2
+boxeur_count = 1
+canon_count = 1
 metadata/_custom_type_script = "uid://dftm4j2bj838b"

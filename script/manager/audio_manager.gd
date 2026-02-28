@@ -2,6 +2,10 @@ extends Node
 
 var music_player : AudioStreamPlayer
 var sfx_player : AudioStreamPlayer
+var enemy_hit_sfx : AudioStream
+var slide_sfx : AudioStream
+var jump_sfx : AudioStream
+var cannon_sfx : AudioStream
 
 @export var menu_music : AudioStream
 @export var win_music : AudioStream
@@ -16,6 +20,10 @@ func _ready() -> void:
 	sfx_player.bus = "SFX"
 	add_child(music_player)
 	add_child(sfx_player)
+	enemy_hit_sfx = load("res://assets/audio/SFX/840218__kreha__hurt-3.wav")
+	slide_sfx = load("res://assets/audio/SFX/articulated_ICE+Skate+scrape+one+leg+drag+04.mp3")
+	jump_sfx = load("res://assets/audio/SFX/386529__glennm__breathing_jumping.wav")
+	cannon_sfx = load("res://assets/audio/SFX/crazy-diamond-punch (1).mp3")
 	
 	var volumes = SaveManager.load_volume()
 	set_music_volume(volumes["music"])
@@ -38,8 +46,15 @@ func stop_music() -> void:
 func play_sfx(stream: AudioStream) -> void:
 	if stream == null:
 		return
-	sfx_player.stream = stream
-	sfx_player.play()
+		
+	var player = AudioStreamPlayer.new()
+	player.bus = "SFX"
+	player.stream = stream
+	
+	add_child(player)
+	player.play()
+	
+	player.finished.connect(player.queue_free)
 
 func play_menu_music() -> void:
 	play_music(menu_music)
@@ -74,3 +89,15 @@ func get_sfx_volume() -> float:
 	return db_to_linear(AudioServer.get_bus_volume_db(
 		AudioServer.get_bus_index("SFX")
 	))
+
+func play_enemy_hit():
+	play_sfx(enemy_hit_sfx)
+
+func play_slide():
+	play_sfx(slide_sfx)
+
+func play_jump():
+	play_sfx(jump_sfx)
+
+func play_cannon():
+	play_sfx(cannon_sfx)

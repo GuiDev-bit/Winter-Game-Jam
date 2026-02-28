@@ -36,9 +36,10 @@ layout_mode = 2
 
 [node name="Level Selector" type="VBoxContainer" parent="PanelContainer/Control" unique_id=348457532]
 layout_mode = 0
-offset_left = 1166.0
-offset_right = 1870.0
-offset_bottom = 770.0
+offset_left = 1145.0
+offset_top = -2.0
+offset_right = 1849.0
+offset_bottom = 768.0
 size_flags_horizontal = 8
 size_flags_vertical = 0
 theme_override_constants/separation = 100
@@ -56,6 +57,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/h_separation = 50
 theme_override_constants/v_separation = 50
+columns = 2
 
 [node name="Button3" type="Button" parent="PanelContainer/Control/Level Selector/GridContainer" unique_id=493085090]
 layout_mode = 2
@@ -74,6 +76,19 @@ custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 100
 text = "2"
+
+[node name="Button4" type="Button" parent="PanelContainer/Control/Level Selector/GridContainer" unique_id=1446644163]
+layout_mode = 2
+theme = ExtResource("1_lhagn")
+theme_override_font_sizes/font_size = 100
+text = "3"
+
+[node name="Button5" type="Button" parent="PanelContainer/Control/Level Selector/GridContainer" unique_id=785667873]
+layout_mode = 2
+theme = ExtResource("1_lhagn")
+theme_override_font_sizes/font_size = 100
+text = "4
+"
 
 [node name="Back" type="TextureButton" parent="PanelContainer/Control" unique_id=843049220]
 custom_minimum_size = Vector2(500, 200)
@@ -180,8 +195,11 @@ text = "CHOOSE YOUR WEAPON"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[connection signal="pressed" from="PanelContainer/Control/Level Selector/GridContainer/Button3" to="." method="_on_button_3_pressed"]
 [connection signal="pressed" from="PanelContainer/Control/Level Selector/GridContainer/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="PanelContainer/Control/Level Selector/GridContainer/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="PanelContainer/Control/Level Selector/GridContainer/Button4" to="." method="_on_button_4_pressed"]
+[connection signal="pressed" from="PanelContainer/Control/Level Selector/GridContainer/Button5" to="." method="_on_button_5_pressed"]
 [connection signal="pressed" from="PanelContainer/Control/Back" to="." method="_on_back_pressed"]
 [connection signal="pressed" from="PanelContainer/Control/WeaponChoice/BtnGloves" to="." method="_on_btn_gloves_pressed"]
 [connection signal="pressed" from="PanelContainer/Control/WeaponChoice/BtnCanon" to="." method="_on_btn_canon_pressed"]
