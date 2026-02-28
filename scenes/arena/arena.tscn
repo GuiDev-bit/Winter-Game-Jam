@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bdoihyf18mekj" path="res://scenes/spawner/enemy_spawner.tscn" id="9_2ml6w"]
 [ext_resource type="Script" uid="uid://d3iclx0vn8f01" path="res://player_spawn_point.gd" id="9_6w4xk"]
 [ext_resource type="Script" uid="uid://dvrh63ese1r83" path="res://script/component/ball_spawner.gd" id="10_2ml6w"]
+[ext_resource type="PackedScene" uid="uid://c8cs4tie4riop" path="res://scenes/terrain/background_2.tscn" id="12_s83md"]
 [ext_resource type="PackedScene" uid="uid://ds2nmcitdg4v" path="res://scenes/terrain/backgroud_1.tscn" id="12_vmsrg"]
 
 [node name="Arena" type="Node2D" unique_id=2015291178]
@@ -99,3 +100,7 @@ stretch_mode = 1
 [node name="Backgroud_1" parent="." unique_id=879696323 instance=ExtResource("12_vmsrg")]
 z_index = -100
 position = Vector2(692, 273)
+
+[node name="background2" parent="." unique_id=554837005 instance=ExtResource("12_s83md")]
+z_index = -50
+position = Vector2(-129, 14)
