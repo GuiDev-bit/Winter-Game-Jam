@@ -28,6 +28,7 @@ func _ready() -> void:
 func play_music(stream: AudioStream) -> void:
 	if music_player.stream == stream and music_player.playing:
 		return
+	stop_music()
 	music_player.stream = stream
 	music_player.play()
 

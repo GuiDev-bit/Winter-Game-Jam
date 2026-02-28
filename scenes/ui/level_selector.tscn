@@ -32,14 +32,13 @@ stretch_mode = 1
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=39185145]
 layout_mode = 2
 theme_override_constants/margin_left = 50
-theme_override_constants/margin_top = 50
 theme_override_constants/margin_right = 50
 theme_override_constants/margin_bottom = 50
 
 [node name="Level Selector" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=348457532]
 layout_mode = 2
 size_flags_horizontal = 8
-size_flags_vertical = 4
+size_flags_vertical = 0
 theme_override_constants/separation = 100
 
 [node name="Label" type="Label" parent="PanelContainer/MarginContainer/Level Selector" unique_id=602746684]
@@ -84,7 +83,6 @@ horizontal_alignment = 1
 [node name="DesciptionLabel" type="Label" parent="PanelContainer/MarginContainer/Level Info" unique_id=760927917]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
-text = "sdddddddddddasd asd asd asdssdasdasd asd asd asd asd asd asd asd asd as dasd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd "
 horizontal_alignment = 1
 autowrap_mode = 2
 

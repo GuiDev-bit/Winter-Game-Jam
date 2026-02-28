@@ -1,6 +1,6 @@
 extends Control
 
-@onready var description_label : Label = $DescriptionLabel  # adapte le chemin
+@onready var description_label : Label =  $"PanelContainer/MarginContainer/Level Info/DesciptionLabel" # adapte le chemin
 
 func _on_button_pressed() -> void:
 	GameManager.reset()

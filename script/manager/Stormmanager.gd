@@ -14,8 +14,8 @@ var max_storm_level: int = 2
 
 # Multiplicateurs de puissance de balle
 var ball_force_multiplier: float = 1.0
-const STORM_MULTIPLIER: float = 1.5
-const EXTREME_MULTIPLIER: float = 2.5
+const STORM_MULTIPLIER: float = 1.2
+const EXTREME_MULTIPLIER: float = 1.5
 
 # 4. Signal pour prévenir les autres scripts (effets visuels, dégâts au joueur, etc.)
 signal storm_state_changed(new_state: StormState)
@@ -63,10 +63,8 @@ func change_state(new_state: StormState) -> void:
 			ball_force_multiplier = 1.0
 		StormState.STORM:
 			ball_force_multiplier = STORM_MULTIPLIER
-			print("Temps écoulé (", time_elapsed, "s) -> La tempête commence (STORM) !")
 		StormState.EXTREME:
 			ball_force_multiplier = EXTREME_MULTIPLIER
-			print("Temps écoulé (", time_elapsed, "s) -> C'est la fin du monde (EXTREME) !")
 			
 	# On avertit tout le reste du jeu que la tempête a changé
 	storm_state_changed.emit(current_state)

@@ -74,7 +74,7 @@ func _on_body_entered(_body: Node) -> void:
 	#print("collision avec: ", _body.name)
 	var impact_strength = previous_velocity.length() / bounce_force
 	var squash = 1.0 + impact_strength * squash_amount
-	#sprite.scale = Vector2(base_scale.x * squash, base_scale.y / squash)
+	#sprite.scale = Vector2(base_scale.y * squash, base_scale.x / squash)
 
 
 @warning_ignore("unused_parameter")
