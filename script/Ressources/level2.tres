@@ -8,6 +8,5 @@ script = ExtResource("1_201j5")
 level_name = "Hiver"
 level_description = "La tempête arrive... bonne chance !"
 map_scene = ExtResource("1_57l3u")
-max_storm_level = 2
 canon_count = 1
 metadata/_custom_type_script = "uid://dftm4j2bj838b"

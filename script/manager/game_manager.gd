@@ -36,6 +36,7 @@ func start_game():
 	match_time = 0.0
 	match_duration = MatchManager.match_duration
 	current_state = GameState.PLAYING
+	AudioManager.play_game_music()
 	respawn_player()
 	emit_signal("game_started")
 

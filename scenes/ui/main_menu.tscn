@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://vmug3ssx0wcb" path="res://assets/hud/UI_Credits.png" id="2_1g8jr"]
 [ext_resource type="Texture2D" uid="uid://cxhx25ojnwxge" path="res://assets/hud/UI_Quit.png" id="3_m1kxf"]
 [ext_resource type="Texture2D" uid="uid://d0x3efvpepjd0" path="res://assets/hud/Sans_titre_429_20260224145900.png" id="3_uhagc"]
+[ext_resource type="Texture2D" uid="uid://cnhvge7cahmvw" path="res://assets/hud/icon/titre.png" id="7_btxxm"]
 
 [node name="MainMenu" type="Control" unique_id=1296318094]
 layout_mode = 3
@@ -109,6 +110,16 @@ grow_vertical = 2
 theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 80
 text = "Exit"
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1492894123]
+layout_mode = 1
+offset_left = 67.000015
+offset_top = 50.000015
+offset_right = 1347.0
+offset_bottom = 1330.0
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("7_btxxm")
+stretch_mode = 2
 
 [connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="VBoxContainer/Settings" to="." method="_on_settings_pressed"]

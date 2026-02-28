@@ -1,5 +1,7 @@
 extends Control
 
+@onready var description_label : Label = $"PanelContainer/MarginContainer/Level Info/DescriptionLabel"
+
 func _on_button_pressed() -> void:
 	GameManager.reset()
 	var level_data = load("res://script/Ressources/level1.tres")
