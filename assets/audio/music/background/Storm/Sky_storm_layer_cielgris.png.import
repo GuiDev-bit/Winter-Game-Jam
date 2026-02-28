@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c8nurdgm64bqa"
-path="res://.godot/imported/Sky_storm_layer_20260227183647.png-b31e128a610a46a816c5060d4b521a73.ctex"
+uid="uid://dqumru1pg0dwd"
+path="res://.godot/imported/Sky_storm_layer_cielgris.png-9a14097ee1b44b486c529d7ecf484d92.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/hud/icon/Sky_storm_layer_20260227183647.png"
-dest_files=["res://.godot/imported/Sky_storm_layer_20260227183647.png-b31e128a610a46a816c5060d4b521a73.ctex"]
+source_file="res://assets/audio/music/background/Storm/Sky_storm_layer_cielgris.png"
+dest_files=["res://.godot/imported/Sky_storm_layer_cielgris.png-9a14097ee1b44b486c529d7ecf484d92.ctex"]
 
 [params]
 
