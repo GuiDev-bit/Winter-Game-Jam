@@ -1,6 +1,6 @@
 extends Control
 
-@onready var description_label : Label = $"PanelContainer/MarginContainer/Level Info/DescriptionLabel"
+@onready var description_label : Label = $"PanelContainer/MarginContainer/Level Info/DesciptionLabel"
 
 func _on_button_pressed() -> void:
 	GameManager.reset()

@@ -108,7 +108,7 @@ theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 100
 text = "GO!"
 
-[node name="Button" type="TextureButton" parent="PanelContainer/MarginContainer" unique_id=843049220]
+[node name="Back" type="TextureButton" parent="PanelContainer/MarginContainer" unique_id=843049220]
 custom_minimum_size = Vector2(500, 200)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -116,7 +116,7 @@ size_flags_vertical = 8
 texture_normal = ExtResource("2_5irit")
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="PanelContainer/MarginContainer/Button" unique_id=535762204]
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/Back" unique_id=535762204]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -133,3 +133,8 @@ rotation = -0.01940085
 theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 100
 text = "Back"
+
+[connection signal="pressed" from="PanelContainer/MarginContainer/Level Selector/GridContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/Level Selector/GridContainer/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/Level Info/GO" to="." method="_on_go_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/Back" to="." method="_on_back_pressed"]

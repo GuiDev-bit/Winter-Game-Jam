@@ -3,7 +3,7 @@ extends CanvasLayer
 @onready var timer_label = $Control/TimerLabel
 @onready var score_label = $Control/ScoreLabel
 @onready var controls_hud : Control = $ControlsHUD
-@onready var health_label : Label = $HealthHUD/HBoxContainer/Label
+@onready var health_label : Label = $HealthHUD/Label
 
 var player_health_comp : HealthComponent = null
 
@@ -15,9 +15,11 @@ func _ready() -> void:
 	await get_tree().process_frame
 	var player = get_tree().get_first_node_in_group("player")
 	if player:
-		player_health_comp = player.get_node("HurtboxComponent/HealthComponent")
-		player_health_comp.health_changed.connect(_on_health_changed)
-		health_label.text = str(int(player_health_comp.health)) + " / " + str(int(player_health_comp.max_health))
+		player_health_comp = player.get_node_or_null("HurtboxComponent/HealthComponent")
+		if player_health_comp:
+			player_health_comp.health_changed.connect(_on_health_changed)
+			if health_label:
+				health_label.text = str(int(player_health_comp.health)) + " / " + str(int(player_health_comp.max_health))
 
 func _process(_delta: float) -> void:
 	if GameManager.current_state == GameManager.GameState.PLAYING:
