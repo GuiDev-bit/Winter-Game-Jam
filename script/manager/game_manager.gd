@@ -19,7 +19,7 @@ var match_time : float = 0.0
 var match_duration : float = 120.0
 
 
-
+var selected_weapon : String = "gloves"  
 
 var score_left : int = 0
 var score_right : int = 0

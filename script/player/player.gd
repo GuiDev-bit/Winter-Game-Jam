@@ -54,9 +54,11 @@ func _ready() -> void:
 	switch_state(active_state)
 	AiManager.get_player_reference(self)
 	current_munition = munition_max
-	#$HealthComponent.died.connect(_on_died)
-	#GameManager.connect()
-	#crosshair.visible = false
+	$HealthComponent.died.connect(_on_died)
+	if GameManager.selected_weapon == "canon":
+		secondary_weapon = Weapon.CANON
+	else:
+		secondary_weapon = Weapon.GlOVES
 
 func _on_respawn(spawn_position: Vector2) -> void:
 	global_position = spawn_position
