@@ -10,11 +10,13 @@
 [ext_resource type="PackedScene" uid="uid://bdoihyf18mekj" path="res://scenes/spawner/enemy_spawner.tscn" id="9_2ml6w"]
 [ext_resource type="Script" uid="uid://d3iclx0vn8f01" path="res://player_spawn_point.gd" id="9_6w4xk"]
 [ext_resource type="Script" uid="uid://dvrh63ese1r83" path="res://script/component/ball_spawner.gd" id="10_2ml6w"]
+[ext_resource type="PackedScene" uid="uid://ds2nmcitdg4v" path="res://scenes/terrain/backgroud_1.tscn" id="11_xgbxb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5tue2"]
 size = Vector2(213.5, 1117)
 
 [node name="Arena" type="Node2D" unique_id=2015291178]
+position = Vector2(-4704, -712)
 script = ExtResource("1_1qjuf")
 
 [node name="Walls" type="StaticBody2D" parent="." unique_id=106267902]
@@ -103,3 +105,7 @@ ball = NodePath("../../Ball")
 [node name="EnemySpawner" parent="spawner" unique_id=1221298138 node_paths=PackedStringArray("spawn_points") instance=ExtResource("9_2ml6w")]
 position = Vector2(-181, 353)
 spawn_points = [NodePath("../../Points/Marker2D"), NodePath("../../Points/Marker2D2")]
+
+[node name="Backgroud_1" parent="." unique_id=879696323 instance=ExtResource("11_xgbxb")]
+z_index = -200
+position = Vector2(610, 287)

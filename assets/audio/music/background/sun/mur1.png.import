@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dlqip5gbw0opd"
-path="res://.godot/imported/Sky_storm_layer_20260227183644.png-5df162d6360d56de3988ec89897ac5bc.ctex"
+uid="uid://b4ucdej846gkc"
+path="res://.godot/imported/mur1.png-5deb7e380ecd0d2545d778542a649911.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/hud/icon/Sky_storm_layer_20260227183644.png"
-dest_files=["res://.godot/imported/Sky_storm_layer_20260227183644.png-5df162d6360d56de3988ec89897ac5bc.ctex"]
+source_file="res://assets/audio/music/background/sun/mur1.png"
+dest_files=["res://.godot/imported/mur1.png-5deb7e380ecd0d2545d778542a649911.ctex"]
 
 [params]
 
