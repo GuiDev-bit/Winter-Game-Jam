@@ -21,12 +21,12 @@
 [ext_resource type="Script" uid="uid://bxmkgxah4aht4" path="res://script/component/hitbox_component.gd" id="11_je7p5"]
 [ext_resource type="Texture2D" uid="uid://q0h8ew76sego" path="res://assets/hud/cross.png" id="13_gx1jg"]
 [ext_resource type="Script" uid="uid://dnqt4p122fui7" path="res://script/component/hurtbox_component.gd" id="16_myrg7"]
-[ext_resource type="Script" uid="uid://cebv5pv3ydqok" path="res://script/player/camera.gd" id="19_yj68g"]
+[ext_resource type="Script" path="res://script/player/camera.gd" id="19_yj68g"]
 [ext_resource type="Script" uid="uid://cpx55onwhthnb" path="res://script/component/health_component.gd" id="23_ioxgp"]
 
 [sub_resource type="Resource" id="Resource_gx1jg"]
 script = ExtResource("2_fm80t")
-damage = 34.0
+damage = 1.0
 force = 2100.0
 direction = Vector2(1, -1)
 metadata/_custom_type_script = "uid://wcd5uqn0imo0"
@@ -367,8 +367,6 @@ _data = {
 collision_mask = 8
 floor_max_angle = 1.1013027
 script = ExtResource("1_8afob")
-use_secondweap = null
-secondary_weapon = 1
 bat_data = SubResource("Resource_gx1jg")
 gloves_data = SubResource("Resource_fm80t")
 snow_canon_data = SubResource("Resource_ugbui")
