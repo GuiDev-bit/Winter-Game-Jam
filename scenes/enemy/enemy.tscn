@@ -18,14 +18,14 @@
 
 [sub_resource type="Resource" id="Resource_2f3il"]
 script = ExtResource("2_peoo5")
-damage = 1.0
+damage = 34.0
 force = 2000.0
 direction = Vector2(1, -1)
 metadata/_custom_type_script = "uid://wcd5uqn0imo0"
 
 [sub_resource type="Resource" id="Resource_peoo5"]
 script = ExtResource("2_peoo5")
-damage = 20.0
+damage = 34.0
 force = 200.0
 metadata/_custom_type_script = "uid://wcd5uqn0imo0"
 
@@ -122,6 +122,7 @@ jump_chance = 0.4
 speed = 250
 bat_data = SubResource("Resource_2f3il")
 gloves_data = SubResource("Resource_peoo5")
+attack_range = 149.7
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1556801690]
 scale = Vector2(0.25, 0.249)
@@ -131,9 +132,8 @@ animation = &"canon"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1589856721]
 shape = SubResource("CapsuleShape2D_dtxhd")
 
-[node name="HurtboxComponent" type="Area2D" parent="." unique_id=256924563 node_paths=PackedStringArray("health_comp")]
+[node name="HurtboxComponent" type="Area2D" parent="." unique_id=256924563]
 script = ExtResource("1_4ra3w")
-health_comp = NodePath("../HealthComponent")
 team = 1
 metadata/_custom_type_script = "uid://dnqt4p122fui7"
 
@@ -144,8 +144,8 @@ debug_color = Color(0.31050387, 0.6160205, 0.34035134, 0.41960785)
 [node name="HitboxComponent" type="Area2D" parent="." unique_id=1477100562 node_paths=PackedStringArray("shape")]
 collision_layer = 2
 script = ExtResource("2_5uy6h")
-shape = NodePath("CollisionShape2D")
 team = 1
+shape = NodePath("CollisionShape2D")
 metadata/_custom_type_script = "uid://bxmkgxah4aht4"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent" unique_id=1735169367]

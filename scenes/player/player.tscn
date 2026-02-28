@@ -21,24 +21,25 @@
 [ext_resource type="Script" uid="uid://bxmkgxah4aht4" path="res://script/component/hitbox_component.gd" id="11_je7p5"]
 [ext_resource type="Texture2D" uid="uid://q0h8ew76sego" path="res://assets/hud/cross.png" id="13_gx1jg"]
 [ext_resource type="Script" uid="uid://dnqt4p122fui7" path="res://script/component/hurtbox_component.gd" id="16_myrg7"]
-[ext_resource type="Script" path="res://script/player/camera.gd" id="19_yj68g"]
+[ext_resource type="Script" uid="uid://cebv5pv3ydqok" path="res://script/player/camera.gd" id="19_yj68g"]
+[ext_resource type="Script" uid="uid://cpx55onwhthnb" path="res://script/component/health_component.gd" id="23_ioxgp"]
 
 [sub_resource type="Resource" id="Resource_gx1jg"]
 script = ExtResource("2_fm80t")
-damage = 1.0
+damage = 34.0
 force = 2100.0
 direction = Vector2(1, -1)
 metadata/_custom_type_script = "uid://wcd5uqn0imo0"
 
 [sub_resource type="Resource" id="Resource_fm80t"]
 script = ExtResource("2_fm80t")
-damage = 20.0
+damage = 34.0
 force = 500.0
 metadata/_custom_type_script = "uid://wcd5uqn0imo0"
 
 [sub_resource type="Resource" id="Resource_ugbui"]
 script = ExtResource("2_fm80t")
-damage = 15.0
+damage = 34.0
 force = 100.0
 metadata/_custom_type_script = "uid://wcd5uqn0imo0"
 
@@ -366,6 +367,7 @@ _data = {
 collision_mask = 8
 floor_max_angle = 1.1013027
 script = ExtResource("1_8afob")
+use_secondweap = null
 secondary_weapon = 1
 bat_data = SubResource("Resource_gx1jg")
 gloves_data = SubResource("Resource_fm80t")
@@ -427,6 +429,10 @@ debug_color = Color(0.26277184, 0.6149626, 0.44548863, 0.41960785)
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1909316591]
 libraries/ = SubResource("AnimationLibrary_ioxgp")
 libraries/Entity = SubResource("AnimationLibrary_6cv16")
+
+[node name="HealthComponent" type="Node" parent="." unique_id=38226124]
+script = ExtResource("23_ioxgp")
+metadata/_custom_type_script = "uid://cpx55onwhthnb"
 
 [connection signal="animation_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_changed"]
 [connection signal="area_entered" from="HitboxComponent" to="HitboxComponent" method="_on_area_entered"]

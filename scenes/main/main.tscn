@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c3vj3s7xoi087" path="res://scenes/player/player.tscn" id="3_ow5a4"]
 [ext_resource type="PackedScene" uid="uid://dhxrob07wfllc" path="res://scenes/arena/arena.tscn" id="4_hujxm"]
 [ext_resource type="PackedScene" uid="uid://dvpn2w6yufbyy" path="res://scenes/enemy/enemy.tscn" id="6_ow5a4"]
+[ext_resource type="Script" uid="uid://d3iclx0vn8f01" path="res://player_spawn_point.gd" id="7_hujxm"]
 
 [node name="Main" type="Node2D" unique_id=1443848199]
 process_mode = 3
@@ -22,5 +23,10 @@ collision_layer = 2
 [node name="Player" parent="." unique_id=1175312892 instance=ExtResource("3_ow5a4")]
 position = Vector2(1033, 337)
 collision_mask = 12
+use_secondweap = false
 
 [node name="Enemy" parent="." unique_id=2023724772 instance=ExtResource("6_ow5a4")]
+
+[node name="Node2D" type="Node2D" parent="." unique_id=1327458674]
+position = Vector2(0, 3)
+script = ExtResource("7_hujxm")

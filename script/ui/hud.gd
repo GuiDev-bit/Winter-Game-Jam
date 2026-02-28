@@ -15,7 +15,7 @@ func _ready() -> void:
 	await get_tree().process_frame
 	var player = get_tree().get_first_node_in_group("player")
 	if player:
-		player_health_comp = player.get_node_or_null("HurtboxComponent/HealthComponent")
+		player_health_comp = player.get_node_or_null("HealthComponent")
 		if player_health_comp:
 			player_health_comp.health_changed.connect(_on_health_changed)
 			if health_label:

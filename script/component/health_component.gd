@@ -12,6 +12,7 @@ func _ready() -> void:
 
 func deplete_health(amount: float) -> void:
 	health -= amount
+	health = max(health, 0)
 	emit_signal("health_changed", health)
 	if health <= 0:
 		emit_signal("died")

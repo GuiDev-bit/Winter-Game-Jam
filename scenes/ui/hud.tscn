@@ -6,7 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://bhxv2tuy6wnyn" path="res://assets/hud/icon/Z.png" id="4_8qguk"]
 [ext_resource type="Texture2D" uid="uid://b80y8p185l4uv" path="res://assets/hud/icon/batte_hud.png" id="5_oj5la"]
 [ext_resource type="Texture2D" uid="uid://cvpf2bfrl5g8w" path="res://assets/hud/icon/gant_boxe_hud.png" id="6_gss2c"]
-[ext_resource type="Texture2D" uid="uid://c5bgtk0exvwb1" path="res://assets/hud/icon/coeur_vie_joueur.png" id="7_gss2c"]
+[ext_resource type="Texture2D" uid="uid://bwisslhwujn5r" path="res://assets/hud/icon/coeur_vie_better.png" id="7_h022r"]
+[ext_resource type="Texture2D" uid="uid://ebhlhdh8kbmj" path="res://assets/hud/icon/barre_vie_joueur.png" id="8_4jqwt"]
 
 [node name="Hud" type="CanvasLayer" unique_id=617686044]
 script = ExtResource("1_0mwgc")
@@ -97,20 +98,28 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="TextureRect" type="TextureRect" parent="HealthHUD" unique_id=1698687923]
+[node name="Heart" type="TextureRect" parent="HealthHUD" unique_id=1698687923]
 layout_mode = 0
-offset_left = 47.0
-offset_top = -83.0
-offset_right = 559.0
-offset_bottom = 429.0
-scale = Vector2(0.7, 0.7)
-texture = ExtResource("7_gss2c")
+offset_left = 20.999998
+offset_top = 5.999999
+offset_right = 533.0
+offset_bottom = 518.0
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("7_h022r")
 
 [node name="Label" type="Label" parent="HealthHUD" unique_id=1504469661]
 layout_mode = 0
-offset_left = 182.0
-offset_top = 68.0
-offset_right = 340.0
-offset_bottom = 140.0
+offset_left = 175.0
+offset_top = 80.0
+offset_right = 333.0
+offset_bottom = 152.0
+scale = Vector2(3.22, 3.22)
 text = "100
 "
+
+[node name="LifeBar" type="TextureRect" parent="HealthHUD" unique_id=738973080]
+layout_mode = 0
+offset_top = -94.0
+offset_right = 512.0
+offset_bottom = 418.0
+texture = ExtResource("8_4jqwt")

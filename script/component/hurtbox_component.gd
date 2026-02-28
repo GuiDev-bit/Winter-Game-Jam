@@ -1,19 +1,17 @@
 extends Area2D
 class_name HurtboxComponent
 
-
-@export var health_comp : HealthComponent
+var health_comp : HealthComponent
 enum Team {RED, BLUE, OTHER}
 @export var team : Team
-
-
 signal get_hit(data)
 
+func _ready() -> void:
+	health_comp = get_parent().get_node_or_null("HealthComponent")
 
-func damage(data : AttackData) :
-	if health_comp :
+func damage(data : AttackData) -> void:
+	if health_comp:
 		health_comp.deplete_health(data.damage)
-	#print(data.force)
 	emit_signal("get_hit", data)
 
 func _on_area_exited(area: Area2D) -> void:

@@ -4,7 +4,7 @@ class_name EnemySpawner
 
 @export var enemy_scene: PackedScene 
 @export var spawn_points: Array[Node2D] 
-@export var respawn_cooldown: float = 3.0
+@export var respawn_cooldown: float = 5.0
 
 # On utilise les clés de l'enum directement
 var enemy_quantities = {
@@ -41,8 +41,8 @@ func update_quantities_from_data(data: LevelData):
 
 
 func start_respawn_cooldown(type: Enemy.Type):
-	get_tree().create_timer(respawn_cooldown).timeout.connect(spawn_enemy.bind(type))
-	#get_tree().current_scene.add_child.call_deferred(enemy)
+	await get_tree().create_timer(respawn_cooldown).timeout
+	spawn_enemy(type)
 
 func correct_pos():
 	for enemi in AiManager.enemies:

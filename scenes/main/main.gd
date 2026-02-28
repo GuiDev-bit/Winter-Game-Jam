@@ -18,6 +18,6 @@ func _process(_delta: float) -> void:
 func _on_game_ended() -> void:
 	# Détermine gagnant
 	if GameManager.score_left > GameManager.score_right:
-		get_tree().change_scene_to_file("res://scenes/ui/win_menu.tscn")
+		Transition.change_scene("res://scenes/ui/win_menu.tscn")
 	else:
 		get_tree().change_scene_to_file("res://scenes/ui/lose_menu.tscn")

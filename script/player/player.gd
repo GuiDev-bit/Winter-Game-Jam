@@ -52,6 +52,7 @@ func _ready() -> void:
 	switch_state(active_state)
 	AiManager.get_player_reference(self)
 	current_munition = munition_max
+	$HealthComponent.died.connect(_on_died)
 	#crosshair.visible = false
 
 func _on_respawn(spawn_position: Vector2) -> void:
@@ -402,3 +403,13 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 				print(223)
 			elif active_state == STATE.FLOOR : 
 				anim.play("Entity/Slide")
+
+func _on_died() -> void:
+	visible = false
+	set_physics_process(false)
+	await get_tree().create_timer(5.0).timeout
+	$HealthComponent.reset_health()
+	global_position = Vector2(640, 300)
+	visible = true
+	set_physics_process(true)
+	switch_state(STATE.FALL)
