@@ -3,9 +3,9 @@ extends Control
 @onready var description_label : Label = $"PanelContainer/Control/Level Info/DesciptionLabel"
 @onready var weapon_choice : Control = $PanelContainer/Control/WeaponChoice
 @onready var choose_label : Label = $PanelContainer/Control/Label  # le label CHOOSE YOUR WEAPON
-@onready var btn_go : Button = $PanelContainer/Control/GO
-@onready var btn_gloves : Button = $PanelContainer/Control/WeaponChoice/BtnGloves
-@onready var btn_canon : Button = $PanelContainer/Control/WeaponChoice/BtnCanon
+@onready var btn_go : TextureButton = $PanelContainer/Control/GO
+@onready var btn_gloves : TextureButton = $PanelContainer/Control/WeaponChoice/BtnGloves
+@onready var btn_canon : TextureButton = $PanelContainer/Control/WeaponChoice/BtnCanon
 
 var selected_level_data : LevelData = null
 var selected_weapon : String = ""
