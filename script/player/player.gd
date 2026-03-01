@@ -11,7 +11,7 @@ class_name Player
 @onready var anim : AnimationPlayer = $AnimationPlayer
 @onready var health := $HealthComponent
 
-var munition_max = 3
+var munition_max = 5
 var current_munition = 0
 
 #the weapons

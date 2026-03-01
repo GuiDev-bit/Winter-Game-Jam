@@ -33,7 +33,7 @@ metadata/_custom_type_script = "uid://wcd5uqn0imo0"
 
 [sub_resource type="Resource" id="Resource_fm80t"]
 script = ExtResource("2_fm80t")
-damage = 34.0
+damage = 30.0
 force = 500.0
 metadata/_custom_type_script = "uid://wcd5uqn0imo0"
 
