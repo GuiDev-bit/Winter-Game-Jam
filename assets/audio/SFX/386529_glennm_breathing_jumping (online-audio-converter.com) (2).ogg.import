@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bajjtd2pjsm7w"
+path="res://.godot/imported/386529_glennm_breathing_jumping (online-audio-converter.com) (2).ogg-b4a302ee4e8dbc026afa78af0535a5e9.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/audio/SFX/386529_glennm_breathing_jumping (online-audio-converter.com) (2).ogg"
+dest_files=["res://.godot/imported/386529_glennm_breathing_jumping (online-audio-converter.com) (2).ogg-b4a302ee4e8dbc026afa78af0535a5e9.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

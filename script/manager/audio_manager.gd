@@ -20,18 +20,18 @@ func _ready() -> void:
 	sfx_player.bus = "SFX"
 	add_child(music_player)
 	add_child(sfx_player)
-	enemy_hit_sfx = load("res://assets/audio/SFX/840218__kreha__hurt-3.wav")
+	enemy_hit_sfx = load("res://assets/audio/SFX/840218_kreha_hurt-3 (online-audio-converter.com) (2).ogg")
 	slide_sfx = load("res://assets/audio/SFX/articulated_ICE+Skate+scrape+one+leg+drag+04.mp3")
-	jump_sfx = load("res://assets/audio/SFX/386529__glennm__breathing_jumping.wav")
-	cannon_sfx = load("res://assets/audio/SFX/crazy-diamond-punch (1).mp3")
+	jump_sfx = load("res://assets/audio/SFX/386529_glennm_breathing_jumping (online-audio-converter.com) (2).ogg")
+	cannon_sfx = load("res://assets/audio/SFX/crazy-diamond-punch (1) (online-audio-converter.com).ogg")
 	
 	var volumes = SaveManager.load_volume()
 	set_music_volume(volumes["music"])
 	set_sfx_volume(volumes["sfx"])
 	
 	menu_music = load("res://assets/audio/music/music menu/MENU SWAF (1).ogg")
-	win_music = load("res://assets/audio/music/music/VICTOIRE.wav")
-	bat_hit_sfx = load("res://assets/audio/SFX/SFX BaseBall Bat (1).wav")
+	win_music = load("res://assets/audio/music/music/VICTOIRE (online-audio-converter.com).ogg")
+	bat_hit_sfx = load("res://assets/audio/SFX/SFX BaseBall Bat (1) (online-audio-converter.com).ogg")
 
 func play_music(stream: AudioStream) -> void:
 	if music_player.stream == stream and music_player.playing:

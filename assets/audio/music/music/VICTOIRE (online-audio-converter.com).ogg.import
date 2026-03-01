@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bxdpqtyhvjyk5"
+path="res://.godot/imported/VICTOIRE (online-audio-converter.com).ogg-5cc9baf4353f5289f665b800441a94bc.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/audio/music/music/VICTOIRE (online-audio-converter.com).ogg"
+dest_files=["res://.godot/imported/VICTOIRE (online-audio-converter.com).ogg-5cc9baf4353f5289f665b800441a94bc.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
