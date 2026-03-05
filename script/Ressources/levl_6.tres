@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="LevelData" format=3 uid="uid://b31400ytrdkn7"]
+
+[ext_resource type="PackedScene" uid="uid://dhxrob07wfllc" path="res://scenes/arena/arena.tscn" id="1_7tcfv"]
+[ext_resource type="Script" uid="uid://dftm4j2bj838b" path="res://script/Ressources/Leveldata.gd" id="1_v3k27"]
+
+[resource]
+script = ExtResource("1_v3k27")
+level_description = "Une équipe du tonnerre"
+map_scene = ExtResource("1_7tcfv")
+max_storm_level = 2
+batteur_count = 2
+boxeur_count = 1
+metadata/_custom_type_script = "uid://dftm4j2bj838b"

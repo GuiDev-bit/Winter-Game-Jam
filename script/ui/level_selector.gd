@@ -92,3 +92,19 @@ func _on_go_pressed() -> void:
 
 func _on_back_pressed() -> void:
 	Transition.change_scene("res://scenes/ui/main_menu.tscn")
+
+
+func _on_button_6_pressed() -> void:
+	_select_level("res://script/Ressources/level_5.tres")
+
+
+func _on_button_7_pressed() -> void:
+	_select_level("res://script/Ressources/levl_6.tres")
+
+
+func _on_button_8_pressed() -> void:
+	_select_level("res://script/Ressources/level_7.tres")
+
+
+func _on_button_9_pressed() -> void:
+	_select_level("res://script/Ressources/level_8.tres")
