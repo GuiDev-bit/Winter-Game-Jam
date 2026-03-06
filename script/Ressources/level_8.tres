@@ -5,6 +5,7 @@
 
 [resource]
 script = ExtResource("1_h6x5t")
+level_name = "Niveau 8"
 level_description = "WTF !"
 map_scene = ExtResource("1_mx31r")
 batteur_count = 2

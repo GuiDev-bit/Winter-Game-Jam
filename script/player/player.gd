@@ -72,6 +72,7 @@ func _physics_process(delta) -> void :
 	update_animation()
 	update_crossair()
 	update_aim()
+	apply_storm_wind(delta)
 
 
 
@@ -414,3 +415,7 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 func _on_died() -> void:
 	$HealthComponent.reset_health()
 	i_died.emit()
+
+func apply_storm_wind(delta: float) -> void:
+	if Stormmanager.wind_force > 0:
+		velocity.x -= Stormmanager.wind_force * delta

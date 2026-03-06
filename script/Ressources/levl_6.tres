@@ -5,6 +5,7 @@
 
 [resource]
 script = ExtResource("1_v3k27")
+level_name = "Niveau 6"
 level_description = "Une équipe du tonnerre"
 map_scene = ExtResource("1_7tcfv")
 max_storm_level = 2

@@ -7,6 +7,7 @@ enum StormState { SUN, STORM, EXTREME }
 var current_state: StormState = StormState.SUN
 var time_elapsed: float = 0.0
 var max_storm_level: int = 2
+var wind_force : float = 0.0
 
 # 3. On définit les paliers de temps en secondes (Tresholds)
 @export var storm_threshold: float = 30.0    # Déclenche STORM à 30 secondes
@@ -61,10 +62,12 @@ func change_state(new_state: StormState) -> void:
 	match current_state:
 		StormState.SUN:
 			ball_force_multiplier = 1.0
+			wind_force = 0.0
 		StormState.STORM:
 			ball_force_multiplier = STORM_MULTIPLIER
+			wind_force = 80.0
 		StormState.EXTREME:
 			ball_force_multiplier = EXTREME_MULTIPLIER
-			
+			wind_force = 200.0
 	# On avertit tout le reste du jeu que la tempête a changé
 	storm_state_changed.emit(current_state)

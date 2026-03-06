@@ -39,10 +39,16 @@ func _physics_process(delta: float) -> void:
 	#friction horizontale
 	apply_horizontal_drag(delta)
 	gravity_update()
+	apply_wind(delta)
 	#save the prev velocity
 	previous_velocity = linear_velocity
 
-
+func apply_wind(delta: float) -> void:
+	match Stormmanager.current_state:
+		Stormmanager.StormState.STORM:
+			apply_central_force(Vector2(-150, 0) * delta * 60)
+		Stormmanager.StormState.EXTREME:
+			apply_central_force(Vector2(-400, 0) * delta * 60)
 
 
 func apply_force_to_ball(direction: Vector2, force: float) -> void:

@@ -5,6 +5,7 @@
 
 [resource]
 script = ExtResource("1_o1ge1")
+level_name = "Niveau 7"
 level_description = "3 is better than 2"
 map_scene = ExtResource("1_ns6a3")
 batteur_count = 3
